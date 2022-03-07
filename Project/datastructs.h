@@ -2,23 +2,26 @@
 #include <string>
 using namespace std;
 
-enum Role
+enum  Role
 {
 	MAIN_ADMIN,
 	ADMIN,
-	USER
+	USER,
 };
+
 enum Status
 {
 	ACTIVE,
 	BLOCKED,
 	WAITING
 };
-struct user
+struct User
 {
 	string login;
 	string password;
 	Role role;
 	Status status;
 };
+
+
 
