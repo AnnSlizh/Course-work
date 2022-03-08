@@ -19,13 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="authorization .cpp" />
     <ClCompile Include="fileio.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="validation.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="authorization .h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="datastructs.h" />
     <ClInclude Include="fileio.h" />
+    <ClInclude Include="validation.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

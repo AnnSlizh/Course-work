@@ -44,3 +44,19 @@ void readUsersFromFile(vector <User>& users)
 	}
 	file.close();
 }
+
+void writeUsersInFile(vector <User>& users)
+{
+	fstream file;
+	file.open(FILE_NAME, ios::out);
+
+	for (int i = 0; i < users.size(); i++)
+	{
+		file << users[i].login << " " << users[i].password << " " << users[i].role << " " << users[i].status;
+		if (i != users.size() - 1)
+		{
+			file << endl;			//Если последний элемент вектора, то переход на новую строку не ставится
+		}
+	}
+	file.close();
+}
