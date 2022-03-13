@@ -3,6 +3,7 @@
 #include <vector>
 #include "datastructs.h"
 #include "fileio.h"
+#include "authorization .h"
 
 using namespace std;
 
@@ -11,11 +12,15 @@ int main()
 	setlocale(LC_ALL, "ru");
 
 	vector <User> users;
-	readUsersFromFile(users);
-	cout << users.size();
-	cout << endl;
+
+	
+
+	//readUsersFromFile(users);
+
+	/*cout << users.size();
+	cout << endl;*/
 	User user1;
-	user1.login = "a1";
+	user1.login = "a111";
 	user1.password = "123";
 	user1.role = Role::ADMIN;
 	user1.status = Status::ACTIVE;
@@ -29,10 +34,14 @@ int main()
 	user3.password = "123";
 	user3.role = Role::ADMIN;
 	user3.status = Status::ACTIVE;
+	
+	users.push_back(user1);
+	users.push_back(user2);
+	users.push_back(user3);
 
-	//users.push_back(user1);
-	//users.push_back(user2);
-	//users.push_back(user3);
+
+		registerNewUser(users);
+	
 
 	for (int i = 0; i < users.size(); i++)
 	{
