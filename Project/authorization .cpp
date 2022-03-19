@@ -11,41 +11,27 @@ void registerNewUser(vector <User>& users)
 	User newUser;
 
 	cout << CREATING_ACCOUNT_MODE_TEXT << endl;
-	cout << ENTER_LOGIN_TEXT;
-	cin >> login;
-
+	
 	bool flag = true;
 	while (flag)
 	{
+		cout << ENTER_LOGIN_TEXT;
+		cin >> login;
+
 		if (isLoginCorrect(login) == false)
 		{
-			cout << LOGIN_NOT_CORRECT_TEXT << endl;
-			cout << ENTER_LOGIN_TEXT;
-			cin >> login;
+			cout << LOGIN_NOT_CORRECT_TEXT << endl;;
+			
 		}
 		else if (isLoginExist(login, users) == true)
 		{
 			cout << LOGIN_IS_EXIST_TEXT << endl;
-			cout << ENTER_LOGIN_TEXT;
-			cin >> login;
 		}
 		else flag = false;
 	}
 
 	cout << ENTER_PASSWORD_TEXT;
 	cin >> password;
-
-	/*flag = true;
-	while (flag)
-	{
-		if (isPasswordExist(password, users) == true)
-		{
-			cout << PASSWORD_IS_EXIST_TEXT << endl;
-			cout << ENTER_PASSWORD_TEXT;
-			cin >> password;
-		}
-		else flag = false;
-	}*/
 
 	newUser.login = login;
 	newUser.password = password;
@@ -85,9 +71,10 @@ void signInAccount(vector <User>& users)
 		if (userAccount.login == users[i].login)
 		{
 			userAccount.status = users[i].status;
+			userAccount.role = users[i].role;
 		}
 	}
-
+	
 	if (userAccount.status == Status::WAITING)
 	{
 		cout << WAITNG_STATUS_TEXT;
@@ -96,6 +83,14 @@ void signInAccount(vector <User>& users)
 	{
 		cout << BLOCKED_STATUS_TEXT;
 	}
-	else cout << "ee";
+	if (userAccount.role == Role::USER)
+	{
+		userMode(users);
+	}
+	else if (userAccount.role == Role::MAIN_ADMIN || userAccount.role == Role::ADMIN)
+	{
+		cout << "df";
+	}
+
 }
 

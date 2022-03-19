@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="authorization .cpp" />
     <ClCompile Include="fileio.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="validation.cpp" />
   </ItemGroup>
@@ -29,6 +30,7 @@
     <ClInclude Include="constants.h" />
     <ClInclude Include="datastructs.h" />
     <ClInclude Include="fileio.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="validation.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -4,6 +4,7 @@
 #include "datastructs.h"
 #include "fileio.h"
 #include "authorization .h"
+#include "menu.h"
 
 using namespace std;
 
@@ -22,7 +23,7 @@ int main()
 	User user1;
 	user1.login = "a111";
 	user1.password = "123";
-	user1.role = Role::ADMIN;
+	user1.role = Role::USER;
 	user1.status = Status::ACTIVE;
 	User user2;
 	user2.login = "a2";
@@ -39,10 +40,10 @@ int main()
 	users.push_back(user2);
 	users.push_back(user3);
 
-
+	//menuOfAuthorization(users);
 		//registerNewUser(users);
 	//signInAccount(users);
-	
+	addNewAccount(users);
 
 	for (int i = 0; i < users.size(); i++)
 	{
