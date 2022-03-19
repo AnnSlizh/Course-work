@@ -6,4 +6,4 @@ using namespace std;
 
 bool isLoginCorrect(string login);
 bool isLoginExist(string login, vector <User>& users);
-bool isPasswordExist(string password, vector <User>& users);
+//bool isPasswordExist(string password, vector <User>& users);

@@ -27,7 +27,7 @@ bool isLoginExist(string login, vector <User>& users)
 	return false;
 }
 
-bool isPasswordExist(string password, vector <User>& users)
+/*bool isPasswordExist(string password, vector <User>& users)
 {
 	for (int i = 0; i < users.size(); i++)
 	{
@@ -37,4 +37,5 @@ bool isPasswordExist(string password, vector <User>& users)
 		}
 	}
 	return false;
-}
+}*/
+

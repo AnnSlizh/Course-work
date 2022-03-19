@@ -5,3 +5,4 @@
 #include "datastructs.h"
 
 void registerNewUser(vector <User>& users);
+void signInAccount(vector <User>& users);

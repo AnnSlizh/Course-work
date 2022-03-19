@@ -33,14 +33,15 @@ int main()
 	user3.login = "a3";
 	user3.password = "123";
 	user3.role = Role::ADMIN;
-	user3.status = Status::ACTIVE;
+	user3.status = Status::BLOCKED;
 	
 	users.push_back(user1);
 	users.push_back(user2);
 	users.push_back(user3);
 
 
-		registerNewUser(users);
+		//registerNewUser(users);
+	//signInAccount(users);
 	
 
 	for (int i = 0; i < users.size(); i++)
