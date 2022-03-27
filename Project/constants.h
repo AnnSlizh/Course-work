@@ -41,13 +41,31 @@ const string PACCWORD_NOT_CORRECT_TEXT = "Некорректный ввод пароля! Пожалуйста, 
 //Admin menu
 const string MAIN_ADMIN_MODE_TEXT = "Вы находитесь в режиме главного администратора!";
 const string ADMIN_MODE_TEXT = "Вы находитесь в режиме администратора!";
-const string ACCOUNT_MANAGEMENT_MODE_TEXT = "2) Управление аккаунтами";
+const string ACCOUNT_MANAGEMENT_TEXT = "2) Управление аккаунтами";
 const string ADMIN_CHANGE_PASSWORD_TEXT = "3) Изменить пароль";
 const string EXIT_FROM_ACCOUNT_TEXT = "4) Выйти из аккаунта";
 
 //New account settings
-const string ADD_NEW_ACCOUNT_TEXT = "Добавление нового аккаунта";
+
 const string ENTER_ROLE_OF_ACCOUNT_TEXT = "Введите роль: ";
 const string ROLE_ADMIN_TEXT = "1) Администратор";
 const string ROLE_USER_TEXT = "2) Пользователь";
 const string ACCOUNT_ADDED_TEXT = "Новый аккаунт добавлен!";
+
+//Accounts manage
+const string ACCOUNT_MANAGEMENT_MODE_TEXT = "Модуль управления аккаунтами системы";
+const string VIEW_ACCOUNTS_TEXT = "1) Просмотр аккаунтов";
+const string ADD_NEW_ACCOUNT_TEXT = "2) Добавить новый аккаунт";
+const string ACCOUNTS_SETTINGS_TEXT = "3) Редактирование аккаунтов";
+const string DELETE_ACCOUNT_TEXT = "4) Удаление аккаунтов";
+const string VIEW_APLICATIONS_TEXT = "5) Просмотр запросов на регистрацию";
+const string RETURN_BACK_TEXT = "6) Назад";
+
+//Application settings
+const string ACCEPT_APPLICATION_TEXT = "1) Принять заявку";
+const string BLOCKED_APPLICATION_TEXT = "2) Отклонить заявку";
+const string ENTER_NUMBER_OF_APPLICATION = "Введите номер заявки: ";
+const string VALIDATE_DELATION_OF_APPLICATION_TEXT = "Вы действительно хотите отклонить заявку на регистрацию пользователя?";
+const string VALIDATE_ACCEPTANE_OF_APPLICATION_TEXT = "Вы действительно хотите принять заявку на регистрацию пользователя?";
+const string YES_TEXT = "1) Да";
+const string NOT_TEXT = "2) Нет";

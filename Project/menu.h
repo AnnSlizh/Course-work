@@ -13,3 +13,6 @@ void menuOfAuthorization(vector <User>& users);
 void userMode(vector <User>& users);
 void adminMode(vector <User>& users);
 void addNewAccount(vector <User>& users);
+void manageApplication(vector <User>& users);
+void acceptAplication(vector <User>& users);
+void blockedApplication(vector <User>& users);

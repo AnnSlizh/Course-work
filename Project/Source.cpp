@@ -24,7 +24,7 @@ int main()
 	user1.login = "a111";
 	user1.password = "123";
 	user1.role = Role::USER;
-	user1.status = Status::ACTIVE;
+	user1.status = Status::WAITING;
 	User user2;
 	user2.login = "a2";
 	user2.password = "123";
@@ -34,7 +34,7 @@ int main()
 	user3.login = "a3";
 	user3.password = "123";
 	user3.role = Role::ADMIN;
-	user3.status = Status::BLOCKED;
+	user3.status = Status::WAITING;
 	
 	users.push_back(user1);
 	users.push_back(user2);
@@ -43,8 +43,8 @@ int main()
 	//menuOfAuthorization(users);
 		//registerNewUser(users);
 	//signInAccount(users);
-	addNewAccount(users);
-
+	//addNewAccount(users);
+	manageApplication(users);
 	for (int i = 0; i < users.size(); i++)
 	{
 		cout << users[i].login << " " << users[i].password << " " << users[i].role << " " << users[i].status << "|";

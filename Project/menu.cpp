@@ -89,13 +89,15 @@ void adminMode(User userAccount, vector <User>& users)
 		}
 		else cout << ADMIN_MODE_TEXT;
 		cout << SYSTEM_TICKETS_SALES_TEXT << endl;
-		cout << ACCOUNT_MANAGEMENT_MODE_TEXT << endl;
+		cout << ACCOUNT_MANAGEMENT_TEXT << endl;
 		cout << ADMIN_CHANGE_PASSWORD_TEXT << endl;
 		cout << EXIT_FROM_ACCOUNT_TEXT;
 		
 		switch (_getch())
 		{
 		
+		//case '2': manageAccounts(users);
+
 		case '4': flag = false;
 		}
 	}
@@ -103,12 +105,34 @@ void adminMode(User userAccount, vector <User>& users)
 
 void manageAccounts(vector <User>& users)
 {
+	system("CLS");
+	cout << ACCOUNT_MANAGEMENT_MODE_TEXT << endl;
+	cout << VIEW_ACCOUNTS_TEXT << endl << ADD_NEW_ACCOUNT_TEXT << endl;
+	cout << ACCOUNTS_SETTINGS_TEXT << endl << DELETE_ACCOUNT_TEXT << endl;
+	cout << VIEW_APLICATIONS_TEXT << endl << RETURN_BACK_TEXT << endl;
+
 	bool flag = true;
 	while (flag)
 	{
 		switch (_getch())
 		{
-		case '4': addNewAccount(users);
+			//case '1':
+			case '2': system("CLS");
+				addNewAccount(users);
+				break;
+
+			//case '3':
+
+				//case '4': 
+				
+			case '5': system("CLS");
+				manageApplication(users);
+				break;
+
+			case '6': flag = false;
+				break;
+				
+			//}
 		}
 	}
 }
@@ -153,4 +177,87 @@ void addNewAccount(vector <User>& users)
 	cout << ACCOUNT_ADDED_TEXT;
 }
 
+void manageApplication(vector <User>& users)
+{	
+	bool flag = true;
+	while (flag)
+	{
+		system("CLS");
+		for (int i = 0; i < users.size(); i++)
+		{
+			if (users[i].status == Status::WAITING)
+			{
+				cout << i << "\t" << users[i].login << endl;
+			}
+		}
+		cout << ACCEPT_APPLICATION_TEXT << endl << BLOCKED_APPLICATION_TEXT << endl;
 
+		switch (_getch())
+		{
+		case '1': acceptAplication(users);
+			break;
+
+		case '2': blockedApplication(users);
+			break;
+		}
+	}
+}
+
+void acceptAplication(vector <User>& users)
+{
+	int numberOfApplication;
+
+	cout << ENTER_NUMBER_OF_APPLICATION;
+	cin >> numberOfApplication;
+
+	for (int i = 0; i < users.size(); i++)
+	{
+		system("CLS");
+		cout << VALIDATE_ACCEPTANE_OF_APPLICATION_TEXT << endl;
+		cout << YES_TEXT << endl << NOT_TEXT << endl;
+
+		int digit;
+		cin >> digit;
+
+		if (digit == 1)
+		{
+			users[i].status = Status::ACTIVE;
+			break;
+		}
+		else if (digit == 2) break;
+	}
+}
+
+void blockedApplication(vector <User>& users)
+{
+	int numberOfApplication;
+	cout << ENTER_NUMBER_OF_APPLICATION;
+	cin >> numberOfApplication;
+
+	for (int i = 0; i < users.size(); i++)
+	{
+		system("CLS");
+		cout << VALIDATE_DELATION_OF_APPLICATION_TEXT << endl;
+		cout << YES_TEXT << endl << NOT_TEXT << endl;
+
+		int digit;
+		cin >> digit;
+
+		if (digit == 1)
+		{
+			auto iter = users.cbegin();
+
+			if (numberOfApplication == 0)
+			{
+				users.erase(iter);
+				break;
+			}
+			else
+			{
+				users.erase(iter + numberOfApplication);
+				break;
+			}
+		}
+		else if (digit == 2) break;
+	}
+}
