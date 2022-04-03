@@ -46,7 +46,6 @@ const string ADMIN_CHANGE_PASSWORD_TEXT = "3) Изменить пароль";
 const string EXIT_FROM_ACCOUNT_TEXT = "4) Выйти из аккаунта";
 
 //New account settings
-
 const string ENTER_ROLE_OF_ACCOUNT_TEXT = "Введите роль: ";
 const string ROLE_ADMIN_TEXT = "1) Администратор";
 const string ROLE_USER_TEXT = "2) Пользователь";
@@ -61,11 +60,29 @@ const string DELETE_ACCOUNT_TEXT = "4) Удаление аккаунтов";
 const string VIEW_APLICATIONS_TEXT = "5) Просмотр запросов на регистрацию";
 const string RETURN_BACK_TEXT = "6) Назад";
 
+//Accounts settings
+const string CHOCE_ACTION_TEXT = "Выберите действие:";
+const string CHANGE_ROLE_TEXT = "1) Изменить роль";
+const string CHANGE_STATUS_TEXT = "2) Изменить статус";
+const string RETURN_TO_MENU_TEXT = "3) Назад";
+const string ENTER_ID_OF_ACCOUNT_TEXT = "Введите ID аккаунта: ";
+const string NOT_CHANGE_ROLE_MAIN_ADMIN_TEXT= "Вы не можете изменить роль главного администратора!";
+const string NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT = "Вы не можете изменить статус главного администратора!";
+
 //Application settings
 const string ACCEPT_APPLICATION_TEXT = "1) Принять заявку";
 const string BLOCKED_APPLICATION_TEXT = "2) Отклонить заявку";
-const string ENTER_NUMBER_OF_APPLICATION = "Введите номер заявки: ";
+const string NOT_APPLICATIONS_TEXT = "Нет заявок на регистрацию!";
+const string ENTER_ID_OF_APPLICATION = "Введите ID заявки: ";
 const string VALIDATE_DELATION_OF_APPLICATION_TEXT = "Вы действительно хотите отклонить заявку на регистрацию пользователя?";
 const string VALIDATE_ACCEPTANE_OF_APPLICATION_TEXT = "Вы действительно хотите принять заявку на регистрацию пользователя?";
 const string YES_TEXT = "1) Да";
 const string NOT_TEXT = "2) Нет";
+
+//Enum structs text
+const string ADMIN_TEXT = "Admin";
+const string MAIN_ADMIN_TEXT = "Main admin";
+const string USER_TEXT = "User";
+const string ACTIVE_TEXT = "Active";
+const string BLOCKED_TEXT = "Blocked";
+const string WAITING_TEXT = "Waiting";

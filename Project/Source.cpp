@@ -23,8 +23,8 @@ int main()
 	User user1;
 	user1.login = "a111";
 	user1.password = "123";
-	user1.role = Role::USER;
-	user1.status = Status::WAITING;
+	user1.role = Role::MAIN_ADMIN;
+	user1.status = Status::ACTIVE;
 	User user2;
 	user2.login = "a2";
 	user2.password = "123";
@@ -44,10 +44,14 @@ int main()
 		//registerNewUser(users);
 	//signInAccount(users);
 	//addNewAccount(users);
-	manageApplication(users);
-	for (int i = 0; i < users.size(); i++)
+//	viewAccounts(users);
+	manageAccounts(users);
+	//editAccount(users);
+	//viewAccounts(users);
+	//manageApplication(users);
+	/*for (int i = 0; i < users.size(); i++)
 	{
 		cout << users[i].login << " " << users[i].password << " " << users[i].role << " " << users[i].status << "|";
-	}
+	}*/
 	//writeUsersInFile(users);
 }
