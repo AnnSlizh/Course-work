@@ -68,6 +68,8 @@ const string RETURN_TO_MENU_TEXT = "3) Назад";
 const string ENTER_ID_OF_ACCOUNT_TEXT = "Введите ID аккаунта: ";
 const string NOT_CHANGE_ROLE_MAIN_ADMIN_TEXT= "Вы не можете изменить роль главного администратора!";
 const string NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT = "Вы не можете изменить статус главного администратора!";
+const string VALIDATE_DELATION_OF_ACCOUNT_TEXT = "Вы действительно хотите удалить аккаунт?";
+const string ACOOUNT_IS_DELETED_TEXT = "Аккаунт удален!";
 
 //Application settings
 const string ACCEPT_APPLICATION_TEXT = "1) Принять заявку";

@@ -89,7 +89,7 @@ void signInAccount(vector <User>& users)
 	}
 	else if (userAccount.role == Role::MAIN_ADMIN || userAccount.role == Role::ADMIN)
 	{
-		cout << "df";
+		adminMode(userAccount, users);
 	}
 
 }

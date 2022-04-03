@@ -96,17 +96,15 @@ void adminMode(User userAccount, vector <User>& users)
 		switch (_getch())
 		{
 		
-		//case '2': manageAccounts(users);
+		case '2': manageAccounts(userAccount, users);
 
 		case '4': flag = false;
 		}
 	}
 }
 
-void manageAccounts(vector <User>& users)
+void manageAccounts(User userAccount, vector <User>& users)
 {
-	
-
 	bool flag = true;
 	while (flag)
 	{
@@ -115,12 +113,14 @@ void manageAccounts(vector <User>& users)
 		cout << VIEW_ACCOUNTS_TEXT << endl << ADD_NEW_ACCOUNT_TEXT << endl;
 		cout << ACCOUNTS_SETTINGS_TEXT << endl << DELETE_ACCOUNT_TEXT << endl;
 		cout << VIEW_APLICATIONS_TEXT << endl << RETURN_BACK_TEXT << endl;
-
+		//User userAccount;
+		int role;
 		switch (_getch())
 		{
-			//case '1': system("CLS");
-			//viewAccounts(users);
-		//	break;
+			case '1': system("CLS");
+			viewAccounts(users);
+			system("pause");
+			break;
 
 			case '2': system("CLS");
 				addNewAccount(users);
@@ -131,7 +131,57 @@ void manageAccounts(vector <User>& users)
 			//	viewAccounts(users);
 				editAccount(users);
 				break;
-				//case '4': 
+				
+			case '4': system("CLS");
+				int idOfAccount;
+				int role, status;
+
+				if (userAccount.role == Role::MAIN_ADMIN)
+				{
+					for (int i = 0; i < users.size(); i++)
+					{
+						if (users[i].role != Role::MAIN_ADMIN && users[i].status != Status::WAITING)
+						{
+							cout << i << "\t" << users[i].login << "\t";
+							role = users[i].role;
+							status = users[i].status;
+
+							roleToString(role);
+							cout << "\t";
+							statusToString(status);
+							cout << endl;
+						}
+					}
+				}
+					
+				else 
+				{
+					for (int i = 0; i < users.size(); i++)
+					{
+						if (users[i].role == Role::USER)
+						{
+							cout << i << "\t" << users[i].login;
+							role = users[i].role;
+							status = users[i].status;
+
+							roleToString(role);
+							cout << "\t";
+							statusToString(status);
+							cout << endl;
+
+						}
+					}
+				}
+				cout << ENTER_ID_OF_ACCOUNT_TEXT;
+				cin >> idOfAccount;
+				
+				system("CLS");
+
+				cout << VALIDATE_DELATION_OF_ACCOUNT_TEXT << endl;
+				cout << YES_TEXT << endl << NOT_TEXT << endl;
+
+				deleteAccount(users, idOfAccount);
+				break;
 				
 			case '5': system("CLS");
 				manageApplication(users);
@@ -139,8 +189,6 @@ void manageAccounts(vector <User>& users)
 
 			case '6': flag = false;
 				break;
-				
-			//}
 		}
 	}
 }
@@ -204,10 +252,6 @@ void viewAccounts(vector <User>& users)
 		}
 	}
 }
-/*void deleteAccount(vector <User>& users)
-{
-
-}*/
 
 void manageApplication(vector <User>& users)
 {	
@@ -235,7 +279,16 @@ void manageApplication(vector <User>& users)
 		case '1': acceptAplication(users);
 			break;
 
-		case '2': blockedApplication(users);
+		case '2':
+			int numberOfApplication;
+			cout << ENTER_ID_OF_APPLICATION;
+			cin >> numberOfApplication;
+
+			system("CLS");
+			cout << VALIDATE_DELATION_OF_APPLICATION_TEXT << endl;
+			cout << YES_TEXT << endl << NOT_TEXT << endl;
+
+			deleteAccount(users, numberOfApplication);
 			break;
 
 		case '3': flag = false;
@@ -269,38 +322,28 @@ void acceptAplication(vector <User>& users)
 	}
 }
 
-void blockedApplication(vector <User>& users)
+void deleteAccount(vector <User>& users, int idOfAccount)
 {
-	int numberOfApplication;
-	cout << ENTER_ID_OF_APPLICATION;
-	cin >> numberOfApplication;
+	int digit;
+	cin >> digit;
 
-	for (int i = 0; i < users.size(); i++)
+	if (digit == 1) //yes
 	{
-		system("CLS");
-		cout << VALIDATE_DELATION_OF_APPLICATION_TEXT << endl;
-		cout << YES_TEXT << endl << NOT_TEXT << endl;
+		auto iter = users.cbegin();
 
-		int digit;
-		cin >> digit;
-
-		if (digit == 1) //yes
+		if (idOfAccount == 0)
 		{
-			auto iter = users.cbegin();
-
-			if (numberOfApplication == 0)
-			{
-				users.erase(iter);
-				break;
-			}
-			else
-			{
-				users.erase(iter + numberOfApplication);
-				break;
-			}
+			users.erase(iter);
 		}
-		else if (digit == 2) break; //not
+		else
+		{
+			users.erase(iter + idOfAccount);
+		}
+		system("CLS");
+		cout << ACOOUNT_IS_DELETED_TEXT << endl;
+		system("pause");
 	}
+		else if (digit == 2) return; //not
 }
 
 void editAccount(vector <User>& users)
@@ -381,7 +424,7 @@ void roleToString(int role)
 	{
 	case Role::ADMIN: cout << ADMIN_TEXT;
 		break;
-		
+
 	case Role::MAIN_ADMIN: cout << MAIN_ADMIN_TEXT;
 		break;
 
@@ -389,6 +432,7 @@ void roleToString(int role)
 		break;
 	}
 }
+
 void statusToString(int status)
 {
 	switch (status)

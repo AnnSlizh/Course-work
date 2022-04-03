@@ -33,19 +33,19 @@ int main()
 	User user3;
 	user3.login = "a3";
 	user3.password = "123";
-	user3.role = Role::ADMIN;
-	user3.status = Status::WAITING;
+	user3.role = Role::USER;
+	user3.status = Status::ACTIVE;
 	
 	users.push_back(user1);
 	users.push_back(user2);
 	users.push_back(user3);
 
-	//menuOfAuthorization(users);
+	menuOfAuthorization(users);
 		//registerNewUser(users);
 	//signInAccount(users);
 	//addNewAccount(users);
 //	viewAccounts(users);
-	manageAccounts(users);
+	//manageAccounts( users);
 	//editAccount(users);
 	//viewAccounts(users);
 	//manageApplication(users);
