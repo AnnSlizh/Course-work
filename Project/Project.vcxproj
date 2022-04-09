@@ -23,6 +23,7 @@
     <ClCompile Include="fileio.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="tickets.cpp" />
     <ClCompile Include="validation.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -31,6 +32,7 @@
     <ClInclude Include="datastructs.h" />
     <ClInclude Include="fileio.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="tickets.h" />
     <ClInclude Include="validation.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

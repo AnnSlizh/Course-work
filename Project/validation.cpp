@@ -27,6 +27,16 @@ bool isLoginExist(string login, vector <User>& users)
 	return false;
 }
 
+bool isMonthExist(int month)
+{
+	if (month < 1 && month > 12)
+	{
+		return true;
+	}
+	return false;
+}
+
+
 /*bool isPasswordExist(string password, vector <User>& users)
 {
 	for (int i = 0; i < users.size(); i++)

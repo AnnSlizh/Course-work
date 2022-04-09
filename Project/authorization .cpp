@@ -39,6 +39,12 @@ void registerNewUser(vector <User>& users)
 	newUser.status = Status::WAITING;
 
 	users.push_back(newUser);
+
+	system("CLS");
+
+	cout << APPLICATION_IS_SENT_TEXT << endl;
+	cout << SYSTEM_ACCESS_TEXT << endl;
+	system("pause");
 }
 
 void signInAccount(vector <User>& users)
@@ -85,7 +91,7 @@ void signInAccount(vector <User>& users)
 	}
 	if (userAccount.role == Role::USER)
 	{
-		userMode(users);
+		userMode(userAccount, users);
 	}
 	else if (userAccount.role == Role::MAIN_ADMIN || userAccount.role == Role::ADMIN)
 	{

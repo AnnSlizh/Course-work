@@ -35,7 +35,7 @@ void menuOfAuthorization(vector <User>& users)
 	}
 }
 
-void userMode(vector <User>& users)
+void userMode(User userAccount, vector <User>& users)
 {
 	bool flag = true;
 	while (flag)
@@ -45,13 +45,18 @@ void userMode(vector <User>& users)
 		cout << SYSTEM_TICKETS_SALES_TEXT << endl;
 		cout << USER_CHANGE_PASSWORD_TEXT << endl;
 		cout << EXIT_OF_ACCOUNT_TEXT;
-
+		User userAccount;
 		switch (_getch())
 		{
-		/*case '2':
-			User userAccount;
-			cout << ENTER_LOGIN_TEXT; cin >> userAccount.login;
+
+	//	case '1': system("CLS");
+
+	//		break;
+
+		case '2': system("CLS");
+			//cout << ENTER_LOGIN_TEXT; cin >> userAccount.login;
 			cout << ENTER_PASSWORD_FOR_CHANGE_TEXT; cin >> userAccount.password;
+			
 			for (int i = 0; i < users.size(); i++)
 			{
 				if (userAccount.password == users[i].password)
@@ -61,14 +66,16 @@ void userMode(vector <User>& users)
 				}
 				else
 				{
-					for (int k = 0; k < NUMBER_OF_ATTEMPTS; i++)
+					for (int i = 0; i < NUMBER_OF_ATTEMPTS; i++)
 					{
 						cout << PACCWORD_NOT_CORRECT_TEXT << endl;
-						cin >> userAccount.password;
+						cout << ENTER_PASSWORD_FOR_CHANGE_TEXT; cin >> userAccount.password;
 					}
-					
+					cout << PASSWORD_CHANGE_NOT_AVALIABLE_TEXT;
+					system("pause");
+					break;
 				}
-			}*/
+			}
 
 		case '3': authorizationMenu();
 			break;
@@ -87,7 +94,7 @@ void adminMode(User userAccount, vector <User>& users)
 		{
 			cout << MAIN_ADMIN_MODE_TEXT << endl;
 		}
-		else cout << ADMIN_MODE_TEXT;
+		else cout << ADMIN_MODE_TEXT << endl;
 		cout << SYSTEM_TICKETS_SALES_TEXT << endl;
 		cout << ACCOUNT_MANAGEMENT_TEXT << endl;
 		cout << ADMIN_CHANGE_PASSWORD_TEXT << endl;
@@ -98,7 +105,17 @@ void adminMode(User userAccount, vector <User>& users)
 		
 		case '2': manageAccounts(userAccount, users);
 
-		case '4': flag = false;
+		case '4': system("CLS");
+			cout << VALIDATE_EXIT_FROME_ACCOUNT_TEXT << endl;
+			cout << YES_TEXT << endl << NOT_TEXT << endl;
+			int digit;
+			cin >> digit;
+
+			if (digit == 1) //yes
+			{
+				flag = false;
+			}
+			else break; // no;
 		}
 	}
 }
@@ -113,7 +130,7 @@ void manageAccounts(User userAccount, vector <User>& users)
 		cout << VIEW_ACCOUNTS_TEXT << endl << ADD_NEW_ACCOUNT_TEXT << endl;
 		cout << ACCOUNTS_SETTINGS_TEXT << endl << DELETE_ACCOUNT_TEXT << endl;
 		cout << VIEW_APLICATIONS_TEXT << endl << RETURN_BACK_TEXT << endl;
-		//User userAccount;
+		
 		int role;
 		switch (_getch())
 		{
@@ -128,7 +145,6 @@ void manageAccounts(User userAccount, vector <User>& users)
 				break;
 
 			case '3': system("CLS");
-			//	viewAccounts(users);
 				editAccount(users);
 				break;
 				
@@ -193,6 +209,26 @@ void manageAccounts(User userAccount, vector <User>& users)
 	}
 }
 
+void viewAccounts(vector <User>& users)
+{
+	for (int i = 0; i < users.size(); i++)
+	{
+		if (users[i].status != Status::WAITING)
+		{
+
+			cout << i << "\t" << users[i].login << "\t";
+
+			int role = users[i].role;
+			int status = users[i].status;
+
+			roleToString(role);
+			cout << "\t";
+			statusToString(status);
+			cout << endl;
+		}
+	}
+}
+
 void addNewAccount(vector <User>& users)
 {
 	User newAccount;
@@ -233,24 +269,100 @@ void addNewAccount(vector <User>& users)
 	cout << ACCOUNT_ADDED_TEXT << endl;
 }
 
-void viewAccounts(vector <User>& users)
+void editAccount(vector <User>& users)
 {
-	for (int i = 0; i < users.size(); i++)
+	bool flag = true;
+	while (flag)
 	{
-		if (users[i].status != Status::WAITING)
+		system("CLS");
+		viewAccounts(users);
+
+		cout << endl << CHOCE_ACTION_TEXT << endl;
+		cout << CHANGE_ROLE_TEXT << endl;
+		cout << CHANGE_STATUS_TEXT << endl;
+		cout << RETURN_TO_MENU_TEXT << endl;
+
+		int idOfAcccount;
+
+		switch (_getch())
 		{
+		case '1':
+			cout << ENTER_ID_OF_ACCOUNT_TEXT;
+			cin >> idOfAcccount;
 
-			cout << i << "\t" << users[i].login << "\t";
+			if (users[idOfAcccount].role == Role::MAIN_ADMIN)
+			{
+				system("CLS");
+				cout << NOT_CHANGE_ROLE_MAIN_ADMIN_TEXT << endl;
+				system("pause");
+				break;
+			}
+			else if (users[idOfAcccount].role == Role::USER)
+			{
+				users[idOfAcccount].role = Role::ADMIN;
+				break;
+			}
+			else
+			{
+				users[idOfAcccount].role = Role::USER;
+				break;
+			}
+			break;
 
-			int role = users[i].role;
-			int status = users[i].status;
+		case '2':
+			cout << ENTER_ID_OF_ACCOUNT_TEXT;
+			cin >> idOfAcccount;
 
-			roleToString(role);
-			cout << "\t";
-			statusToString(status);
-			cout << endl;
+			if (users[idOfAcccount].role == Role::MAIN_ADMIN)
+			{
+				system("CLS");
+				cout << NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT << endl;
+				system("pause");
+			}
+			else
+			{
+				if (users[idOfAcccount].status == Status::ACTIVE)
+				{
+					users[idOfAcccount].status = Status::BLOCKED;
+					break;
+				}
+				else
+				{
+					users[idOfAcccount].status = Status::ACTIVE;
+					break;
+				}
+			}
+			break;
+
+		case '3':
+			flag = false;
+			break;
 		}
 	}
+}
+
+void deleteAccount(vector <User>& users, int idOfAccount)
+{
+	int digit;
+	cin >> digit;
+
+	if (digit == 1) //yes
+	{
+		auto iter = users.cbegin();
+
+		if (idOfAccount == 0)
+		{
+			users.erase(iter);
+		}
+		else
+		{
+			users.erase(iter + idOfAccount);
+		}
+		system("CLS");
+		cout << ACOOUNT_IS_DELETED_TEXT << endl;
+		system("pause");
+	}
+	else if (digit == 2) return; //not
 }
 
 void manageApplication(vector <User>& users)
@@ -264,7 +376,14 @@ void manageApplication(vector <User>& users)
 		{
 			if (users[i].status == Status::WAITING)
 			{
-				cout << i << "\t" << users[i].login << endl;
+				cout << i << "\t" << users[i].login << "\t";
+
+				int status = users[i].status;
+
+				cout << "\t";
+				statusToString(status);
+				cout << endl;
+
 				counter++;
 			}
 		}
@@ -319,102 +438,6 @@ void acceptAplication(vector <User>& users)
 			break;
 		}
 		else if (digit == 2) break; //not
-	}
-}
-
-void deleteAccount(vector <User>& users, int idOfAccount)
-{
-	int digit;
-	cin >> digit;
-
-	if (digit == 1) //yes
-	{
-		auto iter = users.cbegin();
-
-		if (idOfAccount == 0)
-		{
-			users.erase(iter);
-		}
-		else
-		{
-			users.erase(iter + idOfAccount);
-		}
-		system("CLS");
-		cout << ACOOUNT_IS_DELETED_TEXT << endl;
-		system("pause");
-	}
-		else if (digit == 2) return; //not
-}
-
-void editAccount(vector <User>& users)
-{
-	bool flag = true;
-	while (flag)
-	{
-		system("CLS");
-		viewAccounts(users);
-
-		cout << endl << CHOCE_ACTION_TEXT << endl;
-		cout << CHANGE_ROLE_TEXT << endl;
-		cout << CHANGE_STATUS_TEXT << endl;
-		cout << RETURN_TO_MENU_TEXT << endl;
-
-		int idOfAcccount;
-	
-		switch (_getch())
-		{
-		case '1':
-			cout << ENTER_ID_OF_ACCOUNT_TEXT;
-			cin >> idOfAcccount;
-
-			if (users[idOfAcccount].role == Role::MAIN_ADMIN)
-			{
-				system("CLS");
-				cout << NOT_CHANGE_ROLE_MAIN_ADMIN_TEXT << endl;
-				system("pause");
-				break;
-			}
-			else if (users[idOfAcccount].role == Role::USER)
-			{
-				users[idOfAcccount].role = Role::ADMIN;
-				break;
-			}
-			else
-			{
-				users[idOfAcccount].role = Role::USER;
-				break;
-			}
-		break;
-
-		case '2':
-			cout << ENTER_ID_OF_ACCOUNT_TEXT;
-			cin >> idOfAcccount;
-
-			if (users[idOfAcccount].role == Role::MAIN_ADMIN)
-			{
-				system("CLS");
-				cout << NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT << endl;
-				system("pause");
-			}
-			else
-			{
-				if (users[idOfAcccount].status == Status::ACTIVE)
-				{
-					users[idOfAcccount].status = Status::BLOCKED;
-					break;
-				}
-				else
-				{
-					users[idOfAcccount].status = Status::ACTIVE;
-					break;
-				}
-			}
-		break;
-
-		case '3': 
-			flag = false;
-			break;
-		}
 	}
 }
 

@@ -5,7 +5,11 @@
 using namespace std;
 
 //File names
-const string FILE_NAME = "Users.txt";
+const string USERS_FILE_NAME = "Users.txt";
+const string TICKETS_FILE_NAME = "Tickets.txt";
+
+//File not exist
+const string TICKETS_NOT_EXIST_TEXT = "Нет сведений о продажах проездных билетов!";
 
 //Main admin settings
 const string MAIN_ADMIN_LOGIN = "admin";
@@ -23,6 +27,8 @@ const string CREATING_ACCOUNT_MODE_TEXT = "Создание нового аккаунта в системе";
 const string AUTHORIZATION_IN_SYSTEM_TEXT = "Авторизуйтесь в системе";
 const string LOGIN_IS_EXIST_TEXT = "Аккаунт с таким логином уже существует! Пожалуйста, придумайте другой.";
 const string LOGIN_NOT_CORRECT_TEXT = "Введенный логин не соответствует норме(не менее 4 символов)! Пожалуйста, придумайте другой.";
+const string APPLICATION_IS_SENT_TEXT = "Ваша заявка на регистрацию отправлена!";
+const string SYSTEM_ACCESS_TEXT = "Система будет доступна после одобрения вашей заявки администратором";
 
 //Sign in
 const string ACCOUNT_NOT_EXIT_TEXT = "Аккаунт с таким логином не существует! Пожалуйста, введите другой.";
@@ -37,6 +43,7 @@ const string EXIT_OF_ACCOUNT_TEXT = "3) Выйти из аккаунта";
 const string ENTER_PASSWORD_FOR_CHANGE_TEXT = "Для изменения пароля введите свой текущий пароль: ";
 const string ENTER_NEW_PASSWORD_TEXT = "Введите новый пароль: ";
 const string PACCWORD_NOT_CORRECT_TEXT = "Некорректный ввод пароля! Пожалуйста, повторите попытку.";
+const string PASSWORD_CHANGE_NOT_AVALIABLE_TEXT = "Неправильный пароль был введен трижды. Изменение пароля недоступно!";
 
 //Admin menu
 const string MAIN_ADMIN_MODE_TEXT = "Вы находитесь в режиме главного администратора!";
@@ -44,6 +51,7 @@ const string ADMIN_MODE_TEXT = "Вы находитесь в режиме администратора!";
 const string ACCOUNT_MANAGEMENT_TEXT = "2) Управление аккаунтами";
 const string ADMIN_CHANGE_PASSWORD_TEXT = "3) Изменить пароль";
 const string EXIT_FROM_ACCOUNT_TEXT = "4) Выйти из аккаунта";
+const string VALIDATE_EXIT_FROME_ACCOUNT_TEXT = "Вы точно хотите выйти из аккаунта?";
 
 //New account settings
 const string ENTER_ROLE_OF_ACCOUNT_TEXT = "Введите роль: ";

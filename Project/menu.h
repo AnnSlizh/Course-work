@@ -5,12 +5,13 @@
 #include "datastructs.h"
 #include "fileio.h"
 #include "authorization .h"
+#include "tickets.h"
 
 using namespace std;
 
 void authorizationMenu();
 void menuOfAuthorization(vector <User>& users);
-void userMode(vector <User>& users);
+void userMode(User userAccount, vector <User>& users);
 void adminMode(User userAccount, vector <User>& users);
 void addNewAccount(vector <User>& users);
 void manageAccounts(User userAccount, vector <User>& users);

@@ -22,6 +22,21 @@ struct User
 	Role role;
 	Status status;
 };
-
-
+enum Transport
+{
+	BUS,
+	TRAM,
+	TROLLEYBUS,
+	TRAIN,
+	PLANE,
+	SHIP
+};
+struct Ticket
+{
+	int month;
+	int year;
+	int soldTickets;
+	double costOfTicket;
+	Transport type;
+};
 
