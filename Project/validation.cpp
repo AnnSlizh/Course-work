@@ -3,6 +3,14 @@
 
 const int MIN_LOGIN_SIZE = 3;
 const int MAX_LOGIN_SIZE = 20;
+const int MIN_TYPE_OF_TRANSPORT = 0;
+const int MAX_TYPE_OF_TRANSPORT = 5;
+const int MIN_MONTH = 1;
+const int MAX_MONTH = 12;
+const int MIN_YEAR = 2000;
+const int MAX_YEAR = 2022;
+const int MIN_COST_OF_TICKET = 0;
+const int MIN_SOLD_TICKETS = 0;
 
 bool isLoginCorrect(string login)
 {
@@ -27,9 +35,18 @@ bool isLoginExist(string login, vector <User>& users)
 	return false;
 }
 
+bool isTypeOfTransportExist(int type)
+{
+	if (type < MIN_TYPE_OF_TRANSPORT || type > MAX_TYPE_OF_TRANSPORT)
+	{
+		return true;
+	}
+	return false;
+}
+
 bool isMonthExist(int month)
 {
-	if ( month < 1 || month > 12)
+	if ( month < MIN_MONTH || month > MAX_MONTH)
 	{
 		return true;
 	}
@@ -38,7 +55,7 @@ bool isMonthExist(int month)
 
 bool isYearExist(int year)
 {
-	if (year < 2000 || year > 2022)
+	if (year < MIN_YEAR || year > MAX_YEAR)
 	{
 		return true;
 	}
@@ -47,7 +64,7 @@ bool isYearExist(int year)
 
 bool isCostOfTicketExist(double costOfTicket)
 {
-	if (costOfTicket < 0 || costOfTicket == 0)
+	if (costOfTicket <= MIN_COST_OF_TICKET )
 	{
 		return true;
 	}
@@ -56,22 +73,9 @@ bool isCostOfTicketExist(double costOfTicket)
 
 bool isSoldTicketNegative(int soldTickets)
 {
-	if (soldTickets < 0)
+	if (soldTickets < MIN_SOLD_TICKETS)
 	{
 		return true;
 	}
 	return false;
 }
-
-/*bool isPasswordExist(string password, vector <User>& users)
-{ 
-	for (int i = 0; i < users.size(); i++)
-	{
-		if (users[i].password == password)
-		{
-			return true;
-		}
-	}
-	return false;
-}*/
-

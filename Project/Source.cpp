@@ -82,8 +82,8 @@ int main()
 	cin >> month;*/
 
 	
-	addNewTicketNote(tickets);
-
+	//addNewTicketNote(tickets);
+	manageTicketRecords(tickets);
 	//calculateTotalIncome(tickets);
 	//viewTopOfSoldTickets(tickets, month);
 	//writeTicketsInFile(tickets);
@@ -91,7 +91,7 @@ int main()
 
 	/*for (int i = 0; i < tickets.size(); i++)
 	{
-		cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+		cout << i << " " << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
 		cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
 	}
 	*/

@@ -102,6 +102,8 @@ void adminMode(User userAccount, vector <User>& users)
 		
 		switch (_getch())
 		{
+		case '1': system("CLS");
+			break;
 		
 		case '2': manageAccounts(userAccount, users);
 
@@ -116,6 +118,51 @@ void adminMode(User userAccount, vector <User>& users)
 				flag = false;
 			}
 			else break; // no;
+		}
+	}
+}
+
+void manageTicketRecords(vector <Ticket>& tickets)
+{
+	bool flag = true;
+	while (flag)
+	{
+		system("CLS");
+		cout << VIEW_TICKETS_RECORDS_TEXT << endl << ADD_NEW_TICKET_RECORD_TEXT << endl;
+		cout << DELETE_TICKET_RECORD_TEXT << endl << CHANGE_TICKETS_RECIRDS_TEXT << endl;
+		cout << CALCULATE_TOTAL_INCOME_OF_TICKETS_TEXT << endl << RETURN_BACK_TEXT << endl;
+
+		switch (_getch())
+		{
+		
+		case '1': system("CLS");
+			sortTicketsRecords(tickets);
+			break;
+
+		case '2': system("CLS");
+			addNewTicketRecord(tickets);
+			system("pause");
+			break;
+
+		case '3': system("CLS");
+			break;
+
+		case '5': system("CLS");
+
+			int month;
+
+			cout << ENTER_MONTH_OF_SALE_TEXT;
+			cin >> month;
+
+			viewTopOfSoldTickets(tickets, month);
+			cout << TOTAL_INCOME_OF_TICKETS_TEXT << calculateTotalIncome(tickets, month) << endl;
+
+			system("pause");
+			break;
+
+		case '6': flag = false;
+			break;
+
 		}
 	}
 }

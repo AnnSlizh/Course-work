@@ -2,12 +2,50 @@
 
 const double startingTotalIncome = 0;
 
-double calculateTotalIncome(vector <Ticket>& tickets) // Income - доход
+void viewTicketsRecords(vector <Ticket>& tickets)
 {
-	int month;
+	for (int i = 0; i < tickets.size(); i++)
+	{
+		cout << i << " " << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+		cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
+	}
+}
 
-	cout << "ent month: ";
-	cin >> month;
+void sortTicketsRecords(vector <Ticket>& tickets)
+{
+	bool flag = true;
+	while (flag)
+	{
+		system("CLS");
+		viewTicketsRecords(tickets);
+
+		cout << SORT_BY_TYPE_OF_TRANSPORT_TEXT << endl << SORT_BY_COST_OF_TICKET_TEXT << endl; 
+		cout << SORT_BY_YEAR_TEXT << endl << COME_BACK_TEXT << endl;
+
+		switch (_getch())
+		{
+		case '1': sort(tickets.begin(), tickets.end(), compareByTypeOfTransport);
+			break;
+
+		case '2':  sort(tickets.begin(), tickets.end(), compareByCostOfTicket);
+			break;
+
+		case '3': sort(tickets.begin(), tickets.end(), compareByYear);
+			break;
+			
+		case '4': flag = false;
+			break;
+		}
+	}
+}
+
+double calculateTotalIncome(vector <Ticket>& tickets, int month) // Income - доход
+{
+	while (isMonthExist(month) == true)
+	{
+		cout << ENTER_CORRECT_MONTH_TEXT;
+		cin >> month;
+	}
 
 	double totalIncome = startingTotalIncome;
 
@@ -36,18 +74,18 @@ void viewTopOfSoldTickets(vector <Ticket>& tickets, int month)
 	{
 		if (tickets[i].month == month)
 		{
-			
-			cout << tickets[i].type << endl;
+			cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+			cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
 		}
 	}
 }
 
-void addNewTicketNote(vector <Ticket>& tickets)
+void addNewTicketRecord(vector <Ticket>& tickets)
 {
 	Ticket newTicketNote;
 	int typeOfTransport;
 
-	cout << ADDING_NEW_TICKET_NOTE_TEXT << endl;
+	cout << ADDING_NEW_TICKET_RECORD_TEXT << endl;
 
 	cout << BUS_TEXT << endl << TRAM_TEXT << endl << TROLLEYBUS_TEXT << endl;
 	cout << TRAIN_TEXT << endl << PLANE_TEXT << endl << SHIP_TEXT << endl;
@@ -56,6 +94,13 @@ void addNewTicketNote(vector <Ticket>& tickets)
 
 	cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
 	cin >> digit;
+
+	while (isTypeOfTransportExist(digit) == true)
+	{
+		cout << NOT_CORRECT_TYPE_OF_TRANSPORT_TEXT << endl;
+		cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
+		cin >> digit;
+	}
 
 	switch (digit)
 	{
@@ -76,9 +121,6 @@ void addNewTicketNote(vector <Ticket>& tickets)
 
 	case 5: newTicketNote.type = Transport::SHIP;
 		break;
-
-	default: cout << "nepr";
-		cin >> digit;
 	}
 
 	cout << ENTER_MONTH_OF_SALE_TEXT;
@@ -124,11 +166,6 @@ void addNewTicketNote(vector <Ticket>& tickets)
 }
 	
 
-	
-	
-
-
-	
 bool compareBySoldTickets(Ticket& a, Ticket& b)
 {
 	return a.costOfTicket > b.soldTickets;

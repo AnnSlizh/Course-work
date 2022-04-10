@@ -13,6 +13,7 @@ void authorizationMenu();
 void menuOfAuthorization(vector <User>& users);
 void userMode(User userAccount, vector <User>& users);
 void adminMode(User userAccount, vector <User>& users);
+void manageTicketRecords(vector <Ticket>& tickets);
 void addNewAccount(vector <User>& users);
 void manageAccounts(User userAccount, vector <User>& users);
 void manageApplication(vector <User>& users);
