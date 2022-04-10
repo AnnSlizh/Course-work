@@ -29,16 +29,42 @@ bool isLoginExist(string login, vector <User>& users)
 
 bool isMonthExist(int month)
 {
-	if (month < 1 && month > 12)
+	if ( month < 1 || month > 12)
 	{
 		return true;
 	}
 	return false;
 }
 
+bool isYearExist(int year)
+{
+	if (year < 2000 || year > 2022)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool isCostOfTicketExist(double costOfTicket)
+{
+	if (costOfTicket < 0 || costOfTicket == 0)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool isSoldTicketNegative(int soldTickets)
+{
+	if (soldTickets < 0)
+	{
+		return true;
+	}
+	return false;
+}
 
 /*bool isPasswordExist(string password, vector <User>& users)
-{
+{ 
 	for (int i = 0; i < users.size(); i++)
 	{
 		if (users[i].password == password)

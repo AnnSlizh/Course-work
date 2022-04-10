@@ -77,24 +77,24 @@ int main()
 	tickets.push_back(tick2);
 	tickets.push_back(tick3);
 	
-	cout << "month: ";
+	/*cout << "month: ";
 	int month;
-	cin >> month;
+	cin >> month;*/
 
 	
-
+	addNewTicketNote(tickets);
 
 	//calculateTotalIncome(tickets);
-	viewTopOfSoldTickets(tickets, month);
+	//viewTopOfSoldTickets(tickets, month);
 	//writeTicketsInFile(tickets);
 	
 
-/*	for (int i = 0; i < tickets.size(); i++)
+	/*for (int i = 0; i < tickets.size(); i++)
 	{
 		cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
 		cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
-	}*/
-	
+	}
+	*/
 	/*for (int i = 0; i < users.size(); i++)
 	{
 		cout << users[i].login << " " << users[i].password << " " << users[i].role << " " << users[i].status << "|";

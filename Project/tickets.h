@@ -14,3 +14,4 @@ bool compareByTypeOfTransport(Ticket& a, Ticket& b);
 bool compareByCostOfTicket(Ticket& a, Ticket& b);
 bool compareByYear(Ticket& a, Ticket& b);
 bool isMonthExist(int month);
+void addNewTicketNote(vector <Ticket>& tickets);

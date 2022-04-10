@@ -47,16 +47,19 @@ void addNewTicketNote(vector <Ticket>& tickets)
 	Ticket newTicketNote;
 	int typeOfTransport;
 
-	cout << ADD_NEW_ACCOUNT_TEXT << endl;
-	
-	cout << ENTER_LOGIN_TEXT;
+	cout << ADDING_NEW_TICKET_NOTE_TEXT << endl;
 
+	cout << BUS_TEXT << endl << TRAM_TEXT << endl << TROLLEYBUS_TEXT << endl;
+	cout << TRAIN_TEXT << endl << PLANE_TEXT << endl << SHIP_TEXT << endl;
+	
 	int digit;
+
+	cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
 	cin >> digit;
 
 	switch (digit)
 	{
-	case 0: newTicketNote.type = Transport::BUS; 
+	case 0: newTicketNote.type = Transport::BUS;
 		break;
 
 	case 1: newTicketNote.type = Transport::TRAM;
@@ -75,37 +78,57 @@ void addNewTicketNote(vector <Ticket>& tickets)
 		break;
 
 	default: cout << "nepr";
+		cin >> digit;
 	}
-		
-	
 
-	bool flag = true;
-	while (flag)
+	cout << ENTER_MONTH_OF_SALE_TEXT;
+	cin >> newTicketNote.month;
+
+	while (isMonthExist(newTicketNote.month) == true)
 	{
-		cout << ENTER_PASSWORD_TEXT;
+		cout << ENTER_CORRECT_MONTH_TEXT;
 		cin >> newTicketNote.month;
-
-		if (isMonthExist(newTicketNote.month) == true)
-		{
-			cout << "net";
-		}
-		else flag = false;
 	}
-	
-	cout << ENTER_PASSWORD_TEXT;
+
+	cout << ENTER_YEAR_OF_SALES_TEXT;
 	cin >> newTicketNote.year;
 
-	cout << ENTER_PASSWORD_TEXT;
+	while (isYearExist(newTicketNote.year) == true)
+	{
+		cout << ENTER_COORECT_YEAR_TEXT;
+		cin >> newTicketNote.year;
+	}
+
+
+	cout << ENTER_COST_TICKET_TEXT;
 	cin >> newTicketNote.costOfTicket;
 
-	cout << ENTER_PASSWORD_TEXT;
+	while (isCostOfTicketExist(newTicketNote.costOfTicket) == true)
+	{
+		cout << NOT_COORECT_COST_OF_TIKCET_TEXT << endl << ENTER_COST_TICKET_TEXT;
+		cin >> newTicketNote.costOfTicket;
+	}
+
+	cout << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
 	cin >> newTicketNote.soldTickets;
+
+	while (isSoldTicketNegative(newTicketNote.soldTickets))
+	{
+		cout << NOT_COORECT_SALE_TICKETS_TEXT << endl << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
+		cin >> newTicketNote.soldTickets;
+	}
 
 	tickets.push_back(newTicketNote);
 
-	cout << ACCOUNT_ADDED_TEXT << endl;
+	cout << TICKET_NOTE_ADDED_TEXT << endl;
 }
+	
 
+	
+	
+
+
+	
 bool compareBySoldTickets(Ticket& a, Ticket& b)
 {
 	return a.costOfTicket > b.soldTickets;

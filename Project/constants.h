@@ -96,3 +96,26 @@ const string USER_TEXT = "User";
 const string ACTIVE_TEXT = "Active";
 const string BLOCKED_TEXT = "Blocked";
 const string WAITING_TEXT = "Waiting";
+
+//Adding new ticket note
+const string ADDING_NEW_TICKET_NOTE_TEXT = "Добавление новой записи проездныч билетов в систему";
+const string ENTER_TYPE_OF_TRANSPORT_TEXT = "Введите вид транспорта: ";
+const string ENTER_MONTH_OF_SALE_TEXT = "Введите месяц продажи билетов: ";
+const string ENTER_YEAR_OF_SALES_TEXT = "Введите год продажи билетов:";
+const string ENTER_COST_TICKET_TEXT = "Введите стоимость одного билета:";
+const string ENTER_NUMBER_OF_SALE_TICKETS_TEXT = "Введите количество проданных билетов: ";
+const string BUS_TEXT = "0) Автобус";
+const string TRAM_TEXT = "1) Трамвай";
+const string TROLLEYBUS_TEXT = "2) Троллейбус";
+const string TRAIN_TEXT = "3) Поезд";
+const string PLANE_TEXT = "4) Самолет";
+const string SHIP_TEXT = "5) Пароход";
+const string ENTER_CORRECT_MONTH_TEXT = "Пожалуйта, введите корректное [1 - 12] значение: ";
+const string ENTER_COORECT_YEAR_TEXT = "Пожалуйста, введите корректное [2000 - 2022] значение: ";
+const string NOT_COORECT_COST_OF_TIKCET_TEXT = "Некорректный ввод стоимости проездного билета! Пожалуйста, повторите попытку";
+const string NOT_COORECT_SALE_TICKETS_TEXT = "Некорректный ввод количества проданных билетов! Пожалуйста, повторите попытку";
+const string TICKET_NOTE_ADDED_TEXT = "Новая запись добавлена!";
+
+
+
+
