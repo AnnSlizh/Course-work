@@ -10,7 +10,7 @@ void authorizationMenu()
 	cout << EXIT_OF_SYSTEM_TEXT;
 }
 
-void menuOfAuthorization(vector <User>& users)
+void menuOfAuthorization(vector <User>& users, vector <Ticket>& tickets)
 {
 	bool flag = true;
 	
@@ -22,7 +22,7 @@ void menuOfAuthorization(vector <User>& users)
 		switch (_getch())
 		{
 		case '1': 	system("CLS");
-			signInAccount(users);
+			signInAccount(users, tickets);
 			break;
 
 		case '2': 	system("CLS");
@@ -44,7 +44,7 @@ void userMode(User userAccount, vector <User>& users)
 		cout << USER_MODE_TEXT << endl;
 		cout << SYSTEM_TICKETS_SALES_TEXT << endl;
 		cout << USER_CHANGE_PASSWORD_TEXT << endl;
-		cout << EXIT_OF_ACCOUNT_TEXT;
+		cout << THREE_TEXT << EXIT_FROM_ACCOUNT_TEXT;
 		User userAccount;
 		switch (_getch())
 		{
@@ -83,7 +83,7 @@ void userMode(User userAccount, vector <User>& users)
 	}
 }
 
-void adminMode(User userAccount, vector <User>& users)
+void adminMode(User userAccount, vector <User>& users, vector <Ticket>& tickets)
 {
 	bool flag = true;
 	while (flag)
@@ -98,11 +98,12 @@ void adminMode(User userAccount, vector <User>& users)
 		cout << SYSTEM_TICKETS_SALES_TEXT << endl;
 		cout << ACCOUNT_MANAGEMENT_TEXT << endl;
 		cout << ADMIN_CHANGE_PASSWORD_TEXT << endl;
-		cout << EXIT_FROM_ACCOUNT_TEXT;
+		cout << FOUR_TEXT << EXIT_FROM_ACCOUNT_TEXT;
 		
 		switch (_getch())
 		{
 		case '1': system("CLS");
+			manageTicketRecords(tickets);
 			break;
 		
 		case '2': manageAccounts(userAccount, users);
@@ -145,6 +146,16 @@ void manageTicketRecords(vector <Ticket>& tickets)
 			break;
 
 		case '3': system("CLS");
+			int numberOfRecord;
+
+			cout << ENTER_NUMBER_OF_RECORD_TEXT;
+			cin >> numberOfRecord;
+
+			cout << VALIDATE_DELATION_OF_RECORD_TEXT << endl;
+			cout << YES_TEXT << endl << NOT_TEXT << endl;
+			system("CLS");
+			
+			deleteTicketRecord(tickets, numberOfRecord);
 			break;
 
 		case '5': system("CLS");
@@ -177,8 +188,7 @@ void manageAccounts(User userAccount, vector <User>& users)
 		cout << VIEW_ACCOUNTS_TEXT << endl << ADD_NEW_ACCOUNT_TEXT << endl;
 		cout << ACCOUNTS_SETTINGS_TEXT << endl << DELETE_ACCOUNT_TEXT << endl;
 		cout << VIEW_APLICATIONS_TEXT << endl << RETURN_BACK_TEXT << endl;
-		
-		int role;
+
 		switch (_getch())
 		{
 			case '1': system("CLS");

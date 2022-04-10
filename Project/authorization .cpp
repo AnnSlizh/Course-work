@@ -47,7 +47,7 @@ void registerNewUser(vector <User>& users)
 	system("pause");
 }
 
-void signInAccount(vector <User>& users)
+void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 {
 	cout << AUTHORIZATION_IN_SYSTEM_TEXT << endl;
 
@@ -95,7 +95,7 @@ void signInAccount(vector <User>& users)
 	}
 	else if (userAccount.role == Role::MAIN_ADMIN || userAccount.role == Role::ADMIN)
 	{
-		adminMode(userAccount, users);
+		adminMode(userAccount, users, tickets);
 	}
 
 }

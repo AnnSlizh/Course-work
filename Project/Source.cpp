@@ -22,7 +22,7 @@ int main()
 
 	/*cout << users.size();
 	cout << endl;*/
-	/*User user1;
+	User user1;
 	user1.login = "a111";
 	user1.password = "123";
 	user1.role = Role::MAIN_ADMIN;
@@ -41,18 +41,6 @@ int main()
 	users.push_back(user1);
 	users.push_back(user2);
 	users.push_back(user3);
-
-	menuOfAuthorization(users);
-		//registerNewUser(users);
-	//signInAccount(users);
-	//addNewAccount(users);
-//	viewAccounts(users);
-	//manageAccounts( users);
-	//editAccount(users);
-	//viewAccounts(users);*/
-	//manageApplication(users);
-
-	//readTicketsFromFile(tickets);
 
 	Ticket tick1;
 	tick1.type = Transport::BUS;
@@ -77,13 +65,27 @@ int main()
 	tickets.push_back(tick2);
 	tickets.push_back(tick3);
 	
+	menuOfAuthorization(users, tickets);
+		//registerNewUser(users);
+	//signInAccount(users);
+	//addNewAccount(users);
+//	viewAccounts(users);
+	//manageAccounts( users);
+	//editAccount(users);
+	//viewAccounts(users);*/
+	//manageApplication(users);
+
+	//readTicketsFromFile(tickets);
+
+	
+	
 	/*cout << "month: ";
 	int month;
 	cin >> month;*/
 
-	
+	//adminMode(userAccount, users, tickets);
 	//addNewTicketNote(tickets);
-	manageTicketRecords(tickets);
+	//manageTicketRecords(tickets);
 	//calculateTotalIncome(tickets);
 	//viewTopOfSoldTickets(tickets, month);
 	//writeTicketsInFile(tickets);

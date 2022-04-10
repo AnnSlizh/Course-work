@@ -6,4 +6,4 @@
 #include "menu.h"
 
 void registerNewUser(vector <User>& users);
-void signInAccount(vector <User>& users);
+void signInAccount(vector <User>& users, vector <Ticket>& tickets);

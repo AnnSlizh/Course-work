@@ -39,57 +39,16 @@ void sortTicketsRecords(vector <Ticket>& tickets)
 	}
 }
 
-double calculateTotalIncome(vector <Ticket>& tickets, int month) // Income - доход
-{
-	while (isMonthExist(month) == true)
-	{
-		cout << ENTER_CORRECT_MONTH_TEXT;
-		cin >> month;
-	}
-
-	double totalIncome = startingTotalIncome;
-
-	double costOfTicket;
-	int numberOfSoldTickets;
-
-	for (int i = 0; i < tickets.size(); i++)
-	{
-		if (tickets[i].month == month)
-		{
-			costOfTicket = tickets[i].costOfTicket;
-			numberOfSoldTickets = tickets[i].soldTickets;
-
-			totalIncome = totalIncome + (costOfTicket * numberOfSoldTickets);
-		}
-	}
-	
-	return totalIncome;
-}
-
-void viewTopOfSoldTickets(vector <Ticket>& tickets, int month)
-{
-	sort(tickets.begin(), tickets.end(), compareBySoldTickets);
-
-	for (int i = 0; i < tickets.size(); i++)
-	{
-		if (tickets[i].month == month)
-		{
-			cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
-			cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
-		}
-	}
-}
-
 void addNewTicketRecord(vector <Ticket>& tickets)
 {
 	Ticket newTicketNote;
-	int typeOfTransport;
 
 	cout << ADDING_NEW_TICKET_RECORD_TEXT << endl;
 
-	cout << BUS_TEXT << endl << TRAM_TEXT << endl << TROLLEYBUS_TEXT << endl;
-	cout << TRAIN_TEXT << endl << PLANE_TEXT << endl << SHIP_TEXT << endl;
-	
+	cout << ONE_TEXT << BUS_TEXT << endl << TWO_TEXT << TRAM_TEXT << endl;
+	cout << THREE_TEXT << TROLLEYBUS_TEXT << endl << FOUR_TEXT << TRAIN_TEXT << endl;
+	cout << FIFE_TEXT << PLANE_TEXT << endl << SIX_TEXT << SHIP_TEXT << endl;
+
 	int digit;
 
 	cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
@@ -162,8 +121,75 @@ void addNewTicketRecord(vector <Ticket>& tickets)
 
 	tickets.push_back(newTicketNote);
 
-	cout << TICKET_NOTE_ADDED_TEXT << endl;
+	cout << TICKET_RECORD_ADDED_TEXT << endl;
 }
+
+void deleteTicketRecord(vector <Ticket>& tickets, int numberOfRecord)
+{
+	int digit;
+	cin >> digit;
+
+	if (digit == 1) //yes
+	{
+		auto iter = tickets.cbegin();
+
+		if (numberOfRecord == 0)
+		{
+			tickets.erase(iter);
+		}
+		else
+		{
+			tickets.erase(iter + numberOfRecord);
+		}
+		system("CLS");
+		cout << RECORD_IS_DELETED_TEXT << endl;
+		system("pause");
+	}
+	else if (digit == 2) return; //not
+}
+
+double calculateTotalIncome(vector <Ticket>& tickets, int month) // Income - доход
+{
+	while (isMonthExist(month) == true)
+	{
+		cout << ENTER_CORRECT_MONTH_TEXT;
+		cin >> month;
+	}
+
+	double totalIncome = startingTotalIncome;
+
+	double costOfTicket;
+	int numberOfSoldTickets;
+
+	for (int i = 0; i < tickets.size(); i++)
+	{
+		if (tickets[i].month == month)
+		{
+			costOfTicket = tickets[i].costOfTicket;
+			numberOfSoldTickets = tickets[i].soldTickets;
+
+			totalIncome = totalIncome + (costOfTicket * numberOfSoldTickets);
+		}
+	}
+	
+	return totalIncome;
+}
+
+void viewTopOfSoldTickets(vector <Ticket>& tickets, int month)
+{
+	sort(tickets.begin(), tickets.end(), compareBySoldTickets);
+
+	for (int i = 0; i < tickets.size(); i++)
+	{
+		if (tickets[i].month == month)
+		{
+			cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+			cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
+		}
+	}
+}
+
+
 	
 
 bool compareBySoldTickets(Ticket& a, Ticket& b)
@@ -184,4 +210,44 @@ bool compareByCostOfTicket(Ticket& a, Ticket& b)
 bool compareByYear(Ticket& a, Ticket& b)
 {
 	return a.year > b.year;
+}
+
+/*for (int i = 0; i < users.size(); i++)
+{
+	if (users[i].role == Role::USER)
+	{
+		cout << i << "\t" << users[i].login;
+		role = users[i].role;
+		status = users[i].status;
+
+		roleToString(role);
+		cout << "\t";
+		statusToString(status);
+		cout << endl;
+
+	}
+}
+*/
+void transportToString(int typeOfTransport)
+{
+	switch (typeOfTransport)
+	{
+	case Transport::BUS:  cout << BUS_TEXT;
+		break;
+
+	case Transport::TRAM: cout << TRAM_TEXT;
+		break;
+
+	case Transport::TROLLEYBUS: cout << TROLLEYBUS_TEXT;
+		break;
+
+	case Transport::TRAIN: cout << TRAIN_TEXT;
+		break;
+
+	case Transport::PLANE: cout << PLANE_TEXT;
+		break;
+
+	case Transport::SHIP: cout << SHIP_TEXT;
+		break;
+	}
 }
