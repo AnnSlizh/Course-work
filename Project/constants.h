@@ -77,6 +77,7 @@ const string NOT_CHANGE_ROLE_MAIN_ADMIN_TEXT= "Вы не можете изменить роль главно
 const string NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT = "Вы не можете изменить статус главного администратора!";
 const string VALIDATE_DELATION_OF_ACCOUNT_TEXT = "Вы действительно хотите удалить аккаунт?";
 const string ACOOUNT_IS_DELETED_TEXT = "Аккаунт удален!";
+const string BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT = "Аккаунт с таким ID не существует! Пожалуйста, введите корректный ID";
 
 //Application settings
 const string ACCEPT_APPLICATION_TEXT = "1) Принять заявку";
@@ -96,9 +97,7 @@ const string ACTIVE_TEXT = "Active";
 const string BLOCKED_TEXT = "Blocked";
 const string WAITING_TEXT = "Waiting";
 
-
-
-//Adding new ticket note
+//Adding new ticket record
 const string ADDING_NEW_TICKET_RECORD_TEXT = "Добавление новой записи проездныч билетов в систему";
 const string ENTER_TYPE_OF_TRANSPORT_TEXT = "Введите вид транспорта: ";
 const string ENTER_MONTH_OF_SALE_TEXT = "Введите месяц продажи билетов [1 - 12]: ";
@@ -128,6 +127,17 @@ const string TOTAL_INCOME_OF_TICKETS_TEXT = "Общий доход от продажи билетов за м
 const string ENTER_NUMBER_OF_RECORD_TEXT = "Введите номер записи: ";
 const string VALIDATE_DELATION_OF_RECORD_TEXT = "Вы действительно хотите удалить запись?";
 const string RECORD_IS_DELETED_TEXT = "Запись удалена!";
+const string BEYOND_THE_VECTOR_OF_TICKETS_TEXT = "Запись с таким номером не существует! Пожалуйста, введите корректный номер";
+
+//Editing tickets records
+const string CHANGE_TYPE_OF_TRANSPORT_TEXT = "1) Вид транспорта";
+const string CHANGE_MONTH_TEXT = "2) Месяц продажи билетов";
+const string CHANGE_YEAR_TEXT = "3) Год продажи билетов";
+const string CHANGE_COST_OF_TICKET_TEXT = "4) Стоимость одного билета";
+const string CHANGE_SOLD_TICKETS_TEXT = "5) Количество проданных билетов";
+const string EDITING_IS_OVER_TEXT = "Редактирование успешно завершено!";
+
+
 
 //Sorts settings
 const string SORT_BY_TYPE_OF_TRANSPORT_TEXT = "1) Сортировка по алфавиту";

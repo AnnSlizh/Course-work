@@ -9,9 +9,11 @@
 using namespace std;
 
 void viewTicketsRecords(vector <Ticket>& tickets);
+void viewOneTicketRecord(vector <Ticket>& tickets, int numberOfRecord);
 void sortTicketsRecords(vector <Ticket>& tickets);
 void addNewTicketRecord(vector <Ticket>& tickets);
 void deleteTicketRecord(vector <Ticket>& tickets, int numberOfRecord);
+void editTicketRecord(vector <Ticket>& tickets);
 double calculateTotalIncome(vector <Ticket>& tickets, int month);
 void viewTopOfSoldTickets(vector <Ticket>& tickets, int month);
 bool compareBySoldTickets(Ticket& a, Ticket& b);

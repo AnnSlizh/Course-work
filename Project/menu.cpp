@@ -151,11 +151,24 @@ void manageTicketRecords(vector <Ticket>& tickets)
 			cout << ENTER_NUMBER_OF_RECORD_TEXT;
 			cin >> numberOfRecord;
 
+			while ( numberOfRecord >= tickets.size())
+			{
+				cout << BEYOND_THE_VECTOR_OF_TICKETS_TEXT << endl;
+				cout << ENTER_NUMBER_OF_RECORD_TEXT;
+				cin >> numberOfRecord;
+			}
+
+	
+			system("CLS");
 			cout << VALIDATE_DELATION_OF_RECORD_TEXT << endl;
 			cout << YES_TEXT << endl << NOT_TEXT << endl;
-			system("CLS");
-			
+
 			deleteTicketRecord(tickets, numberOfRecord);
+			break;
+
+		case '4': system("CLS");
+			
+			editTicketRecord(tickets);
 			break;
 
 		case '5': system("CLS");
@@ -248,6 +261,13 @@ void manageAccounts(User userAccount, vector <User>& users)
 				cout << ENTER_ID_OF_ACCOUNT_TEXT;
 				cin >> idOfAccount;
 				
+				while (idOfAccount >= users.size())
+				{
+					cout << BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT << endl;
+					cout << ENTER_ID_OF_ACCOUNT_TEXT;
+					cin >> idOfAccount;
+				}
+
 				system("CLS");
 
 				cout << VALIDATE_DELATION_OF_ACCOUNT_TEXT << endl;

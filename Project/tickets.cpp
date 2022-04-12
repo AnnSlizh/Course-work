@@ -148,6 +148,184 @@ void deleteTicketRecord(vector <Ticket>& tickets, int numberOfRecord)
 	else if (digit == 2) return; //not
 }
 
+void editTicketRecord(vector <Ticket>& tickets)
+{
+	int numberOfRecord;
+
+	bool flag = true;
+	while (flag)
+	{
+		system("CLS");
+		viewTicketsRecords(tickets);
+
+		cout << ENTER_NUMBER_OF_RECORD_TEXT;
+		cin >> numberOfRecord;
+
+		while (numberOfRecord >= tickets.size())
+		{
+			cout << BEYOND_THE_VECTOR_OF_TICKETS_TEXT << endl;
+			cout << ENTER_NUMBER_OF_RECORD_TEXT;
+			cin >> numberOfRecord;
+		}
+
+		system("CLS");
+		viewOneTicketRecord(tickets, numberOfRecord);
+
+		cout << CHANGE_TYPE_OF_TRANSPORT_TEXT << endl << CHANGE_MONTH_TEXT << endl << CHANGE_YEAR_TEXT << endl;
+		cout << CHANGE_COST_OF_TICKET_TEXT << endl << CHANGE_SOLD_TICKETS_TEXT << endl;
+		cout << RETURN_BACK_TEXT << endl;
+
+		switch (_getch())
+		{
+		case '1': system("CLS");
+			viewOneTicketRecord(tickets, numberOfRecord);
+
+			cout << ONE_TEXT << BUS_TEXT << endl << TWO_TEXT << TRAM_TEXT << endl;
+			cout << THREE_TEXT << TROLLEYBUS_TEXT << endl << FOUR_TEXT << TRAIN_TEXT << endl;
+			cout << FIFE_TEXT << PLANE_TEXT << endl << SIX_TEXT << SHIP_TEXT << endl;
+
+			int newTypeOfTransport;
+
+			cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
+			cin >> newTypeOfTransport;
+
+			while (isTypeOfTransportExist(newTypeOfTransport) == true)
+			{
+				cout << NOT_CORRECT_TYPE_OF_TRANSPORT_TEXT << endl;
+				cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
+				cin >> newTypeOfTransport;
+			}
+
+			switch (newTypeOfTransport)
+			{
+			case 0: tickets[numberOfRecord].type = Transport::BUS;
+				break;
+
+			case 1: tickets[numberOfRecord].type = Transport::TRAM;
+				break;
+
+			case 2: tickets[numberOfRecord].type = Transport::TROLLEYBUS;
+				break;
+
+			case 3: tickets[numberOfRecord].type = Transport::TRAIN;
+				break;
+
+			case 4: tickets[numberOfRecord].type = Transport::PLANE;
+				break;
+
+			case 5: tickets[numberOfRecord].type = Transport::SHIP;
+				break;
+			}
+
+			system("CLS");
+			cout << EDITING_IS_OVER_TEXT << endl;
+
+			system("pause");
+			break;
+
+		case '2':  system("CLS");
+			viewOneTicketRecord(tickets, numberOfRecord);
+
+			int newMonth;
+
+			cout << ENTER_MONTH_OF_SALE_TEXT;
+			cin >> newMonth;
+			
+			while (isMonthExist(newMonth) == true)
+			{
+				cout << ENTER_CORRECT_MONTH_TEXT;
+				cin >> newMonth;
+			}
+
+			tickets[numberOfRecord].month = newMonth;
+
+			system("CLS");
+			cout << EDITING_IS_OVER_TEXT << endl;
+
+			system("pause");
+			break;
+
+		case '3': system("CLS");
+			viewOneTicketRecord(tickets, numberOfRecord);
+
+			int newYear;
+
+			cout << ENTER_YEAR_OF_SALES_TEXT;
+			cin >> newYear;
+
+			while (isYearExist(newYear) == true)
+			{
+				cout << ENTER_CORRECT_MONTH_TEXT;
+				cin >> newYear;
+			}
+
+			tickets[numberOfRecord].year = newYear;
+
+			system("CLS");
+			cout << EDITING_IS_OVER_TEXT << endl;
+
+			system("pause");
+			break;
+
+		case '4': system("CLS");
+			viewOneTicketRecord(tickets, numberOfRecord);
+
+			int newCostOfTicket;
+
+			cout << ENTER_COST_TICKET_TEXT;
+			cin >> newCostOfTicket;
+
+			while (isCostOfTicketExist(newCostOfTicket) == true)
+			{
+				cout << ENTER_CORRECT_MONTH_TEXT;
+				cin >> newCostOfTicket;
+			}
+
+			tickets[numberOfRecord].costOfTicket = newCostOfTicket;
+
+			system("CLS");
+			cout << EDITING_IS_OVER_TEXT << endl;
+
+			system("pause");
+			break;
+
+		case '5': system("CLS");
+			viewOneTicketRecord(tickets, numberOfRecord);
+
+			int newSoldTickets;
+
+			cout << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
+			cin >> newSoldTickets;
+
+			while (isSoldTicketNegative(newSoldTickets) == true)
+			{
+				cout << ENTER_CORRECT_MONTH_TEXT;
+				cin >> newSoldTickets;
+			}
+
+			tickets[numberOfRecord].soldTickets = newSoldTickets;
+
+			system("CLS");
+			cout << EDITING_IS_OVER_TEXT << endl;
+
+			system("pause");
+			break;
+
+		case '6': break;
+		}
+		
+
+	}
+}
+
+void viewOneTicketRecord(vector <Ticket>& tickets, int numberOfRecord)
+{
+	cout << numberOfRecord << " " << tickets[numberOfRecord].type << " ";
+	cout << tickets[numberOfRecord].month << " " << tickets[numberOfRecord].year << " ";
+	cout << tickets[numberOfRecord].costOfTicket << " " << tickets[numberOfRecord].soldTickets << endl;
+}
+
+
 double calculateTotalIncome(vector <Ticket>& tickets, int month) // Income - доход
 {
 	while (isMonthExist(month) == true)
