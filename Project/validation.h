@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "datastructs.h"
+#include "constants.h"
 
 using namespace std;
 
@@ -15,4 +16,7 @@ bool isYearExist(int year);
 bool isCostOfTicketExist(double costOfTicket);
 bool isSoldTicketNegative(int soldTickets);
 bool isCorrectValue(int value);
+void roleToString(int role);
+void statusToString(int status);
+void transportToString(int typeOfTransport);
 

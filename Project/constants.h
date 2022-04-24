@@ -97,11 +97,11 @@ const string BLOCKED_TEXT = "Blocked";
 const string WAITING_TEXT = "Waiting";
 
 //Adding new ticket record
-const string ADDING_NEW_TICKET_RECORD_TEXT = "Добавление новой записи проездныч билетов в систему";
+const string ADDING_NEW_TICKET_RECORD_TEXT = "Добавление новой записи проездных билетов в систему";
 const string ENTER_TYPE_OF_TRANSPORT_TEXT = "Введите вид транспорта: ";
 const string ENTER_MONTH_OF_SALE_TEXT = "Введите месяц продажи билетов [1 - 12]: ";
-const string ENTER_YEAR_OF_SALES_TEXT = "Введите год продажи билетов [2000 - 2022]:";
-const string ENTER_COST_TICKET_TEXT = "Введите стоимость одного билета:";
+const string ENTER_YEAR_OF_SALES_TEXT = "Введите год продажи билетов [2000 - 2022]: ";
+const string ENTER_COST_TICKET_TEXT = "Введите стоимость одного билета: ";
 const string ENTER_NUMBER_OF_SALE_TICKETS_TEXT = "Введите количество проданных билетов: ";
 const string BUS_TEXT = "Автобус";
 const string TRAM_TEXT = "Трамвай";

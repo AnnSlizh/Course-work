@@ -119,3 +119,56 @@ bool isCorrectValue(int value)
 	}
 	return false;
 }
+
+void roleToString(int role)
+{
+	switch (role)
+	{
+	case Role::ADMIN: cout << ADMIN_TEXT;
+		break;
+
+	case Role::MAIN_ADMIN: cout << MAIN_ADMIN_TEXT;
+		break;
+
+	case Role::USER: cout << USER_TEXT;
+		break;
+	}
+}
+
+void statusToString(int status)
+{
+	switch (status)
+	{
+	case Status::ACTIVE: cout << ACTIVE_TEXT;
+		break;
+
+	case Status::BLOCKED: cout << BLOCKED_TEXT;
+		break;
+
+	case Status::WAITING: cout << WAITING_TEXT;
+		break;
+	}
+}
+void transportToString(int typeOfTransport)
+{
+	switch (typeOfTransport)
+	{
+	case Transport::BUS:  cout << BUS_TEXT;
+		break;
+
+	case Transport::TRAM: cout << TRAM_TEXT;
+		break;
+
+	case Transport::TROLLEYBUS: cout << TROLLEYBUS_TEXT;
+		break;
+
+	case Transport::TRAIN: cout << TRAIN_TEXT;
+		break;
+
+	case Transport::PLANE: cout << PLANE_TEXT;
+		break;
+
+	case Transport::SHIP: cout << SHIP_TEXT;
+		break;
+	}
+}

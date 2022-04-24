@@ -8,15 +8,18 @@ void viewTicketsRecords(vector <Ticket>& tickets)
 {
 	for (int i = 0; i < tickets.size(); i++)
 	{
-		cout << i << " " << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+		cout << i << " ";
+		transportToString(i);
+		cout << " " << tickets[i].month << " " << tickets[i].year << " ";
 		cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
 	}
 }
 
 void viewOneTicketRecord(vector <Ticket>& tickets, int numberOfRecord)
 {
-	cout << numberOfRecord << " " << tickets[numberOfRecord].type << " ";
-	cout << tickets[numberOfRecord].month << " " << tickets[numberOfRecord].year << " ";
+	cout << numberOfRecord << " ";
+	transportToString(numberOfRecord);
+	cout << " " << tickets[numberOfRecord].month << " " << tickets[numberOfRecord].year << " ";
 	cout << tickets[numberOfRecord].costOfTicket << " " << tickets[numberOfRecord].soldTickets << endl;
 }
 
@@ -58,7 +61,8 @@ void serchTicketRecord(vector <Ticket>& tickets)
 			{
 				if (tickets[i].year >= minYear && tickets[i].year <= maxYear)
 				{
-					cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+					transportToString(i);
+					cout << " " << tickets[i].month << " " << tickets[i].year << " ";
 					cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
 				}
 			}
@@ -90,7 +94,8 @@ void serchTicketRecord(vector <Ticket>& tickets)
 			{
 				if (tickets[i].type == typeOfTransport)
 				{
-					cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+					transportToString(i);
+					cout << " " << tickets[i].month << " " << tickets[i].year << " ";
 					cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
 				}
 			}
@@ -124,7 +129,8 @@ void serchTicketRecord(vector <Ticket>& tickets)
 			{
 				if (tickets[i].soldTickets >= minSoldTickets && tickets[i].soldTickets <= maxSoldTickets)
 				{
-					cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+					transportToString(i);
+					cout << " " << tickets[i].month << " " << tickets[i].year << " ";
 					cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
 				}
 			}
@@ -509,7 +515,8 @@ void viewTopOfSoldTickets(vector <Ticket>& tickets, int month)
 	{
 		if (tickets[i].month == month)
 		{
-			cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+			transportToString(i);
+			cout << " " << tickets[i].month << " " << tickets[i].year << " ";
 			cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
 		}
 	}
@@ -551,26 +558,3 @@ bool compareByYear(Ticket& a, Ticket& b)
 	}
 }
 */
-void transportToString(int typeOfTransport)
-{
-	switch (typeOfTransport)
-	{
-	case Transport::BUS:  cout << BUS_TEXT;
-		break;
-
-	case Transport::TRAM: cout << TRAM_TEXT;
-		break;
-
-	case Transport::TROLLEYBUS: cout << TROLLEYBUS_TEXT;
-		break;
-
-	case Transport::TRAIN: cout << TRAIN_TEXT;
-		break;
-
-	case Transport::PLANE: cout << PLANE_TEXT;
-		break;
-
-	case Transport::SHIP: cout << SHIP_TEXT;
-		break;
-	}
-}

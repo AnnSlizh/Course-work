@@ -544,32 +544,3 @@ void acceptAplication(vector <User>& users)
 	}
 }
 
-void roleToString(int role)
-{
-	switch (role)
-	{
-	case Role::ADMIN: cout << ADMIN_TEXT;
-		break;
-
-	case Role::MAIN_ADMIN: cout << MAIN_ADMIN_TEXT;
-		break;
-
-	case Role::USER: cout << USER_TEXT;
-		break;
-	}
-}
-
-void statusToString(int status)
-{
-	switch (status)
-	{
-	case Status::ACTIVE: cout << ACTIVE_TEXT;
-		break;
-
-	case Status::BLOCKED: cout << BLOCKED_TEXT;
-		break;
-
-	case Status::WAITING: cout << WAITING_TEXT;
-		break;
-	}
-}
