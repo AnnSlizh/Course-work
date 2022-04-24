@@ -23,3 +23,4 @@ bool compareByCostOfTicket(Ticket& a, Ticket& b);
 bool compareByYear(Ticket& a, Ticket& b);
 void transportToString(int typeOfTransport);
 //bool isMonthExist(int month);
+

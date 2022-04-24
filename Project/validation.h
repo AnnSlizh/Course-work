@@ -14,4 +14,5 @@ bool isMonthExist(int month);
 bool isYearExist(int year);
 bool isCostOfTicketExist(double costOfTicket);
 bool isSoldTicketNegative(int soldTickets);
+bool isCorrectValue(int value);
 

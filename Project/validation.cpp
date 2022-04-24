@@ -1,5 +1,7 @@
+#include <iostream>
 #include <vector>
 #include "validation.h"
+
 
 const int MIN_LOGIN_SIZE = 3;
 const int MAX_LOGIN_SIZE = 20;
@@ -102,6 +104,17 @@ bool isSoldTicketNegative(int soldTickets)
 {
 	if (soldTickets < MIN_SOLD_TICKETS)
 	{
+		return true;
+	}
+	return false;
+}
+
+bool isCorrectValue(int value)
+{
+	while (cin.fail())
+	{
+		cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		return true;
 	}
 	return false;
