@@ -30,7 +30,7 @@ int main()
 	User user2;
 	user2.login = "a2";
 	user2.password = "123";
-	user2.role = Role::ADMIN;
+	user2.role = Role::USER;
 	user2.status = Status::ACTIVE;
 	User user3;
 	user3.login = "a3";

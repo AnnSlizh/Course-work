@@ -2,6 +2,9 @@
 #include "menu.h"
 
 const int NUMBER_OF_ATTEMPTS = 2;
+const int YES = 1;
+const int NOT = 0;
+const int FIRST_ACCOUNT = 0;
 
 void authorizationMenu()
 {
@@ -35,7 +38,7 @@ void menuOfAuthorization(vector <User>& users, vector <Ticket>& tickets)
 	}
 }
 
-void userMode(User userAccount, vector <User>& users)
+void userMode(User userAccount, vector <User>& users, vector <Ticket>& tickets)
 {
 	bool flag = true;
 	while (flag)
@@ -49,9 +52,9 @@ void userMode(User userAccount, vector <User>& users)
 		switch (_getch())
 		{
 
-	//	case '1': system("CLS");
-
-	//		break;
+		case '1': system("CLS");
+			sortTicketsRecords(tickets);
+			break;
 
 		case '2': system("CLS");
 			//cout << ENTER_LOGIN_TEXT; cin >> userAccount.login;
@@ -77,8 +80,17 @@ void userMode(User userAccount, vector <User>& users)
 				}
 			}
 
-		case '3': authorizationMenu();
-			break;
+		case '3': system("CLS");
+			cout << VALIDATE_EXIT_FROME_ACCOUNT_TEXT << endl;
+			cout << YES_TEXT << endl << NOT_TEXT << endl;
+			int digit;
+			cin >> digit;
+
+			if (digit == YES)
+			{
+				flag = false;
+			}
+			else break; // not;	
 		}
 	}
 }
@@ -114,11 +126,11 @@ void adminMode(User userAccount, vector <User>& users, vector <Ticket>& tickets)
 			int digit;
 			cin >> digit;
 
-			if (digit == 1) //yes
+			if (digit == YES) 
 			{
 				flag = false;
 			}
-			else break; // no;
+			else break; // not;
 		}
 	}
 }
@@ -126,12 +138,13 @@ void adminMode(User userAccount, vector <User>& users, vector <Ticket>& tickets)
 void manageTicketRecords(vector <Ticket>& tickets)
 {
 	bool flag = true;
+	
 	while (flag)
 	{
 		system("CLS");
 		cout << VIEW_TICKETS_RECORDS_TEXT << endl << ADD_NEW_TICKET_RECORD_TEXT << endl;
-		cout << DELETE_TICKET_RECORD_TEXT << endl << CHANGE_TICKETS_RECIRDS_TEXT << endl;
-		cout << CALCULATE_TOTAL_INCOME_OF_TICKETS_TEXT << endl << RETURN_BACK_TEXT << endl;
+		cout << DELETE_TICKET_RECORD_TEXT << endl << CHANGE_TICKETS_RECORDS_TEXT << endl;
+		cout << CALCULATE_TOTAL_INCOME_OF_TICKETS_TEXT << endl << SIX_TEXT << RETURN_BACK_TEXT << endl;
 
 		switch (_getch())
 		{
@@ -158,7 +171,6 @@ void manageTicketRecords(vector <Ticket>& tickets)
 				cin >> numberOfRecord;
 			}
 
-	
 			system("CLS");
 			cout << VALIDATE_DELATION_OF_RECORD_TEXT << endl;
 			cout << YES_TEXT << endl << NOT_TEXT << endl;
@@ -167,20 +179,34 @@ void manageTicketRecords(vector <Ticket>& tickets)
 			break;
 
 		case '4': system("CLS");
-			
 			editTicketRecord(tickets);
 			break;
 
 		case '5': system("CLS");
 
 			int month;
+			int counter;
+			counter = 0;
 
 			cout << ENTER_MONTH_OF_SALE_TEXT;
 			cin >> month;
 
-			viewTopOfSoldTickets(tickets, month);
-			cout << TOTAL_INCOME_OF_TICKETS_TEXT << calculateTotalIncome(tickets, month) << endl;
+			while (isMonthExist(month) == true)
+			{
+				cout << ENTER_CORRECT_MONTH_TEXT;
+				cin >> month;
+			}
 
+			if (calculateTotalIncome(tickets, month) == 0)
+			{
+				cout << NOT_SOLD_TICKETS_IN_MONTH_TEXT << endl;
+			}
+			else
+			{
+				viewTopOfSoldTickets(tickets, month);
+				cout << TOTAL_INCOME_OF_TICKETS_TEXT << calculateTotalIncome(tickets, month) << endl;
+			}
+		
 			system("pause");
 			break;
 
@@ -357,7 +383,7 @@ void editAccount(vector <User>& users)
 		cout << endl << CHOCE_ACTION_TEXT << endl;
 		cout << CHANGE_ROLE_TEXT << endl;
 		cout << CHANGE_STATUS_TEXT << endl;
-		cout << RETURN_TO_MENU_TEXT << endl;
+		cout << THREE_TEXT << RETURN_BACK_TEXT << endl;
 
 		int idOfAcccount;
 
@@ -423,11 +449,11 @@ void deleteAccount(vector <User>& users, int idOfAccount)
 	int digit;
 	cin >> digit;
 
-	if (digit == 1) //yes
+	if (digit == YES) 
 	{
 		auto iter = users.cbegin();
 
-		if (idOfAccount == 0)
+		if (idOfAccount == FIRST_ACCOUNT)
 		{
 			users.erase(iter);
 		}
@@ -439,7 +465,7 @@ void deleteAccount(vector <User>& users, int idOfAccount)
 		cout << ACOOUNT_IS_DELETED_TEXT << endl;
 		system("pause");
 	}
-	else if (digit == 2) return; //not
+	else if (digit == NOT) return; 
 }
 
 void manageApplication(vector <User>& users)
@@ -467,8 +493,8 @@ void manageApplication(vector <User>& users)
 		if (counter == 0) cout << NOT_APPLICATIONS_TEXT << endl;
 		
 		cout << endl << CHOCE_ACTION_TEXT << endl;
-		cout << ACCEPT_APPLICATION_TEXT << endl << BLOCKED_APPLICATION_TEXT << endl;
-		cout << RETURN_TO_MENU_TEXT << endl;
+		cout << ACCEPT_APPLICATION_TEXT << endl << THREE_TEXT << BLOCKED_APPLICATION_TEXT << endl;
+		cout << RETURN_BACK_TEXT << endl;
 
 		switch (_getch())
 		{
@@ -509,12 +535,12 @@ void acceptAplication(vector <User>& users)
 		int digit;
 		cin >> digit;
 
-		if (digit == 1) //yes
+		if (digit == YES) 
 		{
 			users[numberOfApplication].status = Status::ACTIVE;
 			break;
 		}
-		else if (digit == 2) break; //not
+		else if (digit == NOT) break; 
 	}
 }
 

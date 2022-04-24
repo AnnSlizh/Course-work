@@ -11,7 +11,7 @@ using namespace std;
 
 void authorizationMenu();
 void menuOfAuthorization(vector <User>& users, vector <Ticket>& tickets);
-void userMode(User userAccount, vector <User>& users);
+void userMode(User userAccount, vector <User>& users, vector <Ticket>& tickets);
 void adminMode(User userAccount, vector <User>& users, vector <Ticket>& tickets);
 void manageTicketRecords(vector <Ticket>& tickets);
 void addNewAccount(vector <User>& users);

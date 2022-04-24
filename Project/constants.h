@@ -31,7 +31,7 @@ const string APPLICATION_IS_SENT_TEXT = "Ваша заявка на регистрацию отправлена!"
 const string SYSTEM_ACCESS_TEXT = "Система будет доступна после одобрения вашей заявки администратором";
 
 //Sign in
-const string ACCOUNT_NOT_EXIT_TEXT = "Аккаунт с таким логином не существует! Пожалуйста, введите другой.";
+const string ACCOUNT_NOT_EXIT_TEXT = "Аккаунт не существует! Пожалуйста, проверьте логин и пароль.";
 const string WAITNG_STATUS_TEXT = "Ваша заявка не регистрацию еще не одобрена администратором!";
 const string BLOCKED_STATUS_TEXT = "Ваш аккаунт заблокирован администратором!";
 
@@ -65,13 +65,12 @@ const string ADD_NEW_ACCOUNT_TEXT = "2) Добавить новый аккаунт";
 const string ACCOUNTS_SETTINGS_TEXT = "3) Редактирование аккаунтов";
 const string DELETE_ACCOUNT_TEXT = "4) Удаление аккаунтов";
 const string VIEW_APLICATIONS_TEXT = "5) Просмотр запросов на регистрацию";
-const string RETURN_BACK_TEXT = "6) Назад";
+const string RETURN_BACK_TEXT = "Назад";
 
 //Accounts settings
 const string CHOCE_ACTION_TEXT = "Выберите действие:";
 const string CHANGE_ROLE_TEXT = "1) Изменить роль";
 const string CHANGE_STATUS_TEXT = "2) Изменить статус";
-const string RETURN_TO_MENU_TEXT = "3) Назад";
 const string ENTER_ID_OF_ACCOUNT_TEXT = "Введите ID аккаунта: ";
 const string NOT_CHANGE_ROLE_MAIN_ADMIN_TEXT= "Вы не можете изменить роль главного администратора!";
 const string NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT = "Вы не можете изменить статус главного администратора!";
@@ -121,15 +120,18 @@ const string TICKET_RECORD_ADDED_TEXT = "Новая запись добавлена!";
 const string VIEW_TICKETS_RECORDS_TEXT = "1) Просмотр записей";
 const string ADD_NEW_TICKET_RECORD_TEXT = "2) Добавить запись";
 const string DELETE_TICKET_RECORD_TEXT = "3) Удалить запись";
-const string CHANGE_TICKETS_RECIRDS_TEXT = "4) Редактировать запись";
+const string CHANGE_TICKETS_RECORDS_TEXT = "4) Редактировать запись";
 const string CALCULATE_TOTAL_INCOME_OF_TICKETS_TEXT = "5) Рассчитать общий доход от продаж билетов";
 const string TOTAL_INCOME_OF_TICKETS_TEXT = "Общий доход от продажи билетов за месяц: ";
 const string ENTER_NUMBER_OF_RECORD_TEXT = "Введите номер записи: ";
 const string VALIDATE_DELATION_OF_RECORD_TEXT = "Вы действительно хотите удалить запись?";
 const string RECORD_IS_DELETED_TEXT = "Запись удалена!";
 const string BEYOND_THE_VECTOR_OF_TICKETS_TEXT = "Запись с таким номером не существует! Пожалуйста, введите корректный номер";
+const string NOT_SOLD_TICKETS_IN_MONTH_TEXT = "Нет проданных проездных билетов в указанный месяц!";
 
 //Editing tickets records
+const string EDIT_RECORD_TEXT = "1) Выбрать запись";
+const string CHANGE_PARAMETERS_TEXT = "Выберите параметр для изменения:";
 const string CHANGE_TYPE_OF_TRANSPORT_TEXT = "1) Вид транспорта";
 const string CHANGE_MONTH_TEXT = "2) Месяц продажи билетов";
 const string CHANGE_YEAR_TEXT = "3) Год продажи билетов";
@@ -143,7 +145,6 @@ const string EDITING_IS_OVER_TEXT = "Редактирование успешно завершено!";
 const string SORT_BY_TYPE_OF_TRANSPORT_TEXT = "1) Сортировка по алфавиту";
 const string SORT_BY_COST_OF_TICKET_TEXT = "2) Сортировка по стоимости билета";
 const string SORT_BY_YEAR_TEXT = "3) Сортировка по году продажи";
-const string COME_BACK_TEXT = "4) Назад";
 
 //Numbering
 const string ONE_TEXT = "1) ";

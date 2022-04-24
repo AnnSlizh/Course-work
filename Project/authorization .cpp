@@ -60,18 +60,20 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 
 	bool flag = true;
 	while (flag)
-	{
-		if (isLoginExist(userAccount.login, users) == false)
+	{   
+		if (isPasswordCorrect(userAccount.login, userAccount.password, users) == false)
 		{
 			cout << ACCOUNT_NOT_EXIT_TEXT << endl;
 			cout << ENTER_LOGIN_TEXT;
 			cin >> userAccount.login;
+
 			cout << ENTER_PASSWORD_TEXT;
 			cin >> userAccount.password;
 		}
 		else flag = false;
-	}
 		
+	}
+
 	for (int i = 0; i < users.size(); i++)
 	{
 		if (userAccount.login == users[i].login)
@@ -80,23 +82,28 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 			userAccount.role = users[i].role;
 		}
 	}
-	
-	if (userAccount.status == Status::WAITING)
-	{
-		cout << WAITNG_STATUS_TEXT;
-	}
-	else if (userAccount.status == Status::BLOCKED)
-	{
-		cout << BLOCKED_STATUS_TEXT;
-	}
-	if (userAccount.role == Role::USER)
-	{
-		userMode(userAccount, users);
-	}
-	else if (userAccount.role == Role::MAIN_ADMIN || userAccount.role == Role::ADMIN)
-	{
-		adminMode(userAccount, users, tickets);
-	}
 
+	if (isAccountWaiting(userAccount.status, users) == true) 
+	{
+		cout << WAITNG_STATUS_TEXT << endl;
+		system("pause");
+	}
+	else if (isAccountBlocked(userAccount.status, users) == true)
+	{
+		cout << BLOCKED_STATUS_TEXT << endl;
+		system("pause");
+	}
+	else
+	{
+		if (userAccount.role == Role::USER)
+		{
+			userMode(userAccount, users, tickets);
+		}
+		else if (userAccount.role == Role::MAIN_ADMIN || userAccount.role == Role::ADMIN)
+		{
+			adminMode(userAccount, users, tickets);
+		}
+	}
 }
+
 

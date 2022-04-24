@@ -34,6 +34,33 @@ bool isLoginExist(string login, vector <User>& users)
 	}
 	return false;
 }
+bool isPasswordCorrect(string login, string password, vector <User>& users)
+{
+	for (int i = 0; i < users.size(); i++)
+	{
+		if (users[i].login == login && users[i].password == password)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+bool isAccountWaiting(int status, vector <User>& users)
+{
+	if (status == Status::WAITING)
+	{
+		return true;
+	}
+	return false;
+}
+bool isAccountBlocked(int status, vector <User>& users)
+{
+	if (status == Status::BLOCKED)
+	{
+		return true;
+	}
+	return false;
+}
 
 bool isTypeOfTransportExist(int type)
 {

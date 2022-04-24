@@ -1,6 +1,8 @@
 #include "tickets.h"
 
 const double startingTotalIncome = 0;
+const int EDIT_RECORD = 1;
+const int RETURN_BACK = 2;
 
 void viewTicketsRecords(vector <Ticket>& tickets)
 {
@@ -9,6 +11,13 @@ void viewTicketsRecords(vector <Ticket>& tickets)
 		cout << i << " " << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
 		cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
 	}
+}
+
+void viewOneTicketRecord(vector <Ticket>& tickets, int numberOfRecord)
+{
+	cout << numberOfRecord << " " << tickets[numberOfRecord].type << " ";
+	cout << tickets[numberOfRecord].month << " " << tickets[numberOfRecord].year << " ";
+	cout << tickets[numberOfRecord].costOfTicket << " " << tickets[numberOfRecord].soldTickets << endl;
 }
 
 void sortTicketsRecords(vector <Ticket>& tickets)
@@ -20,7 +29,7 @@ void sortTicketsRecords(vector <Ticket>& tickets)
 		viewTicketsRecords(tickets);
 
 		cout << SORT_BY_TYPE_OF_TRANSPORT_TEXT << endl << SORT_BY_COST_OF_TICKET_TEXT << endl; 
-		cout << SORT_BY_YEAR_TEXT << endl << COME_BACK_TEXT << endl;
+		cout << SORT_BY_YEAR_TEXT << endl << FOUR_TEXT << RETURN_BACK_TEXT << endl;
 
 		switch (_getch())
 		{
@@ -158,9 +167,20 @@ void editTicketRecord(vector <Ticket>& tickets)
 		system("CLS");
 		viewTicketsRecords(tickets);
 
-		cout << ENTER_NUMBER_OF_RECORD_TEXT;
-		cin >> numberOfRecord;
+		int digit;
+		cout << EDIT_RECORD_TEXT << endl << TWO_TEXT << RETURN_BACK_TEXT << endl;
+		cin >> digit;
 
+		if (digit == EDIT_RECORD)
+		{
+			cout << endl << ENTER_NUMBER_OF_RECORD_TEXT;
+			cin >> numberOfRecord;
+		}
+		else if (digit == RETURN_BACK)
+		{
+			break;
+		}
+		
 		while (numberOfRecord >= tickets.size())
 		{
 			cout << BEYOND_THE_VECTOR_OF_TICKETS_TEXT << endl;
@@ -171,9 +191,10 @@ void editTicketRecord(vector <Ticket>& tickets)
 		system("CLS");
 		viewOneTicketRecord(tickets, numberOfRecord);
 
+		cout << endl << CHANGE_PARAMETERS_TEXT << endl;
 		cout << CHANGE_TYPE_OF_TRANSPORT_TEXT << endl << CHANGE_MONTH_TEXT << endl << CHANGE_YEAR_TEXT << endl;
 		cout << CHANGE_COST_OF_TICKET_TEXT << endl << CHANGE_SOLD_TICKETS_TEXT << endl;
-		cout << RETURN_BACK_TEXT << endl;
+		cout << SIX_TEXT << RETURN_BACK_TEXT << endl;
 
 		switch (_getch())
 		{
@@ -313,27 +334,11 @@ void editTicketRecord(vector <Ticket>& tickets)
 
 		case '6': break;
 		}
-		
-
 	}
 }
-
-void viewOneTicketRecord(vector <Ticket>& tickets, int numberOfRecord)
-{
-	cout << numberOfRecord << " " << tickets[numberOfRecord].type << " ";
-	cout << tickets[numberOfRecord].month << " " << tickets[numberOfRecord].year << " ";
-	cout << tickets[numberOfRecord].costOfTicket << " " << tickets[numberOfRecord].soldTickets << endl;
-}
-
 
 double calculateTotalIncome(vector <Ticket>& tickets, int month) // Income - доход
 {
-	while (isMonthExist(month) == true)
-	{
-		cout << ENTER_CORRECT_MONTH_TEXT;
-		cin >> month;
-	}
-
 	double totalIncome = startingTotalIncome;
 
 	double costOfTicket;
@@ -366,9 +371,6 @@ void viewTopOfSoldTickets(vector <Ticket>& tickets, int month)
 		}
 	}
 }
-
-
-	
 
 bool compareBySoldTickets(Ticket& a, Ticket& b)
 {
