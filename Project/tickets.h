@@ -10,6 +10,7 @@ using namespace std;
 
 void viewTicketsRecords(vector <Ticket>& tickets);
 void viewOneTicketRecord(vector <Ticket>& tickets, int numberOfRecord);
+void serchTicketRecord(vector <Ticket>& tickets);
 void sortTicketsRecords(vector <Ticket>& tickets);
 void addNewTicketRecord(vector <Ticket>& tickets);
 void deleteTicketRecord(vector <Ticket>& tickets, int numberOfRecord);

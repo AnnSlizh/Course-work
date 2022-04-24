@@ -20,6 +20,111 @@ void viewOneTicketRecord(vector <Ticket>& tickets, int numberOfRecord)
 	cout << tickets[numberOfRecord].costOfTicket << " " << tickets[numberOfRecord].soldTickets << endl;
 }
 
+void serchTicketRecord(vector <Ticket>& tickets)
+{
+	bool flag = true;
+	while (flag)
+	{
+		system("CLS");
+		viewTicketsRecords(tickets);
+
+		cout << SEARCH_BY_YEAR_TEXT << endl << SEARCH_BY_TYPE_OF_TRANSPORT_TEXT << endl;
+		cout << SEARCH_BY_SOLD_TICKETS_TEXT << endl << FOUR_TEXT << RETURN_BACK_TEXT << endl;
+
+		switch (_getch())
+		{
+		case '1': system("CLS");
+			int minYear, maxYear;
+
+			cout << ENTER_MIN_VALUE_OF_YEAR_TEXT; cin >> minYear;
+			cout << ENTER_MAX_VALUE_OF_YEAR_TEXT; cin >> maxYear;
+
+			while (isYearExist(minYear) == true || isYearExist(maxYear) == true)
+			{
+				cout << ENTER_COORECT_YEAR_TEXT << endl;
+				cout << ENTER_MIN_VALUE_OF_YEAR_TEXT; cin >> minYear;
+				cout << ENTER_MAX_VALUE_OF_YEAR_TEXT; cin >> maxYear;
+			}
+
+			system("CLS");
+			cout << INFORMATION_OF_SEARCH_BY_YEAR_TEXT << minYear << TO_TEXT << maxYear << YEAR_TEXT << endl << endl;
+			for (int i = 0; i < tickets.size(); i++)
+			{
+				if (tickets[i].year >= minYear && tickets[i].year <= maxYear)
+				{
+					cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+					cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
+				}
+			}
+
+			system("pause");
+			break;
+
+		case '2':  system("CLS");
+			int typeOfTransport;
+
+			cout << ONE_TEXT << BUS_TEXT << endl << TWO_TEXT << TRAM_TEXT << endl;
+			cout << THREE_TEXT << TROLLEYBUS_TEXT << endl << FOUR_TEXT << TRAIN_TEXT << endl;
+			cout << FIFE_TEXT << PLANE_TEXT << endl << SIX_TEXT << SHIP_TEXT << endl;
+
+			cout << ENTER_TYPE_OF_TRANSPORT_TEXT; cin >> typeOfTransport;
+
+			while (isTypeOfTransportExist(typeOfTransport) == true)
+			{
+				cout << NOT_CORRECT_TYPE_OF_TRANSPORT_TEXT << endl;
+				cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
+				cin >> typeOfTransport;
+			}
+
+			system("CLS");
+			cout << INFORMATION_OF_SEARCH_BY_TYPE_OF_TRANSPORT_TEXT;
+			transportToString(typeOfTransport);
+			cout << endl << endl;
+			for (int i = 0; i < tickets.size(); i++)
+			{
+				if (tickets[i].type == typeOfTransport)
+				{
+					cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+					cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
+				}
+			}
+		
+			system("pause");
+			break;
+
+		case '3': system("CLS");
+			int minSoldTickets, maxSoldTickets;
+
+			cout << ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT; cin >> minSoldTickets;
+			cout << ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT; cin >> maxSoldTickets;
+
+			while (isSoldTicketNegative(minSoldTickets) == true || isSoldTicketNegative(maxSoldTickets) == true)
+			{
+				cout << NOT_COORECT_SALE_TICKETS_TEXT << endl;
+				cout << ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT; cin >> minSoldTickets;
+				cout << ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT; cin >> maxSoldTickets;
+			}
+
+			system("CLS");
+			cout << INFORMATION_OF_SEARCH_BY_SOLD_TICKETS_TEXT << minSoldTickets << TO_TEXT << maxSoldTickets << endl << endl;
+			for (int i = 0; i < tickets.size(); i++)
+			{
+				if (tickets[i].soldTickets >= minSoldTickets && tickets[i].soldTickets <= maxSoldTickets)
+				{
+					cout << tickets[i].type << " " << tickets[i].month << " " << tickets[i].year << " ";
+					cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
+				}
+			}
+
+			system("pause");
+			break;
+
+		case '4': flag = false;
+			break;
+		}
+	}
+}
+
 void sortTicketsRecords(vector <Ticket>& tickets)
 {
 	bool flag = true;
@@ -28,8 +133,8 @@ void sortTicketsRecords(vector <Ticket>& tickets)
 		system("CLS");
 		viewTicketsRecords(tickets);
 
-		cout << SORT_BY_TYPE_OF_TRANSPORT_TEXT << endl << SORT_BY_COST_OF_TICKET_TEXT << endl; 
-		cout << SORT_BY_YEAR_TEXT << endl << FOUR_TEXT << RETURN_BACK_TEXT << endl;
+		cout << SORT_BY_TYPE_OF_TRANSPORT_TEXT << endl << SORT_BY_COST_OF_TICKET_TEXT << endl;
+		cout << SORT_BY_YEAR_TEXT << endl << SEARCH_TEXT << endl << FIFE_TEXT << RETURN_BACK << endl;
 
 		switch (_getch())
 		{
@@ -41,8 +146,11 @@ void sortTicketsRecords(vector <Ticket>& tickets)
 
 		case '3': sort(tickets.begin(), tickets.end(), compareByYear);
 			break;
-			
-		case '4': flag = false;
+
+		case '4': serchTicketRecord(tickets);
+			break;
+
+		case '5': flag = false;
 			break;
 		}
 	}
@@ -122,7 +230,7 @@ void addNewTicketRecord(vector <Ticket>& tickets)
 	cout << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
 	cin >> newTicketNote.soldTickets;
 
-	while (isSoldTicketNegative(newTicketNote.soldTickets))
+	while (isSoldTicketNegative(newTicketNote.soldTickets) == true)
 	{
 		cout << NOT_COORECT_SALE_TICKETS_TEXT << endl << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
 		cin >> newTicketNote.soldTickets;

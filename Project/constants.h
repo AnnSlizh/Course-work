@@ -139,12 +139,25 @@ const string CHANGE_COST_OF_TICKET_TEXT = "4) Стоимость одного билета";
 const string CHANGE_SOLD_TICKETS_TEXT = "5) Количество проданных билетов";
 const string EDITING_IS_OVER_TEXT = "Редактирование успешно завершено!";
 
-
-
 //Sorts settings
 const string SORT_BY_TYPE_OF_TRANSPORT_TEXT = "1) Сортировка по алфавиту";
 const string SORT_BY_COST_OF_TICKET_TEXT = "2) Сортировка по стоимости билета";
 const string SORT_BY_YEAR_TEXT = "3) Сортировка по году продажи";
+const string SEARCH_TEXT = "4) Поиск";
+
+//Search settings
+const string SEARCH_BY_YEAR_TEXT = "1) Поиск по году продажи билетов";
+const string SEARCH_BY_TYPE_OF_TRANSPORT_TEXT = "2) Поиск по виду транспорта";
+const string SEARCH_BY_SOLD_TICKETS_TEXT = "3) Поиск по количеству проданных билетов";
+const string ENTER_MIN_VALUE_OF_YEAR_TEXT = "Введите min год для поиска: ";
+const string ENTER_MAX_VALUE_OF_YEAR_TEXT = "Введите max год для поиска: ";
+const string ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT = "Введите min количество проданных билетов: ";
+const string ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT = "Введите max количество проданных билетов: ";
+const string INFORMATION_OF_SEARCH_BY_YEAR_TEXT = "Информация о проездных билетах, проданных с ";
+const string TO_TEXT = " до ";
+const string YEAR_TEXT = " год";
+const string INFORMATION_OF_SEARCH_BY_TYPE_OF_TRANSPORT_TEXT = "Информация о проездных билетах, проданных для вида транспорта ";
+const string INFORMATION_OF_SEARCH_BY_SOLD_TICKETS_TEXT = "Информация о проездных билетах, проданных в количестве от ";
 
 //Numbering
 const string ONE_TEXT = "1) ";
@@ -153,3 +166,4 @@ const string THREE_TEXT = "3) ";
 const string FOUR_TEXT = "4) ";
 const string FIFE_TEXT = "5) ";
 const string SIX_TEXT = "6) ";
+const string SEVEN_TEXT = "7) ";
