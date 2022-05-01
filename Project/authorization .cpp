@@ -4,6 +4,7 @@
 
 using namespace std;
 
+const int ENTER = 13;
 void registerNewUser(vector <User>& users)
 {
 	string login;
@@ -55,23 +56,44 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 
 	cout << ENTER_LOGIN_TEXT;
 	cin >> userAccount.login;
+
 	cout << ENTER_PASSWORD_TEXT;
-	cin >> userAccount.password;
+	char passwordTemp;
+	string password;
+
+	passwordTemp = _getch();
+	while (passwordTemp != ENTER) //character 13 is enter
+	{
+		password.push_back(passwordTemp);
+		cout << '*';
+		passwordTemp = _getch();
+	}
+	
 
 	bool flag = true;
 	while (flag)
 	{   
-		if (isPasswordCorrect(userAccount.login, userAccount.password, users) == false)
+		if (isPasswordCorrect(userAccount.login, password, users) == false)
 		{
-			cout << ACCOUNT_NOT_EXIT_TEXT << endl;
+			cout << endl << ACCOUNT_NOT_EXIT_TEXT << endl;
 			cout << ENTER_LOGIN_TEXT;
 			cin >> userAccount.login;
 
 			cout << ENTER_PASSWORD_TEXT;
-			cin >> userAccount.password;
+			password.erase();
+			passwordTemp = _getch();
+			while (passwordTemp != ENTER) //character 13 is enter
+			{
+				password.push_back(passwordTemp);
+				cout << '*';
+				passwordTemp = _getch();
+			}
 		}
-		else flag = false;
-		
+		else
+		{
+			userAccount.password = password;
+			flag = false;
+		}
 	}
 
 	for (int i = 0; i < users.size(); i++)
@@ -82,7 +104,7 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 			userAccount.role = users[i].role;
 		}
 	}
-
+	
 	if (isAccountWaiting(userAccount.status, users) == true) 
 	{
 		cout << WAITNG_STATUS_TEXT << endl;
@@ -104,6 +126,7 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 			adminMode(userAccount, users, tickets);
 		}
 	}
+	
 }
 
 

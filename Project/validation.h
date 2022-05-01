@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <conio.h>
 #include "datastructs.h"
 #include "constants.h"
 
