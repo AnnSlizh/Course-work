@@ -162,11 +162,11 @@ void statusToString(int status)
 		break;
 	}
 }
-void transportToString(int typeOfTransport)
+void printTransportType(int typeOfTransport)
 {
 	switch (typeOfTransport)
 	{
-	case Transport::BUS:  cout << BUS_TEXT;
+	case Transport::BUS: cout << BUS_TEXT;
 		break;
 
 	case Transport::TRAM: cout << TRAM_TEXT;
@@ -183,5 +183,23 @@ void transportToString(int typeOfTransport)
 
 	case Transport::SHIP: cout << SHIP_TEXT;
 		break;
+	}
+}
+
+string transportTypeToString(int typeOfTransport)
+{
+	switch (typeOfTransport)
+	{
+	case Transport::BUS: return BUS_TEXT;
+
+	case Transport::TRAM: return TRAM_TEXT;
+
+	case Transport::TROLLEYBUS: return TROLLEYBUS_TEXT;
+
+	case Transport::TRAIN: return TRAIN_TEXT;
+
+	case Transport::PLANE: return PLANE_TEXT;
+
+	case Transport::SHIP: return SHIP_TEXT;
 	}
 }

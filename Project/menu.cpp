@@ -47,7 +47,6 @@ void userMode(User userAccount, vector <User>& users, vector <Ticket>& tickets)
 		system("CLS");
 		cout << USER_MODE_TEXT << endl;
 		cout << SYSTEM_TICKETS_SALES_TEXT << endl;
-		cout << USER_CHANGE_PASSWORD_TEXT << endl;
 		cout << THREE_TEXT << EXIT_FROM_ACCOUNT_TEXT;
 		User userAccount;
 		switch (_getch())
@@ -110,8 +109,7 @@ void adminMode(User userAccount, vector <User>& users, vector <Ticket>& tickets)
 		else cout << ADMIN_MODE_TEXT << endl;
 		cout << SYSTEM_TICKETS_SALES_TEXT << endl;
 		cout << ACCOUNT_MANAGEMENT_TEXT << endl;
-		cout << ADMIN_CHANGE_PASSWORD_TEXT << endl;
-		cout << FOUR_TEXT << EXIT_FROM_ACCOUNT_TEXT;
+		cout << THREE_TEXT << EXIT_FROM_ACCOUNT_TEXT;
 		
 		switch (_getch())
 		{
@@ -120,8 +118,9 @@ void adminMode(User userAccount, vector <User>& users, vector <Ticket>& tickets)
 			break;
 		
 		case '2': manageAccounts(userAccount, users);
+			break;
 
-		case '4': system("CLS");
+		case '3': system("CLS");
 			cout << VALIDATE_EXIT_FROME_ACCOUNT_TEXT << endl;
 			cout << YES_TEXT << endl << NOT_TEXT << endl;
 			int digit;
@@ -315,8 +314,9 @@ void manageAccounts(User userAccount, vector <User>& users)
 
 void viewAccounts(vector <User>& users)
 {
-	cout << "ID" << setw(14) << "Login" << setw(15) << "Role" << setw(12) << "Status" << endl;
-	cout << "---------------------------------------------" << endl;
+	cout << ID_OF_ACCOUNT_TEXT << setw(14) << LOGIN_OF_ACCOUNT_TEXT << setw(15);
+	cout << ROLE_OF_ACCOUNT_TEXT << setw(12) << STATUS_OF_ACCOUNT_TEXT << endl;
+	cout << BORDER_OF_ACCOUNTS_TABLE_TEXT << endl;
 	for (int i = 0; i < users.size(); i++)
 	{
 		if (users[i].status != Status::WAITING)
@@ -479,8 +479,9 @@ void manageApplication(vector <User>& users)
 		system("CLS");
 		int counter = 0;
 
-		cout << "ID" << setw(14) << "Login" << setw(15) << "Status" << endl;
-		cout << "---------------------------------------------" << endl;
+		cout << ID_OF_ACCOUNT_TEXT << setw(14) << LOGIN_OF_ACCOUNT_TEXT << setw(15);
+		cout << ROLE_OF_ACCOUNT_TEXT << STATUS_OF_ACCOUNT_TEXT << endl;
+		cout << BORDER_OF_ACCOUNTS_TABLE_TEXT << endl;
 
 		for (int i = 0; i < users.size(); i++)
 		{		

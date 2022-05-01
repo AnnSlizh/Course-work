@@ -43,19 +43,19 @@ int main()
 	users.push_back(user3);
 
 	Ticket tick1;
-	tick1.type = Transport::BUS;
-	tick1.month = 1;
-	tick1.year = 2019;
+	tick1.type = Transport::PLANE;
+	tick1.month = 4;
+	tick1.year = 2014;
 	tick1.costOfTicket = 2.5;
-	tick1.soldTickets = 4;
+	tick1.soldTickets = 1;
 	Ticket tick2;
 	tick2.type = Transport::TROLLEYBUS;
 	tick2.month = 1;
-	tick2.year = 2018;
+	tick2.year = 2014;
 	tick2.costOfTicket = 10.1;
 	tick2.soldTickets = 5;
 	Ticket tick3;
-	tick3.type = Transport::TROLLEYBUS;
+	tick3.type = Transport::BUS;
 	tick3.month = 1;
 	tick3.year = 2020;
 	tick3.costOfTicket = 1.89;
@@ -65,9 +65,9 @@ int main()
 	tickets.push_back(tick2);
 	tickets.push_back(tick3);
 	
-	viewTicketsRecords(tickets);
+	//viewTicketsRecords(tickets);
 	//viewAccounts(users);
-	//menuOfAuthorization(users, tickets);
+	menuOfAuthorization(users, tickets);
 		//registerNewUser(users);
 	//signInAccount(users);
 	//addNewAccount(users);

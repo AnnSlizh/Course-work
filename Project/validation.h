@@ -20,5 +20,6 @@ bool isSoldTicketNegative(int soldTickets);
 bool isCorrectValue(int value);
 void roleToString(int role);
 void statusToString(int status);
-void transportToString(int typeOfTransport);
+void printTransportType(int typeOfTransport);
+string transportTypeToString(int typeOfTransport);
 

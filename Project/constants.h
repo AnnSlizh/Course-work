@@ -158,8 +158,10 @@ const string TO_TEXT = " до ";
 const string YEAR_TEXT = " год";
 const string INFORMATION_OF_SEARCH_BY_TYPE_OF_TRANSPORT_TEXT = "Информация о проездных билетах, проданных для вида транспорта ";
 const string INFORMATION_OF_SEARCH_BY_SOLD_TICKETS_TEXT = "Информация о проездных билетах, проданных в количестве от ";
+const string NOT_INDORMATION_OF_SEARCH_TEXT = "Нет информации по данному поиску!";
 
 //Numbering
+const string ZERO_TEXT = "0)";
 const string ONE_TEXT = "1) ";
 const string TWO_TEXT = "2) ";
 const string THREE_TEXT = "3) ";
@@ -168,11 +170,18 @@ const string FIFE_TEXT = "5) ";
 const string SIX_TEXT = "6) ";
 const string SEVEN_TEXT = "7) ";
 
-//Console table
+//Console table of tickets
 const string TICKET_NUMBER_TEXT = "№";
 const string TYPE_OF_TRANSPORT_TEXT = "Вид транспорта";
 const string MONTH_OF_SALES_TEXT = "Месяц";
 const string YEAR_OF_SALES_TEXT = "Год";
 const string COST_OF_TICKET_TEXT = "Ст-ть билета";
 const string NUMBER_OF_SALE_TICKETS_TEXT = "Кол-во прод. билетов";
-const string BORDER_OF_TICKETS_TEXT = "----------------------------------------------------------------------------------------";
+const string BORDER_OF_TICKETS_TABLE_TEXT = "----------------------------------------------------------------------------------------";
+
+//Console table of accounts
+const string ID_OF_ACCOUNT_TEXT = "ID";
+const string LOGIN_OF_ACCOUNT_TEXT = "Login";
+const string ROLE_OF_ACCOUNT_TEXT = "Role";
+const string STATUS_OF_ACCOUNT_TEXT = "Status";
+const string BORDER_OF_ACCOUNTS_TABLE_TEXT = "---------------------------------------------";

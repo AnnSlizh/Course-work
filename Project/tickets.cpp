@@ -8,12 +8,15 @@ void viewTicketsRecords(vector <Ticket>& tickets)
 {
 	cout << TICKET_NUMBER_TEXT << setw(20) << TYPE_OF_TRANSPORT_TEXT << setw(10) << MONTH_OF_SALES_TEXT << setw(10);
 	cout << YEAR_OF_SALES_TEXT << setw(18) << COST_OF_TICKET_TEXT << setw(25) << NUMBER_OF_SALE_TICKETS_TEXT << endl;
-	cout << BORDER_OF_TICKETS_TEXT << endl;
+	cout << BORDER_OF_TICKETS_TABLE_TEXT << endl;
 
 	for (int i = 0; i < tickets.size(); i++)
 	{
+		int typeOfTransport;
+		typeOfTransport = tickets[i].type;
+
 		cout << i << setw(18);
-		transportToString(i);
+		printTransportType(typeOfTransport);
 		cout << setw(10) << tickets[i].month << setw(12) << tickets[i].year << setw(15);
 		cout << tickets[i].costOfTicket << setw(15) << tickets[i].soldTickets << endl;
 	}
@@ -23,10 +26,10 @@ void viewOneTicketRecord(vector <Ticket>& tickets, int numberOfRecord)
 {
 	cout << TICKET_NUMBER_TEXT << setw(20) << TYPE_OF_TRANSPORT_TEXT << setw(10) << MONTH_OF_SALES_TEXT << setw(10);
 	cout << YEAR_OF_SALES_TEXT << setw(18) << COST_OF_TICKET_TEXT << setw(25) << NUMBER_OF_SALE_TICKETS_TEXT << endl;
-	cout << BORDER_OF_TICKETS_TEXT << endl;
+	cout << BORDER_OF_TICKETS_TABLE_TEXT << endl;
 
 	cout << numberOfRecord << setw(18);
-	transportToString(numberOfRecord);;
+	printTransportType(numberOfRecord);;
 	cout << setw(10) << tickets[numberOfRecord].month << setw(12) << tickets[numberOfRecord].year << setw(15);
 	cout << tickets[numberOfRecord].costOfTicket << setw(15) << tickets[numberOfRecord].soldTickets << endl;
 }
@@ -42,6 +45,9 @@ void serchTicketRecord(vector <Ticket>& tickets)
 		cout << SEARCH_BY_YEAR_TEXT << endl << SEARCH_BY_TYPE_OF_TRANSPORT_TEXT << endl;
 		cout << SEARCH_BY_SOLD_TICKETS_TEXT << endl << FOUR_TEXT << RETURN_BACK_TEXT << endl;
 
+		int typeOfTransport;
+		int counter = 0;
+		
 		switch (_getch())
 		{
 		case '1': system("CLS");
@@ -65,25 +71,38 @@ void serchTicketRecord(vector <Ticket>& tickets)
 
 			system("CLS");
 			cout << INFORMATION_OF_SEARCH_BY_YEAR_TEXT << minYear << TO_TEXT << maxYear << YEAR_TEXT << endl << endl;
+
+			cout << TICKET_NUMBER_TEXT << setw(20) << TYPE_OF_TRANSPORT_TEXT << setw(10) << MONTH_OF_SALES_TEXT << setw(10);
+			cout << YEAR_OF_SALES_TEXT << setw(18) << COST_OF_TICKET_TEXT << setw(25) << NUMBER_OF_SALE_TICKETS_TEXT << endl;
+			cout << BORDER_OF_TICKETS_TABLE_TEXT << endl;
+
 			for (int i = 0; i < tickets.size(); i++)
 			{
 				if (tickets[i].year >= minYear && tickets[i].year <= maxYear)
 				{
-					transportToString(i);
-					cout << " " << tickets[i].month << " " << tickets[i].year << " ";
-					cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
+					typeOfTransport = tickets[i].type;
+
+					cout << i << setw(18);
+					printTransportType(typeOfTransport);
+					cout << setw(10) << tickets[i].month << setw(12) << tickets[i].year << setw(15);
+					cout << tickets[i].costOfTicket << setw(15) << tickets[i].soldTickets << endl;
+					counter++;
 				}
+			}
+			if (counter == 0)
+			{
+				system("CLS");
+				cout << NOT_INDORMATION_OF_SEARCH_TEXT << endl;
 			}
 
 			system("pause");
 			break;
 
 		case '2':  system("CLS");
-			int typeOfTransport;
 
-			cout << ONE_TEXT << BUS_TEXT << endl << TWO_TEXT << TRAM_TEXT << endl;
-			cout << THREE_TEXT << TROLLEYBUS_TEXT << endl << FOUR_TEXT << TRAIN_TEXT << endl;
-			cout << FIFE_TEXT << PLANE_TEXT << endl << SIX_TEXT << SHIP_TEXT << endl;
+			cout << ZERO_TEXT << BUS_TEXT << endl << ONE_TEXT << TRAM_TEXT << endl;
+			cout << TWO_TEXT << TROLLEYBUS_TEXT << endl << THREE_TEXT << TRAIN_TEXT << endl;
+			cout << FOUR_TEXT << PLANE_TEXT << endl << FIFE_TEXT << SHIP_TEXT << endl;
 
 			cout << ENTER_TYPE_OF_TRANSPORT_TEXT; cin >> typeOfTransport;
 
@@ -96,16 +115,29 @@ void serchTicketRecord(vector <Ticket>& tickets)
 
 			system("CLS");
 			cout << INFORMATION_OF_SEARCH_BY_TYPE_OF_TRANSPORT_TEXT;
-			transportToString(typeOfTransport);
+			printTransportType(typeOfTransport);
 			cout << endl << endl;
+
+			cout << TICKET_NUMBER_TEXT << setw(20) << TYPE_OF_TRANSPORT_TEXT << setw(10) << MONTH_OF_SALES_TEXT << setw(10);
+			cout << YEAR_OF_SALES_TEXT << setw(18) << COST_OF_TICKET_TEXT << setw(25) << NUMBER_OF_SALE_TICKETS_TEXT << endl;
+			cout << BORDER_OF_TICKETS_TABLE_TEXT << endl;
+
+			
 			for (int i = 0; i < tickets.size(); i++)
 			{
 				if (tickets[i].type == typeOfTransport)
 				{
-					transportToString(i);
-					cout << " " << tickets[i].month << " " << tickets[i].year << " ";
-					cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
+					cout << i << setw(18);
+					printTransportType(typeOfTransport);
+					cout << setw(10) << tickets[i].month << setw(12) << tickets[i].year << setw(15);
+					cout << tickets[i].costOfTicket << setw(15) << tickets[i].soldTickets << endl;
+					counter++;
 				}
+			}
+			if (counter == 0)
+			{
+				system("CLS"); 
+				cout << NOT_INDORMATION_OF_SEARCH_TEXT << endl;
 			}
 		
 			system("pause");
@@ -133,14 +165,28 @@ void serchTicketRecord(vector <Ticket>& tickets)
 
 			system("CLS");
 			cout << INFORMATION_OF_SEARCH_BY_SOLD_TICKETS_TEXT << minSoldTickets << TO_TEXT << maxSoldTickets << endl << endl;
+
+			cout << TICKET_NUMBER_TEXT << setw(20) << TYPE_OF_TRANSPORT_TEXT << setw(10) << MONTH_OF_SALES_TEXT << setw(10);
+			cout << YEAR_OF_SALES_TEXT << setw(18) << COST_OF_TICKET_TEXT << setw(25) << NUMBER_OF_SALE_TICKETS_TEXT << endl;
+			cout << BORDER_OF_TICKETS_TABLE_TEXT << endl;
+
 			for (int i = 0; i < tickets.size(); i++)
 			{
 				if (tickets[i].soldTickets >= minSoldTickets && tickets[i].soldTickets <= maxSoldTickets)
 				{
-					transportToString(i);
-					cout << " " << tickets[i].month << " " << tickets[i].year << " ";
-					cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
+					typeOfTransport = tickets[i].type;
+
+					cout << i << setw(18);
+					printTransportType(typeOfTransport);
+					cout << setw(10) << tickets[i].month << setw(12) << tickets[i].year << setw(15);
+					cout << tickets[i].costOfTicket << setw(15) << tickets[i].soldTickets << endl;
+					counter++;
 				}
+			}
+			if (counter == 0)
+			{
+				system("CLS");
+				cout << NOT_INDORMATION_OF_SEARCH_TEXT << endl;
 			}
 
 			system("pause");
@@ -189,9 +235,9 @@ void addNewTicketRecord(vector <Ticket>& tickets)
 
 	cout << ADDING_NEW_TICKET_RECORD_TEXT << endl;
 
-	cout << ONE_TEXT << BUS_TEXT << endl << TWO_TEXT << TRAM_TEXT << endl;
-	cout << THREE_TEXT << TROLLEYBUS_TEXT << endl << FOUR_TEXT << TRAIN_TEXT << endl;
-	cout << FIFE_TEXT << PLANE_TEXT << endl << SIX_TEXT << SHIP_TEXT << endl;
+	cout << ZERO_TEXT << BUS_TEXT << endl << ONE_TEXT << TRAM_TEXT << endl;
+	cout << TWO_TEXT << TROLLEYBUS_TEXT << endl << THREE_TEXT << TRAIN_TEXT << endl;
+	cout << FOUR_TEXT << PLANE_TEXT << endl << FIFE_TEXT << SHIP_TEXT << endl;
 
 	int digit;
 
@@ -519,25 +565,30 @@ void viewTopOfSoldTickets(vector <Ticket>& tickets, int month)
 {
 	sort(tickets.begin(), tickets.end(), compareBySoldTickets);
 
+	cout << TICKET_NUMBER_TEXT << setw(20) << TYPE_OF_TRANSPORT_TEXT << setw(10) << MONTH_OF_SALES_TEXT << setw(10);
+	cout << YEAR_OF_SALES_TEXT << setw(18) << COST_OF_TICKET_TEXT << setw(25) << NUMBER_OF_SALE_TICKETS_TEXT << endl;
+	cout << BORDER_OF_TICKETS_TABLE_TEXT << endl;
+
 	for (int i = 0; i < tickets.size(); i++)
 	{
 		if (tickets[i].month == month)
 		{
-			transportToString(i);
-			cout << " " << tickets[i].month << " " << tickets[i].year << " ";
-			cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
+			cout << i << setw(18);
+			printTransportType(i);
+			cout << setw(10) << tickets[i].month << setw(12) << tickets[i].year << setw(15);
+			cout << tickets[i].costOfTicket << setw(15) << tickets[i].soldTickets << endl;
 		}
 	}
 }
 
 bool compareBySoldTickets(Ticket& a, Ticket& b)
 {
-	return a.costOfTicket > b.soldTickets;
+	return a.soldTickets > b.soldTickets;
 }
 
 bool compareByTypeOfTransport(Ticket& a, Ticket& b)
 {
-	return a.type > b.type;
+	return transportTypeToString(a.type) < transportTypeToString(b.type);
 }
 
 bool compareByCostOfTicket(Ticket& a, Ticket& b)
@@ -547,22 +598,10 @@ bool compareByCostOfTicket(Ticket& a, Ticket& b)
 
 bool compareByYear(Ticket& a, Ticket& b)
 {
-	return a.year > b.year;
-}
-
-/*for (int i = 0; i < users.size(); i++)
-{
-	if (users[i].role == Role::USER)
+	if (a.year == b.year)
 	{
-		cout << i << "\t" << users[i].login;
-		role = users[i].role;
-		status = users[i].status;
-
-		roleToString(role);
-		cout << "\t";
-		statusToString(status);
-		cout << endl;
-
+		return a.month > b.month;
 	}
+	else return a.year > b.year;
+	
 }
-*/
