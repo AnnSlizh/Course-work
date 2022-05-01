@@ -34,6 +34,8 @@ void menuOfAuthorization(vector <User>& users, vector <Ticket>& tickets)
 			break;
 
 		case '3': 	system("CLS");
+			writeUsersInFile(users);
+			writeTicketsInFile(tickets);
 			flag = false;
 		}
 	}
@@ -47,40 +49,17 @@ void userMode(User userAccount, vector <User>& users, vector <Ticket>& tickets)
 		system("CLS");
 		cout << USER_MODE_TEXT << endl;
 		cout << SYSTEM_TICKETS_SALES_TEXT << endl;
-		cout << THREE_TEXT << EXIT_FROM_ACCOUNT_TEXT;
+		cout << TWO_TEXT << EXIT_FROM_ACCOUNT_TEXT;
 		User userAccount;
 		switch (_getch())
 		{
 
 		case '1': system("CLS");
 			sortTicketsRecords(tickets);
+			writeTicketsInFile(tickets);
 			break;
 
 		case '2': system("CLS");
-			//cout << ENTER_LOGIN_TEXT; cin >> userAccount.login;
-			cout << ENTER_PASSWORD_FOR_CHANGE_TEXT; cin >> userAccount.password;
-			
-			for (int i = 0; i < users.size(); i++)
-			{
-				if (userAccount.password == users[i].password)
-				{
-					cout << ENTER_NEW_PASSWORD_TEXT; cin >> userAccount.password;
-					userAccount.password = users[i].password;
-				}
-				else
-				{
-					for (int i = 0; i < NUMBER_OF_ATTEMPTS; i++)
-					{
-						cout << PACCWORD_NOT_CORRECT_TEXT << endl;
-						cout << ENTER_PASSWORD_FOR_CHANGE_TEXT; cin >> userAccount.password;
-					}
-					cout << PASSWORD_CHANGE_NOT_AVALIABLE_TEXT;
-					system("pause");
-					break;
-				}
-			}
-
-		case '3': system("CLS");
 			cout << VALIDATE_EXIT_FROME_ACCOUNT_TEXT << endl;
 			cout << YES_TEXT << endl << NOT_TEXT << endl;
 			int digit;
@@ -90,7 +69,7 @@ void userMode(User userAccount, vector <User>& users, vector <Ticket>& tickets)
 			{
 				flag = false;
 			}
-			else break; // not;	
+			else break; // not;	 
 		}
 	}
 }
@@ -151,10 +130,12 @@ void manageTicketRecords(vector <Ticket>& tickets)
 		
 		case '1': system("CLS");
 			sortTicketsRecords(tickets);
+			writeTicketsInFile(tickets);
 			break;
 
 		case '2': system("CLS");
 			addNewTicketRecord(tickets);
+			writeTicketsInFile(tickets);
 			system("pause");
 			break;
 
@@ -176,10 +157,12 @@ void manageTicketRecords(vector <Ticket>& tickets)
 			cout << YES_TEXT << endl << NOT_TEXT << endl;
 
 			deleteTicketRecord(tickets, numberOfRecord);
+			writeTicketsInFile(tickets);
 			break;
 
 		case '4': system("CLS");
 			editTicketRecord(tickets);
+			writeTicketsInFile(tickets);
 			break;
 
 		case '5': system("CLS");
@@ -237,11 +220,13 @@ void manageAccounts(User userAccount, vector <User>& users)
 
 			case '2': system("CLS");
 				addNewAccount(users);
+				writeUsersInFile(users);
 				system("pause");
 				break;
 
 			case '3': system("CLS");
 				editAccount(users);
+				writeUsersInFile(users);
 				break;
 				
 			case '4': system("CLS");
@@ -300,37 +285,17 @@ void manageAccounts(User userAccount, vector <User>& users)
 				cout << YES_TEXT << endl << NOT_TEXT << endl;
 
 				deleteAccount(users, idOfAccount);
+
+				writeUsersInFile(users);
 				break;
 				
 			case '5': system("CLS");
 				manageApplication(users);
+				writeUsersInFile(users);
 				break;
 
 			case '6': flag = false;
 				break;
-		}
-	}
-}
-
-void viewAccounts(vector <User>& users)
-{
-	cout << ID_OF_ACCOUNT_TEXT << setw(14) << LOGIN_OF_ACCOUNT_TEXT << setw(15);
-	cout << ROLE_OF_ACCOUNT_TEXT << setw(12) << STATUS_OF_ACCOUNT_TEXT << endl;
-	cout << BORDER_OF_ACCOUNTS_TABLE_TEXT << endl;
-	for (int i = 0; i < users.size(); i++)
-	{
-		if (users[i].status != Status::WAITING)
-		{
-			cout << i << setw(15) << users[i].login << setw(15);
-			//cout << i << "\t" << users[i].login << "\t";
-
-			int role = users[i].role;
-			int status = users[i].status;
-
-			roleToString(role);
-			cout << setw(12);
-			statusToString(status);
-			cout << endl;
 		}
 	}
 }
@@ -447,30 +412,6 @@ void editAccount(vector <User>& users)
 	}
 }
 
-void deleteAccount(vector <User>& users, int idOfAccount)
-{
-	int digit;
-	cin >> digit;
-
-	if (digit == YES) 
-	{
-		auto iter = users.cbegin();
-
-		if (idOfAccount == FIRST_ACCOUNT)
-		{
-			users.erase(iter);
-		}
-		else
-		{
-			users.erase(iter + idOfAccount);
-		}
-		system("CLS");
-		cout << ACOOUNT_IS_DELETED_TEXT << endl;
-		system("pause");
-	}
-	else if (digit == NOT) return; 
-}
-
 void manageApplication(vector <User>& users)
 {	
 	bool flag = true;
@@ -554,3 +495,49 @@ void acceptAplication(vector <User>& users)
 	}
 }
 
+void deleteAccount(vector <User>& users, int idOfAccount)
+{
+	int digit;
+	cin >> digit;
+
+	if (digit == YES)
+	{
+		auto iter = users.cbegin();
+
+		if (idOfAccount == FIRST_ACCOUNT)
+		{
+			users.erase(iter);
+		}
+		else
+		{
+			users.erase(iter + idOfAccount);
+		}
+		system("CLS");
+		cout << ACOOUNT_IS_DELETED_TEXT << endl;
+		system("pause");
+	}
+	else if (digit == NOT) return;
+}
+
+void viewAccounts(vector <User>& users)
+{
+	cout << ID_OF_ACCOUNT_TEXT << setw(14) << LOGIN_OF_ACCOUNT_TEXT << setw(15);
+	cout << ROLE_OF_ACCOUNT_TEXT << setw(12) << STATUS_OF_ACCOUNT_TEXT << endl;
+	cout << BORDER_OF_ACCOUNTS_TABLE_TEXT << endl;
+	for (int i = 0; i < users.size(); i++)
+	{
+		if (users[i].status != Status::WAITING)
+		{
+			cout << i << setw(15) << users[i].login << setw(15);
+			//cout << i << "\t" << users[i].login << "\t";
+
+			int role = users[i].role;
+			int status = users[i].status;
+
+			roleToString(role);
+			cout << setw(12);
+			statusToString(status);
+			cout << endl;
+		}
+	}
+}

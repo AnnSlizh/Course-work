@@ -5,6 +5,7 @@
 using namespace std;
 
 const int ENTER = 13;
+
 void registerNewUser(vector <User>& users)
 {
 	string login;
