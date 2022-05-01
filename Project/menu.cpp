@@ -1,5 +1,6 @@
 #include <conio.h>
 #include "menu.h"
+#include <iomanip>
 
 const int NUMBER_OF_ATTEMPTS = 2;
 const int YES = 1;
@@ -226,7 +227,7 @@ void manageAccounts(User userAccount, vector <User>& users)
 		cout << ACCOUNT_MANAGEMENT_MODE_TEXT << endl;
 		cout << VIEW_ACCOUNTS_TEXT << endl << ADD_NEW_ACCOUNT_TEXT << endl;
 		cout << ACCOUNTS_SETTINGS_TEXT << endl << DELETE_ACCOUNT_TEXT << endl;
-		cout << VIEW_APLICATIONS_TEXT << endl << RETURN_BACK_TEXT << endl;
+		cout << VIEW_APLICATIONS_TEXT << endl << SIX_TEXT << RETURN_BACK_TEXT << endl;
 
 		switch (_getch())
 		{
@@ -314,18 +315,20 @@ void manageAccounts(User userAccount, vector <User>& users)
 
 void viewAccounts(vector <User>& users)
 {
+	cout << "ID" << setw(14) << "Login" << setw(15) << "Role" << setw(12) << "Status" << endl;
+	cout << "---------------------------------------------" << endl;
 	for (int i = 0; i < users.size(); i++)
 	{
 		if (users[i].status != Status::WAITING)
 		{
-
-			cout << i << "\t" << users[i].login << "\t";
+			cout << i << setw(15) << users[i].login << setw(15);
+			//cout << i << "\t" << users[i].login << "\t";
 
 			int role = users[i].role;
 			int status = users[i].status;
 
 			roleToString(role);
-			cout << "\t";
+			cout << setw(12);
 			statusToString(status);
 			cout << endl;
 		}
@@ -337,7 +340,7 @@ void addNewAccount(vector <User>& users)
 	User newAccount;
 	int role;
 
-	cout << ADD_NEW_ACCOUNT_TEXT << endl;
+	cout << CREATING_ACCOUNT_MODE_TEXT << endl;
 
 	bool flag = true;
 	while (flag)
@@ -360,7 +363,7 @@ void addNewAccount(vector <User>& users)
 	cout << ENTER_PASSWORD_TEXT;
 	cin >> newAccount.password;
 
-	cout << ROLE_ADMIN_TEXT << endl;
+	cout << endl << ROLE_ADMIN_TEXT << endl;
 	cout << ROLE_USER_TEXT << endl;
 	cout << ENTER_ROLE_OF_ACCOUNT_TEXT;
 	cin >> role;
@@ -475,26 +478,32 @@ void manageApplication(vector <User>& users)
 	{
 		system("CLS");
 		int counter = 0;
+
+		cout << "ID" << setw(14) << "Login" << setw(15) << "Status" << endl;
+		cout << "---------------------------------------------" << endl;
+
 		for (int i = 0; i < users.size(); i++)
-		{
+		{		
 			if (users[i].status == Status::WAITING)
 			{
-				cout << i << "\t" << users[i].login << "\t";
+				cout << i << setw(15) << users[i].login << setw(15);
 
 				int status = users[i].status;
 
-				cout << "\t";
 				statusToString(status);
 				cout << endl;
 
 				counter++;
 			}
 		}
-		if (counter == 0) cout << NOT_APPLICATIONS_TEXT << endl;
-		
+		if (counter == 0)
+		{
+			system("CLS");
+			cout << NOT_APPLICATIONS_TEXT << endl;
+		}
 		cout << endl << CHOCE_ACTION_TEXT << endl;
-		cout << ACCEPT_APPLICATION_TEXT << endl << THREE_TEXT << BLOCKED_APPLICATION_TEXT << endl;
-		cout << RETURN_BACK_TEXT << endl;
+		cout << ACCEPT_APPLICATION_TEXT << endl << BLOCKED_APPLICATION_TEXT << endl;
+		cout << THREE_TEXT << RETURN_BACK_TEXT << endl;
 
 		switch (_getch())
 		{

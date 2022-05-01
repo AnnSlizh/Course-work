@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 
-
 using namespace std;
 
 //File names
@@ -27,6 +26,7 @@ const string CREATING_ACCOUNT_MODE_TEXT = "Создание нового аккаунта в системе";
 const string AUTHORIZATION_IN_SYSTEM_TEXT = "Авторизуйтесь в системе";
 const string LOGIN_IS_EXIST_TEXT = "Аккаунт с таким логином уже существует! Пожалуйста, придумайте другой.";
 const string LOGIN_NOT_CORRECT_TEXT = "Введенный логин не соответствует норме(не менее 4 символов)! Пожалуйста, придумайте другой.";
+const string PASSWORD_NOT_CORRECT_TEXT = "Введенный пароль не соответствует норме(не менее 6 символов)! Пожалуйста, придумайте другой.";
 const string APPLICATION_IS_SENT_TEXT = "Ваша заявка на регистрацию отправлена!";
 const string SYSTEM_ACCESS_TEXT = "Система будет доступна после одобрения вашей заявки администратором";
 
@@ -167,3 +167,12 @@ const string FOUR_TEXT = "4) ";
 const string FIFE_TEXT = "5) ";
 const string SIX_TEXT = "6) ";
 const string SEVEN_TEXT = "7) ";
+
+//Console table
+const string TICKET_NUMBER_TEXT = "№";
+const string TYPE_OF_TRANSPORT_TEXT = "Вид транспорта";
+const string MONTH_OF_SALES_TEXT = "Месяц";
+const string YEAR_OF_SALES_TEXT = "Год";
+const string COST_OF_TICKET_TEXT = "Ст-ть билета";
+const string NUMBER_OF_SALE_TICKETS_TEXT = "Кол-во прод. билетов";
+const string BORDER_OF_TICKETS_TEXT = "----------------------------------------------------------------------------------------";

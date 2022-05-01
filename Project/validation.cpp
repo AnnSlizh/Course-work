@@ -3,8 +3,10 @@
 #include "validation.h"
 
 
-const int MIN_LOGIN_SIZE = 3;
+const int MIN_LOGIN_SIZE = 4;
 const int MAX_LOGIN_SIZE = 20;
+const int MIN_PASSWORD_SIZE = 6;
+
 const int MIN_TYPE_OF_TRANSPORT = 0;
 const int MAX_TYPE_OF_TRANSPORT = 5;
 const int MIN_MONTH = 1;
@@ -18,7 +20,18 @@ bool isLoginCorrect(string login)
 {
 	int sizeLogin = size(login);
 
-	if (sizeLogin > MIN_LOGIN_SIZE && sizeLogin < MAX_LOGIN_SIZE)
+	if (sizeLogin >= MIN_LOGIN_SIZE && sizeLogin <= MAX_LOGIN_SIZE)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool isPasswordCorrect(string password)
+{
+	int sizePassword = size(password);
+
+	if (sizePassword >= MIN_PASSWORD_SIZE)
 	{
 		return true;
 	}
@@ -36,7 +49,7 @@ bool isLoginExist(string login, vector <User>& users)
 	}
 	return false;
 }
-bool isPasswordCorrect(string login, string password, vector <User>& users)
+bool isAccountExist(string login, string password, vector <User>& users)
 {
 	for (int i = 0; i < users.size(); i++)
 	{

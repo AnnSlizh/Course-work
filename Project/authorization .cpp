@@ -34,6 +34,13 @@ void registerNewUser(vector <User>& users)
 	cout << ENTER_PASSWORD_TEXT;
 	cin >> password;
 
+	while (isPasswordCorrect(password) == false)
+	{
+		cout << PASSWORD_NOT_CORRECT_TEXT << endl;
+		cout << ENTER_PASSWORD_TEXT;
+		cin >> password;
+	}
+
 	newUser.login = login;
 	newUser.password = password;
 	newUser.role = Role::USER;
@@ -73,7 +80,7 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 	bool flag = true;
 	while (flag)
 	{   
-		if (isPasswordCorrect(userAccount.login, password, users) == false)
+		if (isAccountExist(userAccount.login, password, users) == false)
 		{
 			cout << endl << ACCOUNT_NOT_EXIT_TEXT << endl;
 			cout << ENTER_LOGIN_TEXT;

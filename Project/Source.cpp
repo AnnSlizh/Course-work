@@ -65,8 +65,9 @@ int main()
 	tickets.push_back(tick2);
 	tickets.push_back(tick3);
 	
-	
-	menuOfAuthorization(users, tickets);
+	viewTicketsRecords(tickets);
+	//viewAccounts(users);
+	//menuOfAuthorization(users, tickets);
 		//registerNewUser(users);
 	//signInAccount(users);
 	//addNewAccount(users);

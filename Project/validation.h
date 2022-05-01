@@ -7,8 +7,9 @@
 using namespace std;
 
 bool isLoginCorrect(string login);
+bool isPasswordCorrect(string password);
 bool isLoginExist(string login, vector <User>& users);
-bool isPasswordCorrect(string login, string password, vector <User>& users);
+bool isAccountExist(string login, string password, vector <User>& users);
 bool isAccountWaiting(int status, vector <User>& users);
 bool isAccountBlocked(int status, vector <User>& users);
 bool isTypeOfTransportExist(int type);

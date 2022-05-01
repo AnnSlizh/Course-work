@@ -6,21 +6,29 @@ const int RETURN_BACK = 2;
 
 void viewTicketsRecords(vector <Ticket>& tickets)
 {
+	cout << TICKET_NUMBER_TEXT << setw(20) << TYPE_OF_TRANSPORT_TEXT << setw(10) << MONTH_OF_SALES_TEXT << setw(10);
+	cout << YEAR_OF_SALES_TEXT << setw(18) << COST_OF_TICKET_TEXT << setw(25) << NUMBER_OF_SALE_TICKETS_TEXT << endl;
+	cout << BORDER_OF_TICKETS_TEXT << endl;
+
 	for (int i = 0; i < tickets.size(); i++)
 	{
-		cout << i << " ";
+		cout << i << setw(18);
 		transportToString(i);
-		cout << " " << tickets[i].month << " " << tickets[i].year << " ";
-		cout << tickets[i].costOfTicket << " " << tickets[i].soldTickets << endl;
+		cout << setw(10) << tickets[i].month << setw(12) << tickets[i].year << setw(15);
+		cout << tickets[i].costOfTicket << setw(15) << tickets[i].soldTickets << endl;
 	}
 }
 
 void viewOneTicketRecord(vector <Ticket>& tickets, int numberOfRecord)
 {
-	cout << numberOfRecord << " ";
-	transportToString(numberOfRecord);
-	cout << " " << tickets[numberOfRecord].month << " " << tickets[numberOfRecord].year << " ";
-	cout << tickets[numberOfRecord].costOfTicket << " " << tickets[numberOfRecord].soldTickets << endl;
+	cout << TICKET_NUMBER_TEXT << setw(20) << TYPE_OF_TRANSPORT_TEXT << setw(10) << MONTH_OF_SALES_TEXT << setw(10);
+	cout << YEAR_OF_SALES_TEXT << setw(18) << COST_OF_TICKET_TEXT << setw(25) << NUMBER_OF_SALE_TICKETS_TEXT << endl;
+	cout << BORDER_OF_TICKETS_TEXT << endl;
+
+	cout << numberOfRecord << setw(18);
+	transportToString(numberOfRecord);;
+	cout << setw(10) << tickets[numberOfRecord].month << setw(12) << tickets[numberOfRecord].year << setw(15);
+	cout << tickets[numberOfRecord].costOfTicket << setw(15) << tickets[numberOfRecord].soldTickets << endl;
 }
 
 void serchTicketRecord(vector <Ticket>& tickets)
