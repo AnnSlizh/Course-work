@@ -25,7 +25,7 @@ int main()
 	
 	
 	readUsersFromFile(users);
-	//readTicketsFromFile(tickets);
+	readTicketsFromFile(tickets);
 
 	/*cout << users.size();
 	cout << endl;*/
@@ -49,7 +49,7 @@ int main()
 	users.push_back(user2);
 	users.push_back(user3);*/
 
-	Ticket tick1;
+	/*Ticket tick1;
 	tick1.type = Transport::PLANE;
 	tick1.month = 4;
 	tick1.year = 2014;
@@ -71,7 +71,7 @@ int main()
 	tickets.push_back(tick1);
 	tickets.push_back(tick2);
 	tickets.push_back(tick3);
-	
+	*/
 	//viewTicketsRecords(tickets);
 	//viewAccounts(users);
 	menuOfAuthorization(users, tickets);

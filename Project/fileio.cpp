@@ -73,18 +73,24 @@ void readTicketsFromFile(vector <Ticket>& tickets)
 	{
 		file.open(TICKETS_FILE_NAME, ios::out);
 		cout << TICKETS_NOT_EXIST_TEXT << endl;
+		system("pause");
 		file.close();
 	}
-
-	while (!file.eof())
+	else
 	{
-		int type;
-		file >> type >> ticketTemp.month >> ticketTemp.year;
-		file >> ticketTemp.costOfTicket >> ticketTemp.soldTickets;
+		if (file.peek() != ifstream::traits_type::eof()) {
+			while (!file.eof())
+			{
+				int type;
+				file >> type >> ticketTemp.month >> ticketTemp.year;
+				file >> ticketTemp.costOfTicket >> ticketTemp.soldTickets;
 
-		ticketTemp.type = static_cast<Transport>(type);
+				ticketTemp.type = static_cast<Transport>(type);
 
-		tickets.push_back(ticketTemp);
+				tickets.push_back(ticketTemp);
+			}
+		}
+		
 	}
 	file.close();
 }

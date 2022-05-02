@@ -77,6 +77,14 @@ bool isAccountBlocked(int status, vector <User>& users)
 	return false;
 }
 
+bool isTicketsRecordsExist(vector <Ticket>& tickets)
+{
+	if (tickets.size() == 0)
+	{
+		return true;
+	}
+	return false;
+}
 bool isTypeOfTransportExist(int type)
 {
 	if (type < MIN_TYPE_OF_TRANSPORT || type > MAX_TYPE_OF_TRANSPORT)

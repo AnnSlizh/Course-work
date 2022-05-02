@@ -174,28 +174,38 @@ void sortTicketsRecords(vector <Ticket>& tickets)
 	while (flag)
 	{
 		system("CLS");
-		viewTicketsRecords(tickets);
-
-		cout << SORT_BY_TYPE_OF_TRANSPORT_TEXT << endl << SORT_BY_COST_OF_TICKET_TEXT << endl;
-		cout << SORT_BY_YEAR_TEXT << endl << SEARCH_TEXT << endl << FIFE_TEXT << RETURN_BACK_TEXT << endl;
-
-		switch (_getch())
+		if (tickets.size() == 0)
 		{
-		case '1': sort(tickets.begin(), tickets.end(), compareByTypeOfTransport);
-			break;
-
-		case '2':  sort(tickets.begin(), tickets.end(), compareByCostOfTicket);
-			break;
-
-		case '3': sort(tickets.begin(), tickets.end(), compareByYear);
-			break;
-
-		case '4': serchTicketRecord(tickets);
-			break;
-
-		case '5': flag = false;
+			cout << TICKETS_NOT_EXIST_TEXT << endl;
+			system("pause");
 			break;
 		}
+		else
+		{
+			viewTicketsRecords(tickets);
+
+			cout << SORT_BY_TYPE_OF_TRANSPORT_TEXT << endl << SORT_BY_COST_OF_TICKET_TEXT << endl;
+			cout << SORT_BY_YEAR_TEXT << endl << SEARCH_TEXT << endl << FIFE_TEXT << RETURN_BACK_TEXT << endl;
+
+			switch (_getch())
+			{
+			case '1': sort(tickets.begin(), tickets.end(), compareByTypeOfTransport);
+				break;
+
+			case '2':  sort(tickets.begin(), tickets.end(), compareByCostOfTicket);
+				break;
+
+			case '3': sort(tickets.begin(), tickets.end(), compareByYear);
+				break;
+
+			case '4': serchTicketRecord(tickets);
+				break;
+
+			case '5': flag = false;
+				break;
+			}
+		}
+		
 	}
 }
 
@@ -314,10 +324,17 @@ void editTicketRecord(vector <Ticket>& tickets)
 	while (flag)
 	{
 		system("CLS");
+		if (tickets.size() == 0)
+		{
+			cout << TICKETS_NOT_EXIST_TEXT << endl;
+			system("pause");
+			break;
+		}
+	
 		viewTicketsRecords(tickets);
-
+		
 		int digit;
-		cout << EDIT_RECORD_TEXT << endl << TWO_TEXT << RETURN_BACK_TEXT << endl;
+		cout << endl << EDIT_RECORD_TEXT << endl << TWO_TEXT << RETURN_BACK_TEXT << endl;
 		cin >> digit;
 
 		if (digit == EDIT_RECORD)

@@ -94,6 +94,8 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 
 			cout << ENTER_PASSWORD_TEXT;
 			password.erase();
+			hashPassword.erase();
+
 			passwordTemp = _getch();
 			while (passwordTemp != ENTER) //character 13 is enter
 			{
@@ -101,6 +103,8 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 				cout << '*';
 				passwordTemp = _getch();
 			}
+			hashPassword = md5(password);
+
 		}
 		else
 		{

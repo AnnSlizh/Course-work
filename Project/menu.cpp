@@ -140,9 +140,19 @@ void manageTicketRecords(vector <Ticket>& tickets)
 			break;
 
 		case '3': system("CLS");
+
+			if (tickets.size() == 0)
+			{
+				cout << TICKETS_NOT_EXIST_TEXT << endl;
+				system("pause");
+				break;
+			}
+
+			viewTicketsRecords(tickets);
+
 			int numberOfRecord;
 
-			cout << ENTER_NUMBER_OF_RECORD_TEXT;
+			cout << endl << ENTER_NUMBER_OF_RECORD_TEXT;
 			cin >> numberOfRecord;
 
 			while ( numberOfRecord >= tickets.size())
@@ -431,7 +441,7 @@ void manageApplication(vector <User>& users)
 		int counter = 0;
 
 		cout << ID_OF_ACCOUNT_TEXT << setw(14) << LOGIN_OF_ACCOUNT_TEXT << setw(15);
-		cout << ROLE_OF_ACCOUNT_TEXT << STATUS_OF_ACCOUNT_TEXT << endl;
+		cout << ROLE_OF_ACCOUNT_TEXT << setw(12) << STATUS_OF_ACCOUNT_TEXT << endl;
 		cout << BORDER_OF_ACCOUNTS_TABLE_TEXT << endl;
 
 		for (int i = 0; i < users.size(); i++)
@@ -440,8 +450,12 @@ void manageApplication(vector <User>& users)
 			{
 				cout << i << setw(15) << users[i].login << setw(15);
 
+				int role = users[i].role;
 				int status = users[i].status;
-
+				
+				roleToString(role);
+				cout << setw(12);
+				
 				statusToString(status);
 				cout << endl;
 
@@ -467,8 +481,15 @@ void manageApplication(vector <User>& users)
 			cout << ENTER_ID_OF_APPLICATION;
 			cin >> numberOfApplication;
 
+			while (users[numberOfApplication].status != Status::WAITING)
+			{
+				cout << NOT_CORRECT_ID_TEXT << endl;
+				cout << ENTER_ID_OF_APPLICATION;
+				cin >> numberOfApplication;
+			}
+
 			system("CLS");
-			cout << VALIDATE_DELATION_OF_APPLICATION_TEXT << endl;
+			cout << VALIDATE_ACCEPTANE_OF_APPLICATION_TEXT << endl;
 			cout << YES_TEXT << endl << NOT_TEXT << endl;
 
 			deleteAccount(users, numberOfApplication);
@@ -487,22 +508,25 @@ void acceptAplication(vector <User>& users)
 	cout << ENTER_ID_OF_APPLICATION;
 	cin >> numberOfApplication;
 
-	for (int i = 0; i < users.size(); i++)
+	while (users[numberOfApplication].status != Status::WAITING)
 	{
-		system("CLS");
-		cout << VALIDATE_ACCEPTANE_OF_APPLICATION_TEXT << endl;
-		cout << YES_TEXT << endl << NOT_TEXT << endl;
-
-		int digit;
-		cin >> digit;
-
-		if (digit == YES) 
-		{
-			users[numberOfApplication].status = Status::ACTIVE;
-			break;
-		}
-		else if (digit == NOT) break; 
+		cout << NOT_CORRECT_ID_TEXT << endl;
+		cout << ENTER_ID_OF_APPLICATION;
+		cin >> numberOfApplication;
 	}
+
+	system("CLS");
+	cout << VALIDATE_ACCEPTANE_OF_APPLICATION_TEXT << endl;
+	cout << YES_TEXT << endl << NOT_TEXT << endl;
+
+	int digit;
+	cin >> digit;
+
+	if (digit == YES)
+	{
+		users[numberOfApplication].status = Status::ACTIVE;
+	}
+	else if (digit == NOT) return;
 }
 
 void deleteAccount(vector <User>& users, int idOfAccount)
@@ -539,8 +563,7 @@ void viewAccounts(vector <User>& users)
 		if (users[i].status != Status::WAITING)
 		{
 			cout << i << setw(15) << users[i].login << setw(15);
-			//cout << i << "\t" << users[i].login << "\t";
-
+			
 			int role = users[i].role;
 			int status = users[i].status;
 

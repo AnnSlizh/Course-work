@@ -83,6 +83,7 @@ const string ACCEPT_APPLICATION_TEXT = "1) Принять заявку";
 const string BLOCKED_APPLICATION_TEXT = "2) Отклонить заявку";
 const string NOT_APPLICATIONS_TEXT = "Нет заявок на регистрацию!";
 const string ENTER_ID_OF_APPLICATION = "Введите ID заявки: ";
+const string NOT_CORRECT_ID_TEXT = "Заявка с таким ID не существует! Пожалуйста, введите корректный ID";
 const string VALIDATE_DELATION_OF_APPLICATION_TEXT = "Вы действительно хотите отклонить заявку на регистрацию пользователя?";
 const string VALIDATE_ACCEPTANE_OF_APPLICATION_TEXT = "Вы действительно хотите принять заявку на регистрацию пользователя?";
 const string YES_TEXT = "1) Да";
