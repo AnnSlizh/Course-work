@@ -7,6 +7,7 @@
 #include "authorization .h"
 #include "menu.h"
 #include "tickets.h"
+#include "md5.h"
 
 using namespace std;
 
@@ -14,15 +15,21 @@ int main()
 {
 	setlocale(LC_ALL, "ru");
 
+/*	cout << md5("abc") << endl;
+	cout << md5("a") << endl;
+	cout << md5("abc") << endl;
+	*/
+
 	vector <User> users;
 	vector <Ticket> tickets;
 	
-
-	//readUsersFromFile(users);
+	
+	readUsersFromFile(users);
+	//readTicketsFromFile(tickets);
 
 	/*cout << users.size();
 	cout << endl;*/
-	User user1;
+/*	User user1;
 	user1.login = "a111";
 	user1.password = "123";
 	user1.role = Role::MAIN_ADMIN;
@@ -40,7 +47,7 @@ int main()
 	
 	users.push_back(user1);
 	users.push_back(user2);
-	users.push_back(user3);
+	users.push_back(user3);*/
 
 	Ticket tick1;
 	tick1.type = Transport::PLANE;
@@ -68,7 +75,7 @@ int main()
 	//viewTicketsRecords(tickets);
 	//viewAccounts(users);
 	menuOfAuthorization(users, tickets);
-		//registerNewUser(users);
+	//registerNewUser(users);
 	//signInAccount(users);
 	//addNewAccount(users);
 //	viewAccounts(users);
@@ -77,7 +84,7 @@ int main()
 	//viewAccounts(users);*/
 	//manageApplication(users);
 
-	//readTicketsFromFile(tickets);
+	
 
 	
 	

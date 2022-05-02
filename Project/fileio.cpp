@@ -3,6 +3,7 @@
 #include <fstream>
 #include "fileio.h"
 #include "constants.h"
+#include "md5.h"
 
 void readUsersFromFile(vector <User>& users)
 {
@@ -15,7 +16,7 @@ void readUsersFromFile(vector <User>& users)
 		User adminTemp;
 
 		adminTemp.login = MAIN_ADMIN_LOGIN;
-		adminTemp.password = MAIN_ADMIN_PASSWORD;
+		adminTemp.password = md5(MAIN_ADMIN_PASSWORD);
 		adminTemp.role = Role::MAIN_ADMIN;
 		adminTemp.status = Status::ACTIVE;
 		

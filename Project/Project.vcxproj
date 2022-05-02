@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="authorization .cpp" />
     <ClCompile Include="fileio.cpp" />
+    <ClCompile Include="md5.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="tickets.cpp" />
@@ -31,6 +32,7 @@
     <ClInclude Include="constants.h" />
     <ClInclude Include="datastructs.h" />
     <ClInclude Include="fileio.h" />
+    <ClInclude Include="md5.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="tickets.h" />
     <ClInclude Include="validation.h" />

@@ -304,6 +304,7 @@ void addNewAccount(vector <User>& users)
 {
 	User newAccount;
 	int role;
+	string password;
 
 	cout << CREATING_ACCOUNT_MODE_TEXT << endl;
 
@@ -326,7 +327,16 @@ void addNewAccount(vector <User>& users)
 	}
 
 	cout << ENTER_PASSWORD_TEXT;
-	cin >> newAccount.password;
+	cin >> password;
+
+	while (isPasswordCorrect(password) == false)
+	{
+		cout << PASSWORD_NOT_CORRECT_TEXT << endl;
+		cout << ENTER_PASSWORD_TEXT;
+		cin >> password;
+	}
+
+	newAccount.password = md5(password);
 
 	cout << endl << ROLE_ADMIN_TEXT << endl;
 	cout << ROLE_USER_TEXT << endl;

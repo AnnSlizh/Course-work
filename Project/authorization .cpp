@@ -10,6 +10,7 @@ void registerNewUser(vector <User>& users)
 {
 	string login;
 	string password;
+	string hashPassword;
 	User newUser;
 
 	cout << CREATING_ACCOUNT_MODE_TEXT << endl;
@@ -41,9 +42,11 @@ void registerNewUser(vector <User>& users)
 		cout << ENTER_PASSWORD_TEXT;
 		cin >> password;
 	}
+	
+	hashPassword = md5(password);
 
 	newUser.login = login;
-	newUser.password = password;
+	newUser.password = hashPassword;
 	newUser.role = Role::USER;
 	newUser.status = Status::WAITING;
 
@@ -68,6 +71,7 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 	cout << ENTER_PASSWORD_TEXT;
 	char passwordTemp;
 	string password;
+	string hashPassword;
 
 	passwordTemp = _getch();
 	while (passwordTemp != ENTER) //character 13 is enter
@@ -77,11 +81,12 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 		passwordTemp = _getch();
 	}
 	
+	hashPassword = md5(password);
 
 	bool flag = true;
 	while (flag)
 	{   
-		if (isAccountExist(userAccount.login, password, users) == false)
+		if (isAccountExist(userAccount.login, hashPassword, users) == false)
 		{
 			cout << endl << ACCOUNT_NOT_EXIT_TEXT << endl;
 			cout << ENTER_LOGIN_TEXT;
@@ -99,7 +104,7 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 		}
 		else
 		{
-			userAccount.password = password;
+			userAccount.password = hashPassword;
 			flag = false;
 		}
 	}
