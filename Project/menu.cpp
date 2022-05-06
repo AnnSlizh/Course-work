@@ -216,24 +216,58 @@ void manageAccounts(User userAccount, vector <User>& users)
 
 				if (userAccount.role == Role::MAIN_ADMIN)
 				{
+					cout << ID_OF_ACCOUNT_TEXT << setw(14) << LOGIN_OF_ACCOUNT_TEXT << setw(15);
+					cout << ROLE_OF_ACCOUNT_TEXT << setw(12) << STATUS_OF_ACCOUNT_TEXT << endl;
+					cout << BORDER_OF_ACCOUNTS_TABLE_TEXT << endl;
+
 					for (int i = 0; i < users.size(); i++)
 					{
 						if (users[i].role != Role::MAIN_ADMIN && users[i].status != Status::WAITING)
 						{
-							cout << i << "\t" << users[i].login << "\t";
+							cout << i << setw(15) << users[i].login << setw(15);
 							role = users[i].role;
 							status = users[i].status;
 
 							roleToString(role);
-							cout << "\t";
+							cout << setw(12);
 							statusToString(status);
 							cout << endl;
 						}
 					}
-				}
-					
+
+					cout << endl << ENTER_ID_OF_ACCOUNT_TEXT;
+					cin >> idOfAccount;
+
+					while (idOfAccount >= users.size())
+					{
+						cout << BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT << endl;
+						cout << ENTER_ID_OF_ACCOUNT_TEXT;
+						cin >> idOfAccount;
+					}
+
+					while (true)
+					{
+						if (users[idOfAccount].role == Role::MAIN_ADMIN)
+						{
+							cout << NOT_DELETE_MAIN_ADMIN_TEXT << endl;
+							cout << ENTER_ID_OF_ACCOUNT_TEXT;
+							cin >> idOfAccount;
+						}
+						else if (users[idOfAccount].status == Status::WAITING)
+						{
+							cout << NOT_DELETE_WEITING_ACCOUNT_TEXT << endl;
+							cout << ENTER_ID_OF_ACCOUNT_TEXT;
+							cin >> idOfAccount;
+						}
+						else break;
+					}
+				}	
 				else 
 				{
+					cout << ID_OF_ACCOUNT_TEXT << setw(14) << LOGIN_OF_ACCOUNT_TEXT << setw(15);
+					cout << ROLE_OF_ACCOUNT_TEXT << setw(12) << STATUS_OF_ACCOUNT_TEXT << endl;
+					cout << BORDER_OF_ACCOUNTS_TABLE_TEXT << endl;
+
 					for (int i = 0; i < users.size(); i++)
 					{
 						if (users[i].role == Role::USER)
@@ -246,27 +280,48 @@ void manageAccounts(User userAccount, vector <User>& users)
 							cout << "\t";
 							statusToString(status);
 							cout << endl;
-
 						}
 					}
-				}
-				cout << ENTER_ID_OF_ACCOUNT_TEXT;
-				cin >> idOfAccount;
-				
-				while (idOfAccount >= users.size())
-				{
-					cout << BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT << endl;
-					cout << ENTER_ID_OF_ACCOUNT_TEXT;
-					cin >> idOfAccount;
-				}
 
+					cout << endl << ENTER_ID_OF_ACCOUNT_TEXT;
+					cin >> idOfAccount;
+
+					while (idOfAccount >= users.size())
+					{
+						cout << BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT << endl;
+						cout << ENTER_ID_OF_ACCOUNT_TEXT;
+						cin >> idOfAccount;
+					}
+
+					while (true)
+					{
+						if (users[idOfAccount].role == Role::MAIN_ADMIN)
+						{
+							cout << NOT_DELETE_MAIN_ADMIN_TEXT << endl;
+							cout << ENTER_ID_OF_ACCOUNT_TEXT;
+							cin >> idOfAccount;
+						}
+						else if (users[idOfAccount].role == Role::ADMIN)
+						{
+							cout << NOT_DELETE_ADMIN_TEXT << endl;
+							cout << ENTER_ID_OF_ACCOUNT_TEXT;
+							cin >> idOfAccount;
+						}
+						else if (users[idOfAccount].status == Status::WAITING)
+						{
+							cout << NOT_DELETE_WEITING_ACCOUNT_TEXT << endl;
+							cout << ENTER_ID_OF_ACCOUNT_TEXT;
+							cin >> idOfAccount;
+						}
+						else break;
+					}
+				}
 				system("CLS");
 
 				cout << VALIDATE_DELATION_OF_ACCOUNT_TEXT << endl;
 				cout << YES_TEXT << endl << NOT_TEXT << endl;
 
 				deleteAccount(users, idOfAccount);
-
 				writeUsersInFile(users);
 				break;
 				
@@ -437,6 +492,8 @@ void manageApplication(vector <User>& users)
 		{
 			system("CLS");
 			cout << NOT_APPLICATIONS_TEXT << endl;
+			system("pause");
+			break;
 		}
 		cout << endl << CHOCE_ACTION_TEXT << endl;
 		cout << ACCEPT_APPLICATION_TEXT << endl << BLOCKED_APPLICATION_TEXT << endl;
