@@ -56,7 +56,7 @@ void userMode(User userAccount, vector <User>& users, vector <Ticket>& tickets)
 
 		case '1': system("CLS");
 			sortTicketsRecords(tickets);
-			writeTicketsInFile(tickets);
+			//writeTicketsInFile(tickets);
 			break;
 
 		case '2': system("CLS");
@@ -123,7 +123,7 @@ void manageTicketRecords(vector <Ticket>& tickets)
 		system("CLS");
 		cout << VIEW_TICKETS_RECORDS_TEXT << endl << ADD_NEW_TICKET_RECORD_TEXT << endl;
 		cout << DELETE_TICKET_RECORD_TEXT << endl << CHANGE_TICKETS_RECORDS_TEXT << endl;
-		cout << CALCULATE_TOTAL_INCOME_OF_TICKETS_TEXT << endl << SIX_TEXT << RETURN_BACK_TEXT << endl;
+		cout  << FIFE_TEXT << RETURN_BACK_TEXT << endl;
 
 		switch (_getch())
 		{
@@ -175,37 +175,8 @@ void manageTicketRecords(vector <Ticket>& tickets)
 			writeTicketsInFile(tickets);
 			break;
 
-		case '5': system("CLS");
-
-			int month;
-			int counter;
-			counter = 0;
-
-			cout << ENTER_MONTH_OF_SALE_TEXT;
-			cin >> month;
-
-			while (isMonthExist(month) == true)
-			{
-				cout << ENTER_CORRECT_MONTH_TEXT;
-				cin >> month;
-			}
-
-			if (calculateTotalIncome(tickets, month) == 0)
-			{
-				cout << NOT_SOLD_TICKETS_IN_MONTH_TEXT << endl;
-			}
-			else
-			{
-				viewTopOfSoldTickets(tickets, month);
-				cout << TOTAL_INCOME_OF_TICKETS_TEXT << calculateTotalIncome(tickets, month) << endl;
-			}
-		
-			system("pause");
+		case '5': flag = false;
 			break;
-
-		case '6': flag = false;
-			break;
-
 		}
 	}
 }

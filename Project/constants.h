@@ -32,7 +32,7 @@ const string SYSTEM_ACCESS_TEXT = "Система будет доступна после одобрения вашей 
 
 //Sign in
 const string ACCOUNT_NOT_EXIT_TEXT = "Аккаунт не существует! Пожалуйста, проверьте логин и пароль.";
-const string WAITNG_STATUS_TEXT = "Ваша заявка не регистрацию еще не одобрена администратором!";
+const string WAITNG_STATUS_TEXT = "Ваша заявка на регистрацию еще не одобрена администратором!";
 const string BLOCKED_STATUS_TEXT = "Ваш аккаунт заблокирован администратором!";
 
 //User menu
@@ -128,7 +128,7 @@ const string ENTER_NUMBER_OF_RECORD_TEXT = "Введите номер записи: ";
 const string VALIDATE_DELATION_OF_RECORD_TEXT = "Вы действительно хотите удалить запись?";
 const string RECORD_IS_DELETED_TEXT = "Запись удалена!";
 const string BEYOND_THE_VECTOR_OF_TICKETS_TEXT = "Запись с таким номером не существует! Пожалуйста, введите корректный номер";
-const string NOT_SOLD_TICKETS_IN_MONTH_TEXT = "Нет проданных проездных билетов в указанный месяц!";
+const string NOT_SOLD_TICKETS_IN_MONTH_TEXT = "Нет проданных проездных билетов в указанный месяц и год!";
 
 //Editing tickets records
 const string EDIT_RECORD_TEXT = "1) Выбрать запись";

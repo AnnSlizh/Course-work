@@ -72,13 +72,12 @@ void readTicketsFromFile(vector <Ticket>& tickets)
 	if (!file.is_open())
 	{
 		file.open(TICKETS_FILE_NAME, ios::out);
-		cout << TICKETS_NOT_EXIST_TEXT << endl;
-		system("pause");
 		file.close();
 	}
 	else
 	{
-		if (file.peek() != ifstream::traits_type::eof()) {
+		if (file.peek() != ifstream::traits_type::eof()) 
+		{
 			while (!file.eof())
 			{
 				int type;

@@ -12,7 +12,7 @@ void serchTicketRecord(vector <Ticket>& tickets)
 		system("CLS");
 		viewTicketsRecords(tickets);
 
-		cout << SEARCH_BY_YEAR_TEXT << endl << SEARCH_BY_TYPE_OF_TRANSPORT_TEXT << endl;
+		cout << endl << SEARCH_BY_YEAR_TEXT << endl << SEARCH_BY_TYPE_OF_TRANSPORT_TEXT << endl;
 		cout << SEARCH_BY_SOLD_TICKETS_TEXT << endl << FOUR_TEXT << RETURN_BACK_TEXT << endl;
 
 		int typeOfTransport;
@@ -184,8 +184,9 @@ void sortTicketsRecords(vector <Ticket>& tickets)
 		{
 			viewTicketsRecords(tickets);
 
-			cout << SORT_BY_TYPE_OF_TRANSPORT_TEXT << endl << SORT_BY_COST_OF_TICKET_TEXT << endl;
-			cout << SORT_BY_YEAR_TEXT << endl << SEARCH_TEXT << endl << FIFE_TEXT << RETURN_BACK_TEXT << endl;
+			cout << endl << SORT_BY_TYPE_OF_TRANSPORT_TEXT << endl << SORT_BY_COST_OF_TICKET_TEXT << endl;
+			cout << SORT_BY_YEAR_TEXT << endl << SEARCH_TEXT << endl << CALCULATE_TOTAL_INCOME_OF_TICKETS_TEXT << endl;
+			cout << SIX_TEXT << RETURN_BACK_TEXT << endl;
 
 			switch (_getch())
 			{
@@ -201,7 +202,46 @@ void sortTicketsRecords(vector <Ticket>& tickets)
 			case '4': serchTicketRecord(tickets);
 				break;
 
-			case '5': flag = false;
+			case '5': system("CLS");
+
+				int month, year;
+				int counter;
+				counter = 0;
+
+				cout << ENTER_MONTH_OF_SALE_TEXT;
+				cin >> month;
+
+				while (isMonthExist(month) == true)
+				{
+					cout << ENTER_CORRECT_MONTH_TEXT;
+					cin >> month;
+				}
+
+				cout << ENTER_YEAR_OF_SALES_TEXT;
+				cin >> year;
+
+				while (isYearExist(year) == true)
+				{
+					cout << ENTER_YEAR_OF_SALES_TEXT;
+					cin >> year;
+				}
+
+				cout << endl;
+
+				if (calculateTotalIncome(tickets, month, year) == 0)
+				{
+					cout << NOT_SOLD_TICKETS_IN_MONTH_TEXT << endl;
+				}
+				else
+				{
+					viewTopOfSoldTickets(tickets, month, year);
+					cout << endl << TOTAL_INCOME_OF_TICKETS_TEXT << calculateTotalIncome(tickets, month, year) << endl;
+				}
+
+				system("pause");
+				break;
+
+			case '6': flag = false;
 				break;
 			}
 		}
@@ -503,7 +543,7 @@ void editTicketRecord(vector <Ticket>& tickets)
 	}
 }
 
-double calculateTotalIncome(vector <Ticket>& tickets, int month) // Income - доход
+double calculateTotalIncome(vector <Ticket>& tickets, int month, int year) // Income - доход
 {
 	double totalIncome = startingTotalIncome;
 
@@ -512,7 +552,7 @@ double calculateTotalIncome(vector <Ticket>& tickets, int month) // Income - дох
 
 	for (int i = 0; i < tickets.size(); i++)
 	{
-		if (tickets[i].month == month)
+		if (tickets[i].month == month && tickets[i].year == year)
 		{
 			costOfTicket = tickets[i].costOfTicket;
 			numberOfSoldTickets = tickets[i].soldTickets;
@@ -524,7 +564,7 @@ double calculateTotalIncome(vector <Ticket>& tickets, int month) // Income - дох
 	return totalIncome;
 }
 
-void viewTopOfSoldTickets(vector <Ticket>& tickets, int month)
+void viewTopOfSoldTickets(vector <Ticket>& tickets, int month, int year)
 {
 	sort(tickets.begin(), tickets.end(), compareBySoldTickets);
 
@@ -534,10 +574,10 @@ void viewTopOfSoldTickets(vector <Ticket>& tickets, int month)
 
 	for (int i = 0; i < tickets.size(); i++)
 	{
-		if (tickets[i].month == month)
+		if (tickets[i].month == month && tickets[i].year == year)
 		{
 			cout << i << setw(18);
-			printTransportType(i);
+			printTransportType(tickets[i].type);
 			cout << setw(10) << tickets[i].month << setw(12) << tickets[i].year << setw(15);
 			cout << tickets[i].costOfTicket << setw(15) << tickets[i].soldTickets << endl;
 		}
@@ -592,8 +632,8 @@ void viewOneTicketRecord(vector <Ticket>& tickets, int numberOfRecord)
 	cout << YEAR_OF_SALES_TEXT << setw(18) << COST_OF_TICKET_TEXT << setw(25) << NUMBER_OF_SALE_TICKETS_TEXT << endl;
 	cout << BORDER_OF_TICKETS_TABLE_TEXT << endl;
 
-	cout << numberOfRecord << setw(18);
-	printTransportType(numberOfRecord);;
+	cout << numberOfRecord << setw(18); 
+	printTransportType(tickets[numberOfRecord].type);
 	cout << setw(10) << tickets[numberOfRecord].month << setw(12) << tickets[numberOfRecord].year << setw(15);
 	cout << tickets[numberOfRecord].costOfTicket << setw(15) << tickets[numberOfRecord].soldTickets << endl;
 }

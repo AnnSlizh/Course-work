@@ -51,6 +51,7 @@ void registerNewUser(vector <User>& users)
 	newUser.status = Status::WAITING;
 
 	users.push_back(newUser);
+	writeUsersInFile(users);
 
 	system("CLS");
 
@@ -124,7 +125,7 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 	
 	if (isAccountWaiting(userAccount.status, users) == true) 
 	{
-		cout << WAITNG_STATUS_TEXT << endl;
+		cout << endl << WAITNG_STATUS_TEXT << endl;
 		system("pause");
 	}
 	else if (isAccountBlocked(userAccount.status, users) == true)
