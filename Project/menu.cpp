@@ -238,10 +238,9 @@ void manageAccounts(User userAccount, vector <User>& users)
 					cout << endl << ENTER_ID_OF_ACCOUNT_TEXT;
 					cin >> idOfAccount;
 
-					while (idOfAccount >= users.size())
+					while (isCorrectValue(idOfAccount) || isNegativeValue(idOfAccount) || idOfAccount >= users.size())
 					{
-						cout << BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT << endl;
-						cout << ENTER_ID_OF_ACCOUNT_TEXT;
+						cout << BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT << endl << ENTER_ID_OF_ACCOUNT_TEXT;
 						cin >> idOfAccount;
 					}
 
@@ -286,10 +285,9 @@ void manageAccounts(User userAccount, vector <User>& users)
 					cout << endl << ENTER_ID_OF_ACCOUNT_TEXT;
 					cin >> idOfAccount;
 
-					while (idOfAccount >= users.size())
+					while (isCorrectValue(idOfAccount) || isNegativeValue(idOfAccount) || idOfAccount >= users.size())
 					{
-						cout << BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT << endl;
-						cout << ENTER_ID_OF_ACCOUNT_TEXT;
+						cout << BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT << endl << ENTER_ID_OF_ACCOUNT_TEXT;
 						cin >> idOfAccount;
 					}
 
@@ -378,6 +376,13 @@ void addNewAccount(vector <User>& users)
 	cout << ROLE_USER_TEXT << endl;
 	cout << ENTER_ROLE_OF_ACCOUNT_TEXT;
 	cin >> role;
+
+	while (isCorrectValue(role) || isNegativeValue(role) || role < Role::ADMIN || role > Role::USER)
+	{
+		cout << NOT_CORRECT_ROLE_TEXT << endl << ENTER_ROLE_OF_ACCOUNT_TEXT;
+		cin >> role;
+	}
+
 	newAccount.role = static_cast<Role>(role);
 	newAccount.status = Status::ACTIVE;
 
@@ -399,7 +404,7 @@ void editAccount(vector <User>& users, User userAccount)
 		cout << CHANGE_STATUS_TEXT << endl;
 		cout << THREE_TEXT << RETURN_BACK_TEXT << endl;
 
-		int idOfAcccount;
+		int idOfAccount;
 
 		switch (_getch())
 		{
@@ -414,23 +419,36 @@ void editAccount(vector <User>& users, User userAccount)
 			else
 			{
 				cout << ENTER_ID_OF_ACCOUNT_TEXT;
-				cin >> idOfAcccount;
+				cin >> idOfAccount;
 
-				if (users[idOfAcccount].role == Role::MAIN_ADMIN)
+				while (isCorrectValue(idOfAccount) || isNegativeValue(idOfAccount) || idOfAccount >= users.size())
+				{
+					cout << BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT << endl << ENTER_ID_OF_ACCOUNT_TEXT;
+					cin >> idOfAccount;
+				}
+
+				if (users[idOfAccount].role == Role::MAIN_ADMIN)
 				{
 					system("CLS");
 					cout << NOT_CHANGE_ROLE_MAIN_ADMIN_TEXT << endl;
 					system("pause");
 					break;
 				}
-				else if (users[idOfAcccount].role == Role::USER)
+				else if (users[idOfAccount].status == Status::WAITING)
 				{
-					users[idOfAcccount].role = Role::ADMIN;
+					system("CLS");
+					cout << NOT_CHANGE_ROLE_OF_WAITING_ACCOUNT_TEXT << endl;
+					system("pause");
+					break;
+				}
+				else if (users[idOfAccount].role == Role::USER)
+				{
+					users[idOfAccount].role = Role::ADMIN;
 					break;
 				}
 				else
 				{
-					users[idOfAcccount].role = Role::USER;
+					users[idOfAccount].role = Role::USER;
 					break;
 				}
 			}
@@ -438,59 +456,73 @@ void editAccount(vector <User>& users, User userAccount)
 
 		case '2':
 			cout << ENTER_ID_OF_ACCOUNT_TEXT;
-			cin >> idOfAcccount;
+			cin >> idOfAccount;
+
+			while (isCorrectValue(idOfAccount) || isNegativeValue(idOfAccount) || idOfAccount >= users.size())
+			{
+				cout << BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT << endl << ENTER_ID_OF_ACCOUNT_TEXT;
+				cin >> idOfAccount;
+			}
 
 			if (userAccount.role == Role::ADMIN)
 			{
-				if (users[idOfAcccount].role == Role::MAIN_ADMIN)
+				if (users[idOfAccount].role == Role::MAIN_ADMIN)
 				{
 					system("CLS");
 					cout << NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT << endl;
 					system("pause");
 				}
-				else if (users[idOfAcccount].role == Role::ADMIN)
+				else if (users[idOfAccount].role == Role::ADMIN)
 				{
 					system("CLS");
 						cout << NOT_CHANGE_STATUS_ADMIN_TEXT << endl;
 						system("pause");
 				}
+				else if (users[idOfAccount].status == Status::WAITING)
+				{
+					system("CLS");
+					cout << NOT_CHANGE_STATUS_OF_WAITING_ACCOUNT_TEXT << endl;
+					system("pause");
+					break;
+				}
+				else if (users[idOfAccount].status == Status::ACTIVE)
+				{
+					users[idOfAccount].status = Status::BLOCKED;
+					break;
+				}
 				else
 				{
-					if (users[idOfAcccount].status == Status::ACTIVE)
-					{
-						users[idOfAcccount].status = Status::BLOCKED;
-						break;
-					}
-					else
-					{
-						users[idOfAcccount].status = Status::ACTIVE;
-						break;
-					}
+					users[idOfAccount].status = Status::ACTIVE;
+					break;
 				}
+				
 			}
 			else
 			{
-				if (users[idOfAcccount].role == Role::MAIN_ADMIN)
+				if (users[idOfAccount].role == Role::MAIN_ADMIN)
 				{
 					system("CLS");
 					cout << NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT << endl;
 					system("pause");
 				}
+				else if (users[idOfAccount].status == Status::WAITING)
+				{
+					system("CLS");
+					cout << NOT_CHANGE_STATUS_OF_WAITING_ACCOUNT_TEXT << endl;
+					system("pause");
+					break;
+				}
+				else if(users[idOfAccount].status == Status::ACTIVE)
+				{
+					users[idOfAccount].status = Status::BLOCKED;
+					break;
+				}
 				else
 				{
-					if (users[idOfAcccount].status == Status::ACTIVE)
-					{
-						users[idOfAcccount].status = Status::BLOCKED;
-						break;
-					}
-					else
-					{
-						users[idOfAcccount].status = Status::ACTIVE;
-						break;
-					}
+					users[idOfAccount].status = Status::ACTIVE;
+					break;
 				}
 			}
-			
 			break;
 
 		case '3':

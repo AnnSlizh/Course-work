@@ -16,7 +16,7 @@ bool isTypeOfTransportExist(int type);
 bool isMonthExist(int month);
 bool isYearExist(int year);
 bool isCostOfTicketExist(double costOfTicket);
-bool isSoldTicketNegative(int soldTickets);
+bool isNegativeValue(int value);
 bool isCorrectValue(int value);
 void roleToString(int role);
 void statusToString(int status);

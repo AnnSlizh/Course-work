@@ -14,7 +14,7 @@ const int MAX_MONTH = 12;
 const int MIN_YEAR = 2000;
 const int MAX_YEAR = 2022;
 const int MIN_COST_OF_TICKET = 0;
-const int MIN_SOLD_TICKETS = 0;
+const int MIN_VALUE = 0;
 
 bool isLoginCorrect(string login)
 {
@@ -121,9 +121,9 @@ bool isCostOfTicketExist(double costOfTicket)
 	return false;
 }
 
-bool isSoldTicketNegative(int soldTickets)
+bool isNegativeValue(int value)
 {
-	if (soldTickets < MIN_SOLD_TICKETS)
+	if (value < MIN_VALUE)
 	{
 		return true;
 	}
@@ -135,7 +135,7 @@ bool isCorrectValue(int value)
 	while (cin.fail())
 	{
 		cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		return true;
 	}
 	return false;

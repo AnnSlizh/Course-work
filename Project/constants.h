@@ -38,12 +38,8 @@ const string BLOCKED_STATUS_TEXT = "Ваш аккаунт заблокирован администратором!";
 //User menu
 const string USER_MODE_TEXT = "Вы находитесь в режиме пользователя!";
 const string SYSTEM_TICKETS_SALES_TEXT = "1) Система продаж проездных билетов";
-const string USER_CHANGE_PASSWORD_TEXT = "2) Изменить пароль";
 const string EXIT_FROM_ACCOUNT_TEXT = "Выйти из аккаунта";
-const string ENTER_PASSWORD_FOR_CHANGE_TEXT = "Для изменения пароля введите свой текущий пароль: ";
-const string ENTER_NEW_PASSWORD_TEXT = "Введите новый пароль: ";
 const string PACCWORD_NOT_CORRECT_TEXT = "Некорректный ввод пароля! Пожалуйста, повторите попытку.";
-const string PASSWORD_CHANGE_NOT_AVALIABLE_TEXT = "Неправильный пароль был введен трижды. Изменение пароля недоступно!";
 
 //Admin menu
 const string MAIN_ADMIN_MODE_TEXT = "Вы находитесь в режиме главного администратора!";
@@ -75,13 +71,16 @@ const string ENTER_ID_OF_ACCOUNT_TEXT = "Введите ID аккаунта: ";
 const string NOT_CHANGE_ROLE_MAIN_ADMIN_TEXT= "Вы не можете изменить роль главного администратора!";
 const string NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT = "Вы не можете изменить статус главного администратора!";
 const string NOT_CHANGE_ROLE_TEXT = "Вы не можете изменить роль! Данная функция доступна главному администратору.";
+const string NOT_CHANGE_ROLE_OF_WAITING_ACCOUNT_TEXT = "Вы не можете изменить роль аккаунта со статусом Waiting!";
 const string NOT_CHANGE_STATUS_ADMIN_TEXT = "Вы не можете изменить статус администратора!";
+const string NOT_CHANGE_STATUS_OF_WAITING_ACCOUNT_TEXT = "Вы не можете изменить статус аккаунта со статусом Waiting!";
 const string NOT_DELETE_MAIN_ADMIN_TEXT = "Вы не можете удалить главного администратора! Пожалуйста, введите другой ID.";
 const string NOT_DELETE_ADMIN_TEXT = "Вы не можете удалить администратора! Пожалуйста, введите другой ID.";
 const string NOT_DELETE_WEITING_ACCOUNT_TEXT = "Вы не можете удалить аккаунт со статусом Waiting! Пожалуйста, введите другой ID.";
 const string VALIDATE_DELATION_OF_ACCOUNT_TEXT = "Вы действительно хотите удалить аккаунт?";
 const string ACOOUNT_IS_DELETED_TEXT = "Аккаунт удален!";
 const string BEYOND_THE_VECTOR_OF_ACCOUNTS_TEXT = "Аккаунт с таким ID не существует! Пожалуйста, введите корректный ID";
+const string NOT_CORRECT_ROLE_TEXT = "Неккоректный ввод роли аккаунта! Пожалуйста, проверьте номер роли.";
 
 //Application settings
 const string ACCEPT_APPLICATION_TEXT = "1) Принять заявку";

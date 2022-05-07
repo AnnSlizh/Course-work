@@ -126,7 +126,7 @@ void serchTicketRecord(vector <Ticket>& tickets)
 				cout << ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT; cin >> maxSoldTickets;
 			}
 
-			while (isSoldTicketNegative(minSoldTickets) == true || isSoldTicketNegative(maxSoldTickets) == true)
+			while (isNegativeValue(minSoldTickets) == true || isNegativeValue(maxSoldTickets) == true)
 			{
 				cout << NOT_COORECT_SALE_TICKETS_TEXT << endl;
 				cout << ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT; cin >> minSoldTickets;
@@ -345,7 +345,7 @@ void addNewTicketRecord(vector <Ticket>& tickets)
 		cin >> newTicketNote.soldTickets;
 	}
 
-	while (isSoldTicketNegative(newTicketNote.soldTickets))
+	while (isNegativeValue(newTicketNote.soldTickets))
 	{
 		cout << NOT_COORECT_SALE_TICKETS_TEXT << endl << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
 		cin >> newTicketNote.soldTickets;
@@ -524,7 +524,7 @@ void editTicketRecord(vector <Ticket>& tickets)
 			cout << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
 			cin >> newSoldTickets;
 
-			while (isSoldTicketNegative(newSoldTickets) == true)
+			while (isNegativeValue(newSoldTickets) == true)
 			{
 				cout << ENTER_CORRECT_MONTH_TEXT;
 				cin >> newSoldTickets;
