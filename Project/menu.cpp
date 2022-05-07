@@ -206,7 +206,7 @@ void manageAccounts(User userAccount, vector <User>& users)
 				break;
 
 			case '3': system("CLS");
-				editAccount(users);
+				editAccount(users, userAccount);
 				writeUsersInFile(users);
 				break;
 				
@@ -386,7 +386,7 @@ void addNewAccount(vector <User>& users)
 	cout << ACCOUNT_ADDED_TEXT << endl;
 }
 
-void editAccount(vector <User>& users)
+void editAccount(vector <User>& users, User userAccount)
 {
 	bool flag = true;
 	while (flag)
@@ -404,25 +404,35 @@ void editAccount(vector <User>& users)
 		switch (_getch())
 		{
 		case '1':
-			cout << ENTER_ID_OF_ACCOUNT_TEXT;
-			cin >> idOfAcccount;
-
-			if (users[idOfAcccount].role == Role::MAIN_ADMIN)
+			
+			if (userAccount.role == Role::ADMIN)
 			{
 				system("CLS");
-				cout << NOT_CHANGE_ROLE_MAIN_ADMIN_TEXT << endl;
+				cout << NOT_CHANGE_ROLE_TEXT << endl;
 				system("pause");
-				break;
-			}
-			else if (users[idOfAcccount].role == Role::USER)
-			{
-				users[idOfAcccount].role = Role::ADMIN;
-				break;
 			}
 			else
 			{
-				users[idOfAcccount].role = Role::USER;
-				break;
+				cout << ENTER_ID_OF_ACCOUNT_TEXT;
+				cin >> idOfAcccount;
+
+				if (users[idOfAcccount].role == Role::MAIN_ADMIN)
+				{
+					system("CLS");
+					cout << NOT_CHANGE_ROLE_MAIN_ADMIN_TEXT << endl;
+					system("pause");
+					break;
+				}
+				else if (users[idOfAcccount].role == Role::USER)
+				{
+					users[idOfAcccount].role = Role::ADMIN;
+					break;
+				}
+				else
+				{
+					users[idOfAcccount].role = Role::USER;
+					break;
+				}
 			}
 			break;
 
@@ -430,25 +440,57 @@ void editAccount(vector <User>& users)
 			cout << ENTER_ID_OF_ACCOUNT_TEXT;
 			cin >> idOfAcccount;
 
-			if (users[idOfAcccount].role == Role::MAIN_ADMIN)
+			if (userAccount.role == Role::ADMIN)
 			{
-				system("CLS");
-				cout << NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT << endl;
-				system("pause");
-			}
-			else
-			{
-				if (users[idOfAcccount].status == Status::ACTIVE)
+				if (users[idOfAcccount].role == Role::MAIN_ADMIN)
 				{
-					users[idOfAcccount].status = Status::BLOCKED;
-					break;
+					system("CLS");
+					cout << NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT << endl;
+					system("pause");
+				}
+				else if (users[idOfAcccount].role == Role::ADMIN)
+				{
+					system("CLS");
+						cout << NOT_CHANGE_STATUS_ADMIN_TEXT << endl;
+						system("pause");
 				}
 				else
 				{
-					users[idOfAcccount].status = Status::ACTIVE;
-					break;
+					if (users[idOfAcccount].status == Status::ACTIVE)
+					{
+						users[idOfAcccount].status = Status::BLOCKED;
+						break;
+					}
+					else
+					{
+						users[idOfAcccount].status = Status::ACTIVE;
+						break;
+					}
 				}
 			}
+			else
+			{
+				if (users[idOfAcccount].role == Role::MAIN_ADMIN)
+				{
+					system("CLS");
+					cout << NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT << endl;
+					system("pause");
+				}
+				else
+				{
+					if (users[idOfAcccount].status == Status::ACTIVE)
+					{
+						users[idOfAcccount].status = Status::BLOCKED;
+						break;
+					}
+					else
+					{
+						users[idOfAcccount].status = Status::ACTIVE;
+						break;
+					}
+				}
+			}
+			
 			break;
 
 		case '3':

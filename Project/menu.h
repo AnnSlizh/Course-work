@@ -20,4 +20,4 @@ void manageApplication(vector <User>& users);
 void acceptAplication(vector <User>& users);
 void deleteAccount(vector <User>& users, int idOfAccount);
 void viewAccounts(vector <User>& users);
-void editAccount(vector <User>& users);
+void editAccount(vector <User>& users, User userAccount);
