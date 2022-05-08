@@ -26,17 +26,21 @@ void serchTicketRecord(vector <Ticket>& tickets)
 			cout << ENTER_MIN_VALUE_OF_YEAR_TEXT; cin >> minYear;
 			cout << ENTER_MAX_VALUE_OF_YEAR_TEXT; cin >> maxYear;
 
-			while (isCorrectValue(minYear) || isCorrectValue(maxYear))
+			while (true)
 			{
-				cout << ENTER_COORECT_YEAR_TEXT << endl;
-				cout << ENTER_MIN_VALUE_OF_YEAR_TEXT; cin >> minYear;
-				cout << ENTER_MAX_VALUE_OF_YEAR_TEXT; cin >> maxYear;
-			}
-			while (isYearExist(minYear) == true || isYearExist(maxYear) == true)
-			{
-				cout << ENTER_COORECT_YEAR_TEXT << endl;
-				cout << ENTER_MIN_VALUE_OF_YEAR_TEXT; cin >> minYear;
-				cout << ENTER_MAX_VALUE_OF_YEAR_TEXT; cin >> maxYear;
+				if (isCorrectValue(minYear) || isCorrectValue(maxYear))
+				{
+					cout << ENTER_COORECT_YEAR_TEXT << endl;
+					cout << ENTER_MIN_VALUE_OF_YEAR_TEXT; cin >> minYear;
+					cout << ENTER_MAX_VALUE_OF_YEAR_TEXT; cin >> maxYear;
+				}
+				else if (isYearExist(minYear) || isYearExist(maxYear))
+				{
+					cout << ENTER_COORECT_YEAR_TEXT << endl;
+					cout << ENTER_MIN_VALUE_OF_YEAR_TEXT; cin >> minYear;
+					cout << ENTER_MAX_VALUE_OF_YEAR_TEXT; cin >> maxYear;
+				}
+				else break;
 			}
 
 			system("CLS");
@@ -76,7 +80,7 @@ void serchTicketRecord(vector <Ticket>& tickets)
 
 			cout << ENTER_TYPE_OF_TRANSPORT_TEXT; cin >> typeOfTransport;
 
-			while (isTypeOfTransportExist(typeOfTransport) == true)
+			while (isCorrectValue(typeOfTransport) || isTypeOfTransportExist(typeOfTransport))
 			{
 				cout << NOT_CORRECT_TYPE_OF_TRANSPORT_TEXT << endl;
 				cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
@@ -119,18 +123,21 @@ void serchTicketRecord(vector <Ticket>& tickets)
 			cout << ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT; cin >> minSoldTickets;
 			cout << ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT; cin >> maxSoldTickets;
 
-			while (isCorrectValue(minSoldTickets) == true || isCorrectValue(maxSoldTickets) == true)
+			while (true)
 			{
-				cout << NOT_COORECT_SALE_TICKETS_TEXT << endl;
-				cout << ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT; cin >> minSoldTickets;
-				cout << ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT; cin >> maxSoldTickets;
-			}
-
-			while (isNegativeValue(minSoldTickets) == true || isNegativeValue(maxSoldTickets) == true)
-			{
-				cout << NOT_COORECT_SALE_TICKETS_TEXT << endl;
-				cout << ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT; cin >> minSoldTickets;
-				cout << ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT; cin >> maxSoldTickets;
+				if (isCorrectValue(minSoldTickets) || isCorrectValue(maxSoldTickets))
+				{
+					cout << NOT_COORECT_SALE_TICKETS_TEXT << endl;
+					cout << ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT; cin >> minSoldTickets;
+					cout << ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT; cin >> maxSoldTickets;
+				}
+				else if (isNegativeValue(minSoldTickets) || isNegativeValue(maxSoldTickets))
+				{
+					cout << NOT_COORECT_SALE_TICKETS_TEXT << endl;
+					cout << ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT; cin >> minSoldTickets;
+					cout << ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT; cin >> maxSoldTickets;
+				}
+				else break;
 			}
 
 			system("CLS");
@@ -211,7 +218,7 @@ void sortTicketsRecords(vector <Ticket>& tickets)
 				cout << ENTER_MONTH_OF_SALE_TEXT;
 				cin >> month;
 
-				while (isMonthExist(month) == true)
+				while (isCorrectValue(month) || isMonthExist(month))
 				{
 					cout << ENTER_CORRECT_MONTH_TEXT;
 					cin >> month;
@@ -220,12 +227,11 @@ void sortTicketsRecords(vector <Ticket>& tickets)
 				cout << ENTER_YEAR_OF_SALES_TEXT;
 				cin >> year;
 
-				while (isYearExist(year) == true)
+				while (isCorrectValue(year) || isYearExist(year))
 				{
-					cout << ENTER_YEAR_OF_SALES_TEXT;
+					cout << ENTER_COORECT_YEAR_TEXT;
 					cin >> year;
 				}
-
 				cout << endl;
 
 				if (calculateTotalIncome(tickets, month, year) == 0)
@@ -245,7 +251,6 @@ void sortTicketsRecords(vector <Ticket>& tickets)
 				break;
 			}
 		}
-		
 	}
 }
 
@@ -264,7 +269,7 @@ void addNewTicketRecord(vector <Ticket>& tickets)
 	cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
 	cin >> digit;
 
-	while (isTypeOfTransportExist(digit) == true)
+	while (isCorrectValue(digit) || isTypeOfTransportExist(digit))
 	{
 		cout << NOT_CORRECT_TYPE_OF_TRANSPORT_TEXT << endl;
 		cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
@@ -295,12 +300,7 @@ void addNewTicketRecord(vector <Ticket>& tickets)
 	cout << ENTER_MONTH_OF_SALE_TEXT;
 	cin >> newTicketNote.month;
 
-	while (isCorrectValue(newTicketNote.month) == true)
-	{
-		cout << ENTER_CORRECT_MONTH_TEXT;
-		cin >> newTicketNote.month;
-	}
-	while (isMonthExist(newTicketNote.month) == true)
+	while (isCorrectValue(newTicketNote.month) || isMonthExist(newTicketNote.month))
 	{
 		cout << ENTER_CORRECT_MONTH_TEXT;
 		cin >> newTicketNote.month;
@@ -309,13 +309,7 @@ void addNewTicketRecord(vector <Ticket>& tickets)
 	cout << ENTER_YEAR_OF_SALES_TEXT;
 	cin >> newTicketNote.year;
 
-	while (isCorrectValue(newTicketNote.year) == true)
-	{
-		cout << ENTER_COORECT_YEAR_TEXT;
-		cin >> newTicketNote.year;
-	}
-
-	while (isYearExist(newTicketNote.year))
+	while (isCorrectValue(newTicketNote.year) || isYearExist(newTicketNote.year))
 	{
 		cout << ENTER_COORECT_YEAR_TEXT;
 		cin >> newTicketNote.year;
@@ -324,13 +318,7 @@ void addNewTicketRecord(vector <Ticket>& tickets)
 	cout << ENTER_COST_TICKET_TEXT;
 	cin >> newTicketNote.costOfTicket;
 
-	while (isCorrectValue(newTicketNote.costOfTicket) == true)
-	{
-		cout << NOT_COORECT_COST_OF_TIKCET_TEXT << endl << ENTER_COST_TICKET_TEXT;
-		cin >> newTicketNote.costOfTicket;
-	}
-
-	while (isCostOfTicketExist(newTicketNote.costOfTicket) )
+	while (isCorrectValue(newTicketNote.costOfTicket) || isCostOfTicketExist(newTicketNote.costOfTicket))
 	{
 		cout << NOT_COORECT_COST_OF_TIKCET_TEXT << endl << ENTER_COST_TICKET_TEXT;
 		cin >> newTicketNote.costOfTicket;
@@ -339,20 +327,13 @@ void addNewTicketRecord(vector <Ticket>& tickets)
 	cout << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
 	cin >> newTicketNote.soldTickets;
 
-	while (isCorrectValue(newTicketNote.soldTickets) == true)
-	{
-		cout << NOT_COORECT_SALE_TICKETS_TEXT << endl << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
-		cin >> newTicketNote.soldTickets;
-	}
-
-	while (isNegativeValue(newTicketNote.soldTickets))
+	while (isCorrectValue(newTicketNote.soldTickets) || isNegativeValue(newTicketNote.soldTickets))
 	{
 		cout << NOT_COORECT_SALE_TICKETS_TEXT << endl << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
 		cin >> newTicketNote.soldTickets;
 	}
 
 	tickets.push_back(newTicketNote);
-
 	cout << TICKET_RECORD_ADDED_TEXT << endl;
 }
 
@@ -387,7 +368,7 @@ void editTicketRecord(vector <Ticket>& tickets)
 			break;
 		}
 		
-		while (numberOfRecord >= tickets.size())
+		while (isCorrectValue(numberOfRecord) || isNegativeValue(numberOfRecord) || numberOfRecord >= tickets.size())
 		{
 			cout << BEYOND_THE_VECTOR_OF_TICKETS_TEXT << endl;
 			cout << ENTER_NUMBER_OF_RECORD_TEXT;
@@ -407,7 +388,7 @@ void editTicketRecord(vector <Ticket>& tickets)
 		case '1': system("CLS");
 			viewOneTicketRecord(tickets, numberOfRecord);
 
-			cout << ZERO_TEXT << BUS_TEXT << endl << ONE_TEXT << TRAM_TEXT << endl;
+			cout << endl << ZERO_TEXT << BUS_TEXT << endl << ONE_TEXT << TRAM_TEXT << endl;
 			cout << TWO_TEXT << TROLLEYBUS_TEXT << endl << THREE_TEXT << TRAIN_TEXT << endl;
 			cout << FOUR_TEXT << PLANE_TEXT << endl << FIFE_TEXT << SHIP_TEXT << endl;
 
@@ -416,7 +397,7 @@ void editTicketRecord(vector <Ticket>& tickets)
 			cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
 			cin >> newTypeOfTransport;
 
-			while (isTypeOfTransportExist(newTypeOfTransport) == true)
+			while (isCorrectValue(newTypeOfTransport) || isTypeOfTransportExist(newTypeOfTransport))
 			{
 				cout << NOT_CORRECT_TYPE_OF_TRANSPORT_TEXT << endl;
 				cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
@@ -455,10 +436,10 @@ void editTicketRecord(vector <Ticket>& tickets)
 
 			int newMonth;
 
-			cout << ENTER_MONTH_OF_SALE_TEXT;
+			cout << endl << ENTER_MONTH_OF_SALE_TEXT;
 			cin >> newMonth;
 			
-			while (isMonthExist(newMonth) == true)
+			while (isCorrectValue(newMonth) || isMonthExist(newMonth))
 			{
 				cout << ENTER_CORRECT_MONTH_TEXT;
 				cin >> newMonth;
@@ -477,10 +458,10 @@ void editTicketRecord(vector <Ticket>& tickets)
 
 			int newYear;
 
-			cout << ENTER_YEAR_OF_SALES_TEXT;
+			cout << endl << ENTER_YEAR_OF_SALES_TEXT;
 			cin >> newYear;
 
-			while (isYearExist(newYear) == true)
+			while (isCorrectValue(newYear) || isYearExist(newYear))
 			{
 				cout << ENTER_CORRECT_MONTH_TEXT;
 				cin >> newYear;
@@ -499,13 +480,13 @@ void editTicketRecord(vector <Ticket>& tickets)
 
 			int newCostOfTicket;
 
-			cout << ENTER_COST_TICKET_TEXT;
+			cout << endl << ENTER_COST_TICKET_TEXT;
 			cin >> newCostOfTicket;
 
-			while (isCostOfTicketExist(newCostOfTicket) == true)
+			while (isCorrectValue(newCostOfTicket) || isCostOfTicketExist(newCostOfTicket))
 			{
 				cout << ENTER_CORRECT_MONTH_TEXT;
-				cin >> newCostOfTicket;
+				cin >> newCostOfTicket;;
 			}
 
 			tickets[numberOfRecord].costOfTicket = newCostOfTicket;
@@ -521,10 +502,10 @@ void editTicketRecord(vector <Ticket>& tickets)
 
 			int newSoldTickets;
 
-			cout << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
+			cout << endl << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
 			cin >> newSoldTickets;
 
-			while (isNegativeValue(newSoldTickets) == true)
+			while (isCorrectValue(newSoldTickets) || isNegativeValue(newSoldTickets))
 			{
 				cout << ENTER_CORRECT_MONTH_TEXT;
 				cin >> newSoldTickets;

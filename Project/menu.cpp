@@ -583,11 +583,20 @@ void manageApplication(vector <User>& users)
 			cout << ENTER_ID_OF_APPLICATION;
 			cin >> numberOfApplication;
 
-			while (users[numberOfApplication].status != Status::WAITING)
+			while (true)
 			{
-				cout << NOT_CORRECT_ID_TEXT << endl;
-				cout << ENTER_ID_OF_APPLICATION;
-				cin >> numberOfApplication;
+				if (isCorrectValue(numberOfApplication) || isNegativeValue(numberOfApplication) || numberOfApplication >= users.size())
+				{
+					cout << NOT_CORRECT_ID_TEXT << endl << ENTER_ID_OF_APPLICATION;
+					cin >> numberOfApplication;
+				}
+				else if (users[numberOfApplication].status != Status::WAITING)
+				{
+					cout << NOT_CORRECT_ID_TEXT << endl;
+					cout << ENTER_ID_OF_APPLICATION;
+					cin >> numberOfApplication;
+				}
+				else break;
 			}
 
 			system("CLS");
@@ -610,11 +619,20 @@ void acceptAplication(vector <User>& users)
 	cout << ENTER_ID_OF_APPLICATION;
 	cin >> numberOfApplication;
 
-	while (users[numberOfApplication].status != Status::WAITING)
+	while (true)
 	{
-		cout << NOT_CORRECT_ID_TEXT << endl;
-		cout << ENTER_ID_OF_APPLICATION;
-		cin >> numberOfApplication;
+		if (isCorrectValue(numberOfApplication) || isNegativeValue(numberOfApplication) || numberOfApplication >= users.size())
+		{
+			cout << NOT_CORRECT_ID_TEXT << endl << ENTER_ID_OF_APPLICATION;
+			cin >> numberOfApplication;
+		}
+		else if (users[numberOfApplication].status != Status::WAITING)
+		{
+			cout << NOT_CORRECT_ID_TEXT << endl;
+			cout << ENTER_ID_OF_APPLICATION;
+			cin >> numberOfApplication;
+		}
+		else break;
 	}
 
 	system("CLS");
