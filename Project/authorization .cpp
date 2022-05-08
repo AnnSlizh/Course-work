@@ -89,23 +89,36 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 	{   
 		if (isAccountExist(userAccount.login, hashPassword, users) == false)
 		{
-			cout << endl << ACCOUNT_NOT_EXIT_TEXT << endl;
-			cout << ENTER_LOGIN_TEXT;
-			cin >> userAccount.login;
+			system("CLS");
+			cout << ACCOUNT_NOT_EXIT_TEXT << endl;
+			cout << SIGN_IN_TEXT << endl << TWO_TEXT << RETURN_BACK_TEXT << endl;
 
-			cout << ENTER_PASSWORD_TEXT;
-			password.erase();
-			hashPassword.erase();
-
-			passwordTemp = _getch();
-			while (passwordTemp != ENTER) //character 13 is enter
+			switch (_getch())
 			{
-				password.push_back(passwordTemp);
-				cout << '*';
-				passwordTemp = _getch();
-			}
-			hashPassword = md5(password);
+			case '1': system("CLS");
+				cout << AUTHORIZATION_IN_SYSTEM_TEXT << endl;
+				cout << ENTER_LOGIN_TEXT;
+				cin >> userAccount.login;
 
+				cout << ENTER_PASSWORD_TEXT;
+				password.erase();
+				hashPassword.erase();
+
+				passwordTemp = _getch();
+				while (passwordTemp != ENTER) //character 13 is enter
+				{
+					password.push_back(passwordTemp);
+					cout << '*';
+					passwordTemp = _getch();
+				}
+				hashPassword = md5(password);
+
+				break;
+
+			case '2': flag = false;
+				break;
+
+			}	
 		}
 		else
 		{
