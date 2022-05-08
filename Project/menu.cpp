@@ -155,7 +155,7 @@ void manageTicketRecords(vector <Ticket>& tickets)
 			cout << endl << ENTER_NUMBER_OF_RECORD_TEXT;
 			cin >> numberOfRecord;
 
-			while ( numberOfRecord >= tickets.size())
+			while ( isCorrectValue(numberOfRecord) || isNegativeValue(numberOfRecord) || numberOfRecord >= tickets.size())
 			{
 				cout << BEYOND_THE_VECTOR_OF_TICKETS_TEXT << endl;
 				cout << ENTER_NUMBER_OF_RECORD_TEXT;
