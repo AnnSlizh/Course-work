@@ -438,7 +438,7 @@ void editTicketRecord(vector <Ticket>& tickets)
 
 			while (isCorrectValue(newYear) || isYearExist(newYear))
 			{
-				cout << ENTER_CORRECT_MONTH_TEXT;
+				cout << ENTER_COORECT_YEAR_TEXT;
 				cin >> newYear;
 			}
 
@@ -460,7 +460,8 @@ void editTicketRecord(vector <Ticket>& tickets)
 
 			while (isCorrectValue(newCostOfTicket) || isCostOfTicketExist(newCostOfTicket))
 			{
-				cout << ENTER_CORRECT_MONTH_TEXT;
+				cout << NOT_COORECT_COST_OF_TIKCET_TEXT << endl;
+				cout << ENTER_COST_TICKET_TEXT;
 				cin >> newCostOfTicket;;
 			}
 
@@ -482,7 +483,8 @@ void editTicketRecord(vector <Ticket>& tickets)
 
 			while (isCorrectValue(newSoldTickets) || isNegativeValue(newSoldTickets))
 			{
-				cout << ENTER_CORRECT_MONTH_TEXT;
+				cout << NOT_COORECT_SALE_TICKETS_TEXT << endl;
+				cout << ENTER_NUMBER_OF_SALE_TICKETS_TEXT;
 				cin >> newSoldTickets;
 			}
 
