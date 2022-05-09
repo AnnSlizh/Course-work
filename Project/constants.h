@@ -68,6 +68,7 @@ const string CHOCE_ACTION_TEXT = "Выберите действие:";
 const string CHANGE_ROLE_TEXT = "1) Изменить роль";
 const string CHANGE_STATUS_TEXT = "2) Изменить статус";
 const string ENTER_ID_OF_ACCOUNT_TEXT = "Введите ID аккаунта: ";
+const string NOT_ADD_NEW_ACCOUNT_TEXT = "Вы не можете добавить админстратора! Данная функция доступна главному администратору.";
 const string NOT_CHANGE_ROLE_MAIN_ADMIN_TEXT= "Вы не можете изменить роль главного администратора!";
 const string NOT_CHANGE_STATUS_MAIN_ADMIN_TEXT = "Вы не можете изменить статус главного администратора!";
 const string NOT_CHANGE_ROLE_TEXT = "Вы не можете изменить роль! Данная функция доступна главному администратору.";
@@ -154,15 +155,10 @@ const string SEARCH_TEXT = "4) Поиск";
 const string SEARCH_BY_YEAR_TEXT = "1) Поиск по году продажи билетов";
 const string SEARCH_BY_TYPE_OF_TRANSPORT_TEXT = "2) Поиск по виду транспорта";
 const string SEARCH_BY_SOLD_TICKETS_TEXT = "3) Поиск по количеству проданных билетов";
-const string ENTER_MIN_VALUE_OF_YEAR_TEXT = "Введите min год для поиска: ";
-const string ENTER_MAX_VALUE_OF_YEAR_TEXT = "Введите max год для поиска: ";
-const string ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT = "Введите min количество проданных билетов: ";
-const string ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT = "Введите max количество проданных билетов: ";
-const string INFORMATION_OF_SEARCH_BY_YEAR_TEXT = "Информация о проездных билетах, проданных с ";
-const string TO_TEXT = " до ";
-const string YEAR_TEXT = " год";
+const string INFORMATION_OF_SEARCH_BY_YEAR_TEXT = "Информация о проездных билетах, проданных в  ";
+const string YEAR_TEXT = " году";
 const string INFORMATION_OF_SEARCH_BY_TYPE_OF_TRANSPORT_TEXT = "Информация о проездных билетах, проданных для вида транспорта ";
-const string INFORMATION_OF_SEARCH_BY_SOLD_TICKETS_TEXT = "Информация о проездных билетах, проданных в количестве от ";
+const string INFORMATION_OF_SEARCH_BY_SOLD_TICKETS_TEXT = "Информация о проездных билетах, проданных в количестве ";
 const string NOT_INDORMATION_OF_SEARCH_TEXT = "Нет информации по данному поиску!";
 
 //Numbering

@@ -21,30 +21,18 @@ void serchTicketRecord(vector <Ticket>& tickets)
 		switch (_getch())
 		{
 		case '1': system("CLS");
-			int minYear, maxYear;
+			int year;
 
-			cout << ENTER_MIN_VALUE_OF_YEAR_TEXT; cin >> minYear;
-			cout << ENTER_MAX_VALUE_OF_YEAR_TEXT; cin >> maxYear;
-
-			while (true)
+			cout << ENTER_YEAR_OF_SALES_TEXT; cin >> year;
+		
+			while (isCorrectValue(year) || isYearExist(year))
 			{
-				if (isCorrectValue(minYear) || isCorrectValue(maxYear))
-				{
-					cout << ENTER_COORECT_YEAR_TEXT << endl;
-					cout << ENTER_MIN_VALUE_OF_YEAR_TEXT; cin >> minYear;
-					cout << ENTER_MAX_VALUE_OF_YEAR_TEXT; cin >> maxYear;
-				}
-				else if (isYearExist(minYear) || isYearExist(maxYear))
-				{
-					cout << ENTER_COORECT_YEAR_TEXT << endl;
-					cout << ENTER_MIN_VALUE_OF_YEAR_TEXT; cin >> minYear;
-					cout << ENTER_MAX_VALUE_OF_YEAR_TEXT; cin >> maxYear;
-				}
-				else break;
+				cout << ENTER_COORECT_YEAR_TEXT;
+				cin >> year;
 			}
-
+				
 			system("CLS");
-			cout << INFORMATION_OF_SEARCH_BY_YEAR_TEXT << minYear << TO_TEXT << maxYear << YEAR_TEXT << endl << endl;
+			cout << INFORMATION_OF_SEARCH_BY_YEAR_TEXT << year << YEAR_TEXT << endl << endl;
 
 			cout << TICKET_NUMBER_TEXT << setw(20) << TYPE_OF_TRANSPORT_TEXT << setw(10) << MONTH_OF_SALES_TEXT << setw(10);
 			cout << YEAR_OF_SALES_TEXT << setw(18) << COST_OF_TICKET_TEXT << setw(25) << NUMBER_OF_SALE_TICKETS_TEXT << endl;
@@ -52,7 +40,7 @@ void serchTicketRecord(vector <Ticket>& tickets)
 
 			for (int i = 0; i < tickets.size(); i++)
 			{
-				if (tickets[i].year >= minYear && tickets[i].year <= maxYear)
+				if (tickets[i].year == year)
 				{
 					typeOfTransport = tickets[i].type;
 
@@ -83,8 +71,7 @@ void serchTicketRecord(vector <Ticket>& tickets)
 			while (isCorrectValue(typeOfTransport) || isTypeOfTransportExist(typeOfTransport))
 			{
 				cout << NOT_CORRECT_TYPE_OF_TRANSPORT_TEXT << endl;
-				cout << ENTER_TYPE_OF_TRANSPORT_TEXT;
-				cin >> typeOfTransport;
+				cout << ENTER_TYPE_OF_TRANSPORT_TEXT; cin >> typeOfTransport;
 			}
 
 			system("CLS");
@@ -118,30 +105,18 @@ void serchTicketRecord(vector <Ticket>& tickets)
 			break;
 
 		case '3': system("CLS");
-			int minSoldTickets, maxSoldTickets;
+			int soldTickets;
 
-			cout << ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT; cin >> minSoldTickets;
-			cout << ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT; cin >> maxSoldTickets;
+			cout << ENTER_NUMBER_OF_SALE_TICKETS_TEXT; cin >> soldTickets;
 
-			while (true)
+			while (isCorrectValue(soldTickets) || isNegativeValue(soldTickets))
 			{
-				if (isCorrectValue(minSoldTickets) || isCorrectValue(maxSoldTickets))
-				{
-					cout << NOT_COORECT_SALE_TICKETS_TEXT << endl;
-					cout << ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT; cin >> minSoldTickets;
-					cout << ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT; cin >> maxSoldTickets;
-				}
-				else if (isNegativeValue(minSoldTickets) || isNegativeValue(maxSoldTickets))
-				{
-					cout << NOT_COORECT_SALE_TICKETS_TEXT << endl;
-					cout << ENTER_MIN_VALUE_OF_SOlD_TICKETS_TEXT; cin >> minSoldTickets;
-					cout << ENTER_MAX_VALUE_OF_SOlD_TICKETS_TEXT; cin >> maxSoldTickets;
-				}
-				else break;
+				cout << NOT_COORECT_SALE_TICKETS_TEXT << endl;
+				cout << ENTER_NUMBER_OF_SALE_TICKETS_TEXT; cin >> soldTickets;
 			}
 
 			system("CLS");
-			cout << INFORMATION_OF_SEARCH_BY_SOLD_TICKETS_TEXT << minSoldTickets << TO_TEXT << maxSoldTickets << endl << endl;
+			cout << INFORMATION_OF_SEARCH_BY_SOLD_TICKETS_TEXT << soldTickets << endl << endl;
 
 			cout << TICKET_NUMBER_TEXT << setw(20) << TYPE_OF_TRANSPORT_TEXT << setw(10) << MONTH_OF_SALES_TEXT << setw(10);
 			cout << YEAR_OF_SALES_TEXT << setw(18) << COST_OF_TICKET_TEXT << setw(25) << NUMBER_OF_SALE_TICKETS_TEXT << endl;
@@ -149,7 +124,7 @@ void serchTicketRecord(vector <Ticket>& tickets)
 
 			for (int i = 0; i < tickets.size(); i++)
 			{
-				if (tickets[i].soldTickets >= minSoldTickets && tickets[i].soldTickets <= maxSoldTickets)
+				if (tickets[i].soldTickets == soldTickets )
 				{
 					typeOfTransport = tickets[i].type;
 

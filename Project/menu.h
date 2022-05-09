@@ -14,7 +14,7 @@ void menuOfAuthorization(vector <User>& users, vector <Ticket>& tickets);
 void userMode(User userAccount, vector <User>& users, vector <Ticket>& tickets);
 void adminMode(User userAccount, vector <User>& users, vector <Ticket>& tickets);
 void manageTicketRecords(vector <Ticket>& tickets);
-void addNewAccount(vector <User>& users);
+void addNewAccount(vector <User>& users, User userAccount);
 void manageAccounts(User userAccount, vector <User>& users);
 void manageApplication(vector <User>& users);
 void acceptAplication(vector <User>& users);

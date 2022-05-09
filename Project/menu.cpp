@@ -200,7 +200,7 @@ void manageAccounts(User userAccount, vector <User>& users)
 			break;
 
 			case '2': system("CLS");
-				addNewAccount(users);
+				addNewAccount(users, userAccount);
 				writeUsersInFile(users);
 				system("pause");
 				break;
@@ -334,7 +334,7 @@ void manageAccounts(User userAccount, vector <User>& users)
 	}
 }
 
-void addNewAccount(vector <User>& users)
+void addNewAccount(vector <User>& users, User userAccount)
 {
 	User newAccount;
 	int role;
@@ -372,15 +372,30 @@ void addNewAccount(vector <User>& users)
 
 	newAccount.password = md5(password);
 
-	cout << endl << ROLE_ADMIN_TEXT << endl;
-	cout << ROLE_USER_TEXT << endl;
-	cout << ENTER_ROLE_OF_ACCOUNT_TEXT;
-	cin >> role;
-
-	while (isCorrectValue(role) || isNegativeValue(role) || role < Role::ADMIN || role > Role::USER)
+	if (userAccount.role == Role::ADMIN)
 	{
-		cout << NOT_CORRECT_ROLE_TEXT << endl << ENTER_ROLE_OF_ACCOUNT_TEXT;
+		cout << endl << ROLE_USER_TEXT << endl;
+		cout << ENTER_ROLE_OF_ACCOUNT_TEXT;
 		cin >> role;
+
+		while (isCorrectValue(role) || isNegativeValue(role) || role <= Role::ADMIN || role > Role::USER)
+		{
+			cout << NOT_CORRECT_ROLE_TEXT << endl << ENTER_ROLE_OF_ACCOUNT_TEXT;
+			cin >> role;
+		}
+	}
+	else
+	{
+		cout << endl << ROLE_ADMIN_TEXT << endl;
+		cout << ROLE_USER_TEXT << endl;
+		cout << ENTER_ROLE_OF_ACCOUNT_TEXT;
+		cin >> role;
+
+		while (isCorrectValue(role) || isNegativeValue(role) || role < Role::ADMIN || role > Role::USER)
+		{
+			cout << NOT_CORRECT_ROLE_TEXT << endl << ENTER_ROLE_OF_ACCOUNT_TEXT;
+			cin >> role;
+		}
 	}
 
 	newAccount.role = static_cast<Role>(role);
