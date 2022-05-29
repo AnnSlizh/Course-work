@@ -84,10 +84,20 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 	
 	hashPassword = md5(password);
 
+
+	for (int i = 0; i < users.size(); i++)
+	{
+		if (userAccount.login == users[i].login && userAccount.password == users[i].password)
+		{
+			userAccount.status = users[i].status;
+			userAccount.role = users[i].role;
+		}
+	}
+
 	bool flag = true;
 	while (flag)
 	{   
-		if (isAccountExist(userAccount.login, hashPassword, users) == false)
+		if (!isAccountExist(userAccount.login, hashPassword, users) && !isAccountWaiting(userAccount.status, users) && !isAccountBlocked(userAccount.status, users))
 		{
 			system("CLS");
 			cout << ACCOUNT_NOT_EXIT_TEXT << endl;
@@ -129,13 +139,13 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 
 	for (int i = 0; i < users.size(); i++)
 	{
-		if (userAccount.login == users[i].login)
+		if (userAccount.login == users[i].login && userAccount.password == users[i].password)
 		{
 			userAccount.status = users[i].status;
 			userAccount.role = users[i].role;
 		}
 	}
-	
+
 	if (isAccountWaiting(userAccount.status, users) == true) 
 	{
 		cout << endl << WAITNG_STATUS_TEXT << endl;
@@ -143,7 +153,7 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 	}
 	else if (isAccountBlocked(userAccount.status, users) == true)
 	{
-		cout << BLOCKED_STATUS_TEXT << endl;
+		cout << endl << BLOCKED_STATUS_TEXT << endl;
 		system("pause");
 	}
 	else
@@ -157,7 +167,6 @@ void signInAccount(vector <User>& users, vector <Ticket>& tickets)
 			adminMode(userAccount, users, tickets);
 		}
 	}
-	
 }
 
 

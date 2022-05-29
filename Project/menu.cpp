@@ -56,7 +56,7 @@ void userMode(User userAccount, vector <User>& users, vector <Ticket>& tickets)
 
 		case '1': system("CLS");
 			sortTicketsRecords(tickets);
-			//writeTicketsInFile(tickets);
+			writeTicketsInFile(tickets);
 			break;
 
 		case '2': system("CLS");
@@ -269,14 +269,14 @@ void manageAccounts(User userAccount, vector <User>& users)
 
 					for (int i = 0; i < users.size(); i++)
 					{
-						if (users[i].role == Role::USER)
+						if (users[i].role == Role::USER && users[i].status != Status::WAITING)
 						{
-							cout << i << "\t" << users[i].login;
+							cout << i << setw(15) << users[i].login << setw(15);
 							role = users[i].role;
 							status = users[i].status;
 
 							roleToString(role);
-							cout << "\t";
+							cout << setw(12);
 							statusToString(status);
 							cout << endl;
 						}

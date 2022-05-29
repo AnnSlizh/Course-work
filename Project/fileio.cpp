@@ -76,7 +76,7 @@ void readTicketsFromFile(vector <Ticket>& tickets)
 	}
 	else
 	{
-		if (file.peek() != ifstream::traits_type::eof()) 
+		if (file.peek() != ifstream::traits_type::eof())
 		{
 			while (!file.eof())
 			{

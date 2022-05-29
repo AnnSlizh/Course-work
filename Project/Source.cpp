@@ -4,10 +4,10 @@
 #include <algorithm>
 #include "datastructs.h"
 #include "fileio.h"
-#include "authorization .h"
+//#include "authorization .h"
 #include "menu.h"
-#include "tickets.h"
-#include "md5.h"
+//#include "tickets.h"
+//#include "md5.h"
 
 using namespace std;
 
@@ -22,7 +22,4 @@ int main()
 	readTicketsFromFile(tickets);
 
 	menuOfAuthorization(users, tickets);
-
-	writeTicketsInFile(tickets);
-	//writeUsersInFile(users);
 }
